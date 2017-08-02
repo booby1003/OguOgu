@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        app:title=""
+        android:padding="2dp"
+        app:popupTheme="@style/AppTheme.PopupOverlay" >
+
+        <Button
+            android:id="@+id/btn_back"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:transitionName="back"
+            android:background="@drawable/icon_back"
+            />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <EditText
+                android:id="@+id/editSearch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:transitionName="edit"
+                android:focusable="true"
+                android:inputType="text"
+                android:imeOptions="actionSearch"
+                android:hint="검색"/>
+
+            <Button
+                android:id="@+id/btn_edit_delete"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:background="@drawable/icon_delete"
+                android:visibility="gone"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"/>
+
+        </RelativeLayout>
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true">
+
+
+            <Button
+                android:id="@+id/btn_search"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="right"
+                android:background="@drawable/icon_search"
+                android:visibility="gone"
+                />
+
+            <View
+                android:layout_width="10dp"
+                android:layout_height="0dp"/>
+
+            <Button
+                android:id="@+id/btn_toolbar_location"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="right"
+                android:transitionName="location"
+                android:background="@drawable/icon_location"/>
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <ListView
+            android:id="@+id/search_listview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+
+</LinearLayout>

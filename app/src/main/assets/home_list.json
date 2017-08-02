@@ -1,0 +1,58 @@
+{
+  "RESULT_CODE": "777",
+  "RESULT_MSG": null,
+  "Data": [
+    {
+      "board_idx": "100",
+      "title": "강아지 예방접종했어요",
+      "storeName": "해림동물병원",
+      "addr": "인천 계양구 작전동",
+      "boardType": 3,
+      "isLike": 1,
+      "isBookmark": 1,
+      "imgPath": "http://sunghun.smilefinger.com/test/해림동물병원.png",
+      "regUserID": "gogooma",
+      "regThunmbPath": "",
+      "regDate": "2016.12.02"
+    },
+    {
+      "board_idx": "101",
+      "title": "코코와 인천대공원 산책",
+      "storeName": "인천대공원",
+      "addr": "서울 광진구",
+      "boardType": 4,
+      "isLike": 0,
+      "isBookmark": 0,
+      "imgPath": "http://sunghun.smilefinger.com/test/인천대공원.png",
+      "regUserID": "gogooma",
+      "regThunmbPath": "",
+      "regDate": "2016.12.04"
+    },
+    {
+      "board_idx": "102",
+      "title": "코코와 루이를 소개합니다",
+      "storeName": "",
+      "addr": "",
+      "boardType": 1,
+      "isLike": 0,
+      "isBookmark": 0,
+      "imgPath": "http://sunghun.smilefinger.com/test/코코루이.jpg",
+      "regUserID": "gogooma100g",
+      "regThunmbPath": "http://api.mm.moumou.co.kr/Upload/Picture/whd.png",
+      "regDate": "2016.12.21"
+    },
+    {
+      "board_idx": "103",
+      "title": "인천 반려견 애견카페",
+      "storeName": "반려견",
+      "addr": "인천 연수구 동춘동",
+      "boardType": 2,
+      "isLike": 0,
+      "isBookmark": 0,
+      "imgPath": "http://sunghun.smilefinger.com/test/반려견.png",
+      "regUserID": "",
+      "regThunmbPath": "",
+      "regDate": ""
+    }
+  ]
+}

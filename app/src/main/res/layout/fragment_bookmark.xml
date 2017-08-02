@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/fragment_container"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/white"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        app:title="">
+
+        <Button
+            android:id="@+id/btn_all"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/icon_all" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="0dp" />
+
+        <Button
+            android:id="@+id/btn_cafe"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/icon_cafe" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="0dp" />
+
+        <Button
+            android:id="@+id/btn_hospital"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/icon_hospital" />
+
+        <View
+            android:layout_width="10dp"
+            android:layout_height="0dp" />
+
+        <Button
+            android:id="@+id/btn_playground"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:background="@drawable/icon_playground" />
+    </android.support.v7.widget.Toolbar>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefresh"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+</LinearLayout>

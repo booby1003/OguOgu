@@ -1,0 +1,84 @@
+<resources>
+    <string name="app_name">오구오구</string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password (optional)</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."
+    </string>
+    <string name="title_activity_main">MainActivity</string>
+
+
+    <string name="title_text">Google Sign-In\nQuickstart</string>
+
+    <!-- Sign-in status messages -->
+    <string name="signed_in_fmt">Signed in as: %s</string>
+    <string name="signed_in">Signed in</string>
+    <string name="signing_in">Signing in…</string>
+    <string name="signed_out">Signed out</string>
+    <string name="signed_in_err">"Error: please check logs."</string>
+    <string name="error_null_person">
+        Error: Plus.PeopleApi.getCurrentPerson returned null. Ensure that the Google+ API is
+        enabled for your project, you have a properly configured google-services.json file
+        and that your device has an internet connection.
+    </string>
+    <string name="loading">Loading…</string>
+    <string name="auth_code_fmt">Auth Code: %s</string>
+    <string name="id_token_fmt">ID Token: %s</string>
+
+    <!-- Google Play Services error for Toast -->
+    <string name="play_services_error_fmt">Google Play Services Error: %i</string>
+
+    <!-- Button labels -->
+    <string name="google_sign_out">Google Sign Out</string>
+    <string name="kakao_sign_out">Kakao Sign Out</string>
+    <string name="facebook_sign_out">Facebook Sign Out</string>
+    <string name="disconnect">Disconnect</string>
+    <string name="refresh_token">Get Fresh Token</string>
+
+    <!-- Content Description for images -->
+    <string name="desc_google_icon">Google Logo</string>
+
+    <!-- Rationale for asking for Contacts -->
+    <string name="contacts_permission_rationale">Contacts access is needed in order to retrieve your email address.</string>
+
+    <!-- Activity Names and Descriptions -->
+    <string name="name_sign_in_activity">SignInActivity</string>
+    <string name="desc_sign_in_activity">Signing in, signing out, and revoking access.</string>
+    <string name="desc_sign_in_activity_scopes">Signing in, signing out, and revoking access with Google Drive permissions.</string>
+    <string name="name_id_token_activity">IdTokenActivity</string>
+    <string name="desc_id_token_activity">Retrieving an ID Token for the user.</string>
+    <string name="desc_auth_code_activity">Demonstrate retrieving an auth code for authorizing your server.</string>
+    <string name="name_auth_code_activity">ServerAuthCodeActivity</string>
+
+    <!-- TODO(user): replace with your real server client ID -->
+    <!-- Server Client ID.  This should be a valid Web OAuth 2.0 Client ID obtained
+         from https://console.developers.google.com/ -->
+    <string name="server_client_id">156850887488-1v5f75buu4pukvma5qjm976i8n1l80ir.apps.googleusercontent.com</string>
+    <string name="server_client_id_test">156850887488-8lmnbfdekjit46h9iiskapu4764cia7r.apps.googleusercontent.com</string>
+    <string name="title_activity_ogu_ogu">OguOguActivity</string>
+    <string name="kakao_app_key">1656d12f1bf3f5dceda4c7bd2a3a9c8e</string>
+
+    <string name="tab_1">Label 1</string>
+    <string name="tab_2">Label 2</string>
+    <string name="tab_3">Label 3</string>
+    <string name="tab_4">Label 4</string>
+    <string name="tab_5">Label 5</string>
+
+    <string name="menu_1">Menu 1</string>
+    <string name="menu_2">Menu 2</string>
+    <string name="menu_3">Menu 3</string>
+    <string name="menu_4">Menu 4</string>
+    <string name="menu_5">Menu 5</string>
+
+    <string name="facebook_app_id">1417436908281436</string>
+</resources>
+
+

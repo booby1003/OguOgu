@@ -1,0 +1,89 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 24
+    buildToolsVersion '25.0.0'
+    defaultConfig {
+        applicationId "com.oguogu"
+        minSdkVersion 21
+        versionCode 1
+        targetSdkVersion 24
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        multiDexEnabled true
+
+    }
+
+    aaptOptions{
+        cruncherEnabled = false
+    }
+
+    signingConfigs {
+        debug {
+//            storeFile file("/Users/juyoungkim/androidsignkey/debug.jks")
+            //storeFile file("C:/Users/Administrator/AndroidStudioProjects/oguogu_debug_keystore.jks")
+            //storePassword "121212"
+            storeFile file("C:/Users/김민정/.android/debug.keystore")
+            //keyAlias "oguogu_debug.keystore"
+            //keyPassword "121212"
+        }
+
+        release {
+            storeFile file("C:/Users/김민정/.android/debug.keystore")
+        }
+
+        configurations.all {
+            resolutionStrategy.force 'com.google.code.findbugs:jsr305:1.3.9'
+        }
+
+        dexOptions {
+            javaMaxHeapSize "4g"
+        }
+    }
+
+    buildTypes {
+        debug {
+            signingConfig signingConfigs.debug
+        }
+
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets { main { res.srcDirs = ['src/main/res', 'src/main/res/menu'] } }
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+
+    compile 'com.android.support:appcompat-v7:24.0.0'
+    compile 'com.android.support:design:24.0.0'
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:multidex:1.0.0'
+    compile 'com.google.android.gms:play-services:9.8.0'
+    compile 'com.google.android.gms:play-services-plus:7.8.0'
+    compile 'com.google.apis:google-api-services-youtube:v3-rev120-1.19.0'
+    compile 'com.google.http-client:google-http-client-android:+'
+    compile 'com.google.api-client:google-api-client-android:+'
+    compile 'com.google.api-client:google-api-client-gson:+'
+    compile 'com.google.code.gson:gson:2.2.4'
+    compile 'com.mcxiaoke.volley:library:1.0.18'
+    compile 'com.github.bumptech.glide:glide:3.6.0'
+    compile 'com.squareup.retrofit2:retrofit:2.1.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
+    compile 'com.squareup:otto:1.3.8'
+    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'com.facebook.android:facebook-android-sdk:4.0.0'
+
+
+    compile group: project.KAKAO_SDK_GROUP, name: 'usermgmt', version: project.KAKAO_SDK_VERSION
+    compile 'com.aurelhubert:ahbottomnavigation:2.0.2'
+    compile 'com.android.support:cardview-v7:24.0.0'
+    compile 'com.android.support:recyclerview-v7:24.0.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'jp.wasabeef:glide-transformations:1.0.6@aar'
+}
