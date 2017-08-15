@@ -78,6 +78,11 @@
     <string name="menu_4">Menu 4</string>
     <string name="menu_5">Menu 5</string>
 
+
+    <string name="write_btn_place">장소 공유</string>
+    <string name="write_btn_mypet">내펫 자랑</string>
+    <string name="write_btn_mine">내 앨범</string>
+
     <string name="facebook_app_id">1417436908281436</string>
 </resources>
 

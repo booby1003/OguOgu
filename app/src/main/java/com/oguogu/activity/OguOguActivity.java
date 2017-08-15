@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.animation.OvershootInterpolator;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -65,9 +66,10 @@ public class OguOguActivity extends AppCompatActivity {
 //    @Bind(R.id.floating_action_button) FloatingActionButton floatingActionButton;
     @Bind(R.id.view_pager) AHBottomNavigationViewPager viewPager;
     @Bind(R.id.layoutWrite) LinearLayout layoutWrite;
-    @Bind(R.id.btn_cafe) Button btn_cafe;
-    @Bind(R.id.btn_hospital) Button btn_hospital;
-    @Bind(R.id.btn_playground) Button btn_playground;
+    @Bind(R.id.ll_write_bg) LinearLayout ll_write_bg;
+    @Bind(R.id.btn_write_place) ImageButton btn_write_place;
+    @Bind(R.id.btn_write_mypet) ImageButton btn_write_mypet;
+    @Bind(R.id.btn_write_mine) ImageButton btn_write_mine;
     @Bind(R.id.editSearch) EditText editSearch;
     @Bind(R.id.btn_back) Button btn_back;
     @Bind(R.id.btn_toolbar_location) Button btn_toolbar_location;
@@ -151,6 +153,7 @@ public class OguOguActivity extends AppCompatActivity {
                 }
 
                 if (position == 2) {
+                    ll_write_bg.setVisibility(View.VISIBLE);
                     layoutWrite.setVisibility(View.VISIBLE);
                     layoutWrite.setAlpha(0f);
                     layoutWrite.setScaleX(0f);
@@ -325,16 +328,16 @@ public class OguOguActivity extends AppCompatActivity {
                 .build();
     }
 
-    @OnClick({R.id.btn_cafe, R.id.btn_hospital, R.id.btn_playground, R.id.btn_search, R.id.editSearch, R.id.btn_back, R.id.btn_toolbar_location})
+    @OnClick({R.id.btn_write_place, R.id.btn_write_mypet, R.id.btn_write_mine, R.id.btn_search, R.id.editSearch, R.id.btn_back, R.id.btn_toolbar_location})
     public void onClickButton(View view) {
         switch (view.getId()) {
-            case R.id.btn_cafe:
+            case R.id.btn_write_place:
                 Toast.makeText(this, "버튼1 클릭", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.btn_hospital:
+            case R.id.btn_write_mypet:
                 Toast.makeText(this, "버튼2 클릭", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.btn_playground:
+            case R.id.btn_write_mine:
                 Toast.makeText(this, "버튼3 클릭", Toast.LENGTH_SHORT).show();
                 break;
             case R.id.btn_search:
@@ -518,12 +521,14 @@ public class OguOguActivity extends AppCompatActivity {
                         @Override
                         public void onAnimationEnd(Animator animation) {
                             layoutWrite.setVisibility(View.GONE);
+                            ll_write_bg.setVisibility(View.GONE);
                             isWriteHiding = false;
                         }
 
                         @Override
                         public void onAnimationCancel(Animator animation) {
                             layoutWrite.setVisibility(View.GONE);
+                            ll_write_bg.setVisibility(View.GONE);
                             isWriteHiding = false;
                         }
 

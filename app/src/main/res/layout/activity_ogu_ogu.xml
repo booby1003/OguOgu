@@ -8,6 +8,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
@@ -89,43 +90,97 @@
         app:selectedBackgroundVisible="false" />
 
     <LinearLayout
+        android:id="@+id/ll_write_bg"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:background="@color/pop_bg"
+        android:visibility="gone"></LinearLayout>
+
+    <LinearLayout
         android:id="@+id/layoutWrite"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:gravity="center_horizontal"
         android:orientation="horizontal"
+        android:layout_marginBottom="@dimen/dimen_12dp"
         android:visibility="gone">
 
-        <Button
-            android:id="@+id/btn_cafe"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/icon_cafe"
-            android:clickable="true"
-            android:foreground="?android:attr/selectableItemBackground" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <ImageButton
+                android:id="@+id/btn_write_place"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:clickable="true"
+                android:background="@drawable/sel_write_place" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/write_btn_place"
+                android:textSize="@dimen/dimen_12sp"
+                android:textColor="@color/wirte_btn"
+                android:layout_marginTop="@dimen/dimen_2dp"/>
+
+        </LinearLayout>
 
         <View
             android:layout_width="30dp"
             android:layout_height="0px" />
 
-        <Button
-            android:id="@+id/btn_hospital"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/icon_hospital"
-            android:foreground="?android:attr/selectableItemBackground" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
 
+            <ImageButton
+                android:id="@+id/btn_write_mypet"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@drawable/sel_write_mypet" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/write_btn_mypet"
+                android:textSize="@dimen/dimen_12dp"
+                android:textColor="@color/wirte_btn"
+                android:layout_marginTop="@dimen/dimen_12sp"/>
+        </LinearLayout>
 
         <View
             android:layout_width="30dp"
             android:layout_height="0px" />
 
-        <Button
-            android:id="@+id/btn_playground"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:background="@drawable/icon_playground" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center_horizontal">
+
+            <ImageButton
+                android:id="@+id/btn_write_mine"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:background="@drawable/sel_write_mine" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/write_btn_mine"
+                android:textSize="@dimen/dimen_12dp"
+                android:textColor="@color/wirte_btn"
+                android:layout_marginTop="@dimen/dimen_12sp"/>
+        </LinearLayout>
+
 
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout><!--

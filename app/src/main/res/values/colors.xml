@@ -32,4 +32,7 @@
     <color name="blue">#0054FF</color>
     <color name="black">#000000</color>
     <color name="white">#FFFFFF</color>
+
+    <color name="pop_bg">#CC4B4B4B</color>
+    <color name="wirte_btn">#e1e1e1</color>
 </resources>
