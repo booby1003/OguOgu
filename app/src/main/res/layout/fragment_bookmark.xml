@@ -8,48 +8,119 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/white"
         app:popupTheme="@style/AppTheme.PopupOverlay"
-        app:title="">
+        app:title=""
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/top_toolbar"
+        android:paddingTop="@dimen/dimen_7dp">
+
+        <ImageButton
+            android:id="@+id/btn_srch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sel_top_serch" />
+
+        <EditText
+            android:id="@+id/editSearch"
+            android:layout_width="@dimen/top_srch_width"
+            android:layout_height="wrap_content"
+            android:focusable="false"
+            android:clickable="false"
+            android:transitionName="edit"
+            android:textSize="@dimen/dimen_15sp"
+            android:layout_marginLeft="@dimen/dimen_2dp"
+            android:layout_marginRight="@dimen/dimen_10dp"
+            android:background="@android:color/transparent"/>
 
         <Button
-            android:id="@+id/btn_all"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/icon_all" />
-
-        <View
-            android:layout_width="10dp"
-            android:layout_height="0dp" />
-
-        <Button
-            android:id="@+id/btn_cafe"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/icon_cafe" />
-
-        <View
-            android:layout_width="10dp"
-            android:layout_height="0dp" />
+            android:id="@+id/btn_edit_delete"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/icon_close"
+            android:visibility="invisible"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="@dimen/dimen_10dp"/>
 
         <Button
-            android:id="@+id/btn_hospital"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/icon_hospital" />
+            android:id="@+id/btn_srch_cancel"
+            android:layout_width="@dimen/dimen_30dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/dimen_15sp"
+            android:text="@string/cancel"
+            android:textColor="@color/top_srch_btn"
+            android:background="@android:color/transparent"
+            android:transitionName="srch_cancel"
+            android:translationX="@dimen/dimen_40dp"
+            android:textStyle="bold" />
 
-        <View
-            android:layout_width="10dp"
-            android:layout_height="0dp" />
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:visibility="gone">
 
-        <Button
-            android:id="@+id/btn_playground"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:background="@drawable/icon_playground" />
+            <View
+                android:layout_width="10dp"
+                android:layout_height="0dp" />
+
+            <Button
+                android:id="@+id/btn_toolbar_location"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_gravity="right"
+                android:background="@drawable/icon_location"
+                android:transitionName="location" />
+        </LinearLayout>
+
+
     </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/dimen_7dp"
+        android:orientation="horizontal"
+        android:gravity="center_horizontal">
+
+        <ImageButton
+            android:id="@+id/btn_all"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sel_bookmark_all" />
+
+        <View
+            android:layout_width="@dimen/dimen_7dp"
+            android:layout_height="0dp" />
+
+        <ImageButton
+            android:id="@+id/btn_cafe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sel_bookmark_cafe" />
+
+        <View
+            android:layout_width="@dimen/dimen_7dp"
+            android:layout_height="0dp" />
+
+        <ImageButton
+            android:id="@+id/btn_hospital"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sel_bookmark_hospital" />
+
+        <View
+            android:layout_width="@dimen/dimen_7dp"
+            android:layout_height="0dp" />
+
+        <ImageButton
+            android:id="@+id/btn_playground"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sel_bookmark_gowalk" />
+
+    </LinearLayout>
 
     <android.support.v4.widget.SwipeRefreshLayout
         android:id="@+id/swipeRefresh"
@@ -59,6 +130,8 @@
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:paddingRight="@dimen/dimen_2dp"
+            android:paddingLeft="@dimen/dimen_2dp"/>
     </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>

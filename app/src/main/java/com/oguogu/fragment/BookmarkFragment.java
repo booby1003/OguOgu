@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.oguogu.GlobalApplication;
 import com.oguogu.R;
@@ -33,10 +34,10 @@ public class BookmarkFragment extends BaseFragment {
 
     @Bind(R.id.toolbar) Toolbar toolbar;
 
-    @Bind(R.id.btn_all) Button btn_all;
-    @Bind(R.id.btn_cafe) Button btn_cafe;
-    @Bind(R.id.btn_hospital) Button btn_hospital;
-    @Bind(R.id.btn_playground) Button btn_playground;
+    @Bind(R.id.btn_all) ImageButton btn_all;
+    @Bind(R.id.btn_cafe) ImageButton btn_cafe;
+    @Bind(R.id.btn_hospital) ImageButton btn_hospital;
+    @Bind(R.id.btn_playground) ImageButton btn_playground;
 
     @Bind(R.id.swipeRefresh) SwipeRefreshLayout swipeRefresh;
     @Bind(R.id.recycler_view) RecyclerView recyclerView;
@@ -77,6 +78,7 @@ public class BookmarkFragment extends BaseFragment {
         // 지정된 레이아웃매니저를 RecyclerView에 Set 해주어야한다.
         recyclerView.setLayoutManager(layoutManager);
 
+        btn_all.setSelected(true);
         getBookMarkList();
 
         return view;
@@ -99,6 +101,9 @@ public class BookmarkFragment extends BaseFragment {
 
     @OnClick({R.id.btn_all, R.id.btn_cafe, R.id.btn_hospital, R.id.btn_playground})
     public void onClickButton(View view) {
+        removeBtnSelected();
+        view.setSelected(true);
+
         switch (view.getId()) {
             case R.id.btn_all:
                 photoListAdapter.setItems(bookmarkList.getData());
@@ -113,6 +118,13 @@ public class BookmarkFragment extends BaseFragment {
                 photoListAdapter.setItem(bookmarkList.getData(), VoHomeList.TYPE_PLAYGROUND);
                 break;
         }
+    }
+
+    private void removeBtnSelected() {
+        btn_all.setSelected(false);
+        btn_cafe.setSelected(false);
+        btn_hospital.setSelected(false);
+        btn_playground.setSelected(false);
     }
 
     @Override
