@@ -3,5 +3,8 @@
     <item
         android:state_pressed="true"
         android:drawable="@drawable/icon_tab_place_s" />
+    <item
+        android:state_selected="true"
+        android:drawable="@drawable/icon_tab_place_s" />
     <item android:drawable="@drawable/icon_tab_place" />
 </selector>

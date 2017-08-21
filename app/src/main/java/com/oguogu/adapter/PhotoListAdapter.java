@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -19,6 +20,7 @@ import com.oguogu.R;
 import com.oguogu.activity.StoreDetailActivity;
 import com.oguogu.activity.StoryDetailActivity;
 import com.oguogu.custom.CustomBitmapPool;
+import com.oguogu.util.LogUtil;
 import com.oguogu.vo.VoHomeList;
 
 import java.util.ArrayList;
@@ -62,6 +64,7 @@ public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.View
 
         VoHomeList.VoHomeInfo info = mItems.get(position);
 
+
         if (info.getBoardType() == VoHomeList.TYPE_STORY) {
             holder.tv_title.setText(info.getTitle());
             holder.tv_userid.setText(info.getRegUserID());
@@ -82,11 +85,11 @@ public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.View
 
             int storeTypeResId=0;
             if (info.getBoardType() == VoHomeList.TYPE_CAFE)
-                storeTypeResId = R.drawable.icon_cafe;
+                storeTypeResId = R.drawable.icon_type_cafe_s;
             else if (info.getBoardType() == VoHomeList.TYPE_HOSPITAL)
-                storeTypeResId = R.drawable.icon_hospital;
+                storeTypeResId = R.drawable.icon_type_hospital_s;
             else if (info.getBoardType() == VoHomeList.TYPE_PLAYGROUND)
-                storeTypeResId = R.drawable.icon_playground;
+                storeTypeResId = R.drawable.icon_type_gowalk_s;
 
             Glide.with(context)
                     .load(storeTypeResId)
@@ -112,6 +115,8 @@ public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.View
                 Toast.makeText(context, "좋아요!!", Toast.LENGTH_SHORT).show();
             }
         });
+
+        LogUtil.i("imagePath: " + info.getImgPath());
 
         Glide.with(context)
                 .load(info.getImgPath())
@@ -175,7 +180,7 @@ public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.View
         public CardView cardView;
         public ImageView imageView;
         public TextView tv_title;
-        public Button btn_like;
+        public ImageButton btn_like;
         public LinearLayout layout_store;
         public ImageView iv_store;
         public TextView tv_store_name;
@@ -190,7 +195,7 @@ public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.View
             cardView = (CardView) view.findViewById(R.id.card_view);
             imageView = (ImageView) view.findViewById(R.id.image);
             tv_title = (TextView) view.findViewById(R.id.tv_title);
-            btn_like = (Button) view.findViewById(R.id.btn_like);
+            btn_like = (ImageButton) view.findViewById(R.id.btn_like);
             layout_store = (LinearLayout) view.findViewById(R.id.layout_store);
             iv_store = (ImageView) view.findViewById(R.id.iv_store);
             tv_store_name = (TextView) view.findViewById(R.id.tv_store_name);

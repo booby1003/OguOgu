@@ -2,7 +2,8 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/cmm_bg">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -125,7 +126,7 @@
                 android:layout_height="wrap_content"
                 android:text="@string/write_btn_place"
                 android:textSize="@dimen/dimen_12sp"
-                android:textColor="@color/wirte_btn"
+                android:textColor="@color/write_btn"
                 android:layout_marginTop="@dimen/dimen_2dp"/>
 
         </LinearLayout>
@@ -151,8 +152,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/write_btn_mypet"
                 android:textSize="@dimen/dimen_12dp"
-                android:textColor="@color/wirte_btn"
-                android:layout_marginTop="@dimen/dimen_12sp"/>
+                android:textColor="@color/write_btn"
+                android:layout_marginTop="@dimen/dimen_2dp"/>
         </LinearLayout>
 
         <View
@@ -177,8 +178,8 @@
                 android:layout_height="wrap_content"
                 android:text="@string/write_btn_mine"
                 android:textSize="@dimen/dimen_12dp"
-                android:textColor="@color/wirte_btn"
-                android:layout_marginTop="@dimen/dimen_12sp"/>
+                android:textColor="@color/write_btn"
+                android:layout_marginTop="@dimen/dimen_2dp"/>
         </LinearLayout>
 
 

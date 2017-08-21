@@ -8,44 +8,82 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/white"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
         app:title=""
-        android:padding="2dp"
-        app:popupTheme="@style/AppTheme.PopupOverlay" >
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/top_toolbar"
+        android:paddingTop="@dimen/dimen_7dp">
+
+        <ImageButton
+            android:id="@+id/btn_srch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sel_top_serch" />
+
+
+        <EditText
+            android:id="@+id/editSearch"
+            android:layout_width="@dimen/top_srch_width"
+            android:layout_height="wrap_content"
+            android:transitionName="edit"
+            android:hint="@string/srch"
+            android:textSize="@dimen/dimen_15sp"
+            android:imeOptions="actionSearch"
+            android:layout_marginLeft="@dimen/dimen_2dp"
+            android:layout_marginRight="@dimen/dimen_10dp"
+            android:background="@android:color/transparent"/>
 
         <Button
-            android:id="@+id/btn_back"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:transitionName="back"
-            android:background="@drawable/icon_back"
-            />
+            android:id="@+id/btn_edit_delete"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:background="@drawable/icon_close"
+            android:visibility="invisible"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="@dimen/dimen_10dp"/>
+
+        <Button
+            android:id="@+id/btn_srch_cancel"
+            android:layout_width="@dimen/dimen_30dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/dimen_15sp"
+            android:text="@string/cancel"
+            android:textColor="@color/top_srch_btn"
+            android:background="@android:color/transparent"
+            android:transitionName="srch_cancel"
+            android:textStyle="bold"/>
+
+
+
+
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/editSearch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:transitionName="edit"
-                android:focusable="true"
-                android:inputType="text"
-                android:imeOptions="actionSearch"
-                android:hint="검색"/>
+            <!--<EditText-->
+                <!--android:id="@+id/editSearch"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:transitionName="edit"-->
+                <!--android:focusable="true"-->
+                <!--android:inputType="text"-->
+                <!--android:imeOptions="actionSearch"-->
+                <!--android:hint="검색"/>-->
 
-            <Button
-                android:id="@+id/btn_edit_delete"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:background="@drawable/icon_delete"
-                android:visibility="gone"
-                android:layout_alignParentRight="true"
-                android:layout_centerInParent="true"/>
+
 
         </RelativeLayout>
+
+
+        <!--<Button-->
+            <!--android:id="@+id/btn_toolbar_location"-->
+            <!--android:layout_width="30dp"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:layout_gravity="right"-->
+            <!--android:background="@drawable/icon_location"-->
+            <!--android:transitionName="location"-->
+            <!--android:translationX="50dp"/>-->
 
 
         <LinearLayout
@@ -61,8 +99,7 @@
                 android:layout_height="30dp"
                 android:layout_gravity="right"
                 android:background="@drawable/icon_search"
-                android:visibility="gone"
-                />
+                android:visibility="gone" />
 
             <View
                 android:layout_width="10dp"
@@ -74,8 +111,10 @@
                 android:layout_height="30dp"
                 android:layout_gravity="right"
                 android:transitionName="location"
-                android:background="@drawable/icon_location"/>
+                android:background="@drawable/icon_location"
+                android:visibility="gone"/>
         </LinearLayout>
+
     </android.support.v7.widget.Toolbar>
 
     <RelativeLayout

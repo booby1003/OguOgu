@@ -41,10 +41,11 @@ import butterknife.OnClick;
 public class HomeFragment extends BaseFragment {
 
     @Bind(R.id.toolbar) Toolbar toolbar;
-    @Bind(R.id.btn_search) Button btn_search;
+   // @Bind(R.id.btn_search) Button btn_search;
 
     @Bind(R.id.editSearch) EditText editSearch;
-    @Bind(R.id.btn_back) Button btn_back;
+   // @Bind(R.id.btn_back) Button btn_back;
+    @Bind(R.id.btn_srch_cancel) Button btn_srch_cancel;
     @Bind(R.id.btn_toolbar_location) Button btn_toolbar_location;
 
     @Bind(R.id.swipeRefresh) SwipeRefreshLayout swipeRefresh;
@@ -112,20 +113,22 @@ public class HomeFragment extends BaseFragment {
         recyclerView.setAdapter(adapter);
     }
 
-    @OnClick({R.id.editSearch, R.id.btn_toolbar_location})
+    @OnClick({R.id.btn_srch, R.id.btn_toolbar_location})
     public void onClickButton(View view) {
         switch (view.getId()) {
-            case R.id.editSearch:
+            case R.id.btn_srch:
                 Intent intent = new Intent(getActivity(), SearchActivity.class);
 
                 Pair<View, String> p1 = Pair.create((View)editSearch, "edit");
-                Pair<View, String> p2 = Pair.create((View)btn_back, "back");
+                //Pair<View, String> p2 = Pair.create((View)btn_back, "back");
+                Pair<View, String> p2 = Pair.create((View)btn_srch_cancel, "srch_cancel");
                 Pair<View, String> p3 = Pair.create((View)btn_toolbar_location, "location");
 
                 ActivityOptionsCompat options = ActivityOptionsCompat.
                         makeSceneTransitionAnimation(getActivity(), p1, p2, p3);
 
                 startActivity(intent, options.toBundle());
+
                 break;
         }
     }

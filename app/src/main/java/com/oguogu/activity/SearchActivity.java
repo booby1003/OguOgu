@@ -43,7 +43,7 @@ public class SearchActivity extends AppCompatActivity {
 
     @Bind(R.id.toolbar) Toolbar toolbar;
     @Bind(R.id.editSearch) EditText editSearch;
-    @Bind(R.id.btn_back) Button btn_back;
+    @Bind(R.id.btn_srch_cancel) Button btn_srch_cancel;
     @Bind(R.id.search_listview) ListView search_listview;
     @Bind(R.id.recycler_view) RecyclerView recycler_view;
     @Bind(R.id.btn_edit_delete) Button btnEditDelete;
@@ -97,7 +97,7 @@ public class SearchActivity extends AppCompatActivity {
                 if (inputText.length() > 0)
                     btnEditDelete.setVisibility(View.VISIBLE);
                 else
-                    btnEditDelete.setVisibility(View.GONE);
+                    btnEditDelete.setVisibility(View.INVISIBLE);
             }
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -152,10 +152,10 @@ public class SearchActivity extends AppCompatActivity {
         recycler_view.setAdapter(adapter);
     }
 
-    @OnClick({R.id.btn_back})
+    @OnClick({R.id.btn_srch_cancel})
     public void onClickButton(View view) {
         switch (view.getId()) {
-            case R.id.btn_back:
+            case R.id.btn_srch_cancel:
                 finishAfterTransition();
                 break;
         }
