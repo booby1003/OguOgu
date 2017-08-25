@@ -5,29 +5,49 @@
     {
       "feed_thumb_path": "http://api.mm.moumou.co.kr/Upload/Picture/sss5257.png",
       "feed_nickname": "김민주",
+      "feed_place_type":1,
       "feed_type": 1,
-      "feed_date": "12.25",
+      "feed_date": "2017.02.25",
       "origin_thumb_path": "http://sunghun.smilefinger.com/test/코코루이.jpg"
     },
     {
       "feed_thumb_path": "http://api.mm.moumou.co.kr/Upload/Picture/whd.png",
       "feed_nickname": "우효동",
+      "feed_place_type":2,
       "feed_type": 2,
-      "feed_date": "12.27",
+      "feed_date": "2016.12.27",
       "origin_thumb_path": "http://sunghun.smilefinger.com/test/반려견.png"
     },
     {
       "feed_thumb_path": "http://api.mm.moumou.co.kr/Upload/Picture/whd.png",
-      "feed_nickname": "이우성",
+      "feed_nickname": "booby1003",
+      "feed_place_type":3,
+      "feed_type": 2,
+      "feed_date": "2016.12.27",
+      "origin_thumb_path": "http://sunghun.smilefinger.com/test/반려견.png"
+    },
+    {
+      "feed_thumb_path": "http://api.mm.moumou.co.kr/Upload/Picture/taehui5.png",
+      "feed_nickname": "booby1003",
+      "feed_place_type":3,
+      "feed_type": 3,
+      "feed_date": "2016.10.02",
+      "origin_thumb_path": "http://sunghun.smilefinger.com/test/해림동물병원.png"
+    },
+    {
+      "feed_thumb_path": "http://api.mm.moumou.co.kr/Upload/Picture/whd.png",
+      "feed_nickname": "gogooma",
+      "feed_place_type":4,
       "feed_type": 1,
-      "feed_date": "11.11",
+      "feed_date": "2017.11.05",
       "origin_thumb_path": "http://sunghun.smilefinger.com/test/인천대공원.png"
     },
     {
       "feed_thumb_path": "http://api.mm.moumou.co.kr/Upload/Picture/taehui5.png",
       "feed_nickname": "이태희",
+      "feed_place_type":4,
       "feed_type": 2,
-      "feed_date": "12.28",
+      "feed_date": "2016.10.02",
       "origin_thumb_path": "http://sunghun.smilefinger.com/test/해림동물병원.png"
     }
   ]

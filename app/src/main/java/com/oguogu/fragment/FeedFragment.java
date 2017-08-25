@@ -1,11 +1,19 @@
 package com.oguogu.fragment;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.Spanned;
+import android.text.style.AbsoluteSizeSpan;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +26,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.oguogu.GlobalApplication;
 import com.oguogu.R;
+import com.oguogu.common.Constant;
 import com.oguogu.custom.CustomBitmapPool;
 import com.oguogu.util.StringUtil;
 import com.oguogu.vo.VoFeedList;
@@ -110,6 +119,7 @@ public class FeedFragment extends BaseFragment {
 
             FeedListViewAdapter.ViewHolder viewHolder;
             // "listview_item" Layout을 inflate하여 convertView 참조 획득.
+
             if (convertView == null) {
                 convertView = inflater.inflate(R.layout.listview_feed_item, parent, false);
 
@@ -121,19 +131,68 @@ public class FeedFragment extends BaseFragment {
 
             Glide.with(context).load(info.getFeed_thumb_path()).bitmapTransform(new CropCircleTransformation(new CustomBitmapPool())).into(viewHolder.iv_feed_thumb);
 
-            if (info.getFeed_type() == VoFeedList.TYPE_COMMENT) {
-                viewHolder.tv_feed_content.setText(info.getFeed_nickname() + " 님이\n댓글을 남겼습니다.");
-            } else {
-                viewHolder.tv_feed_content.setText(info.getFeed_nickname() + " 님이\n회원님의 사진을 좋아요 하였습니다.");
+            String str_place = "";
+            String str_commt = "";
+            boolean isPlace = false;
+
+            if(info.getFeed_place_type() == Constant.PLACE_TYPES.PLACE_TYPE_CAFE) {
+                str_place = "강아지 카페";
+                isPlace = true;
+            }else if(info.getFeed_place_type() == Constant.PLACE_TYPES.PLACE_TYPE_HOSPITAL) {
+                str_place = "동물병원";
+                isPlace = true;
+            }else if(info.getFeed_place_type() == Constant.PLACE_TYPES.PLACE_TYPE_GOWALK) {
+                str_place = "산책/놀이터";
+                isPlace = true;
+            }else{
+                str_place = "회원님의 글";
+                isPlace = false;
             }
 
-            viewHolder.tv_feed_date.setText(info.getFeed_date());
+            if (info.getFeed_type() == VoFeedList.TYPE_COMMENT) {
+                str_commt = "에 댓글을 남겼습니다. ";
+               // viewHolder.tv_feed_content.setText(info.getFeed_nickname() + " 님이 댓글을 남겼습니다.");
+            } else if(info.getFeed_type() == VoFeedList.TYPE_LIKE){
+                str_commt = "에 좋아요 하였습니다. ";
+                //viewHolder.tv_feed_content.setText(info.getFeed_nickname() + " 님이 회원님의 사진을 좋아요 하였습니다.");
+            } else if(info.getFeed_type() == VoFeedList.TYPE_STORAGE){
+                str_commt = " 정보를 보관함에 담았습니다. ";
+                //viewHolder.tv_feed_content.setText(info.getFeed_nickname() + " 님이 ");
+            }
 
-            Glide.with(context)
-                    .load(info.getOrigin_thumb_path())
-                    .crossFade()
-                    .bitmapTransform(new RoundedCornersTransformation(new CustomBitmapPool(), 10, 5))
-                    .into(viewHolder.iv_origin_thumb);
+            String commt = info.getFeed_nickname() + "님이 " + str_place + str_commt + info.getFeed_date();
+
+            SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder(commt);
+            spannableStringBuilder.setSpan(new StyleSpan(Typeface.BOLD), 0, info.getFeed_nickname().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            spannableStringBuilder.setSpan(new ForegroundColorSpan(ResourcesCompat.getColor(getResources(), R.color.color_txt_90, null)),
+                    commt.length() - info.getFeed_date().length(), commt.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            spannableStringBuilder.setSpan(new AbsoluteSizeSpan((int)getResources().getDimension(R.dimen.dimen_13sp)),
+                    commt.length() - info.getFeed_date().length(), commt.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+            viewHolder.tv_feed_content.append(spannableStringBuilder);
+
+            //viewHolder.tv_feed_date.setText(info.getFeed_date());
+
+            if(isPlace) {
+                viewHolder.iv_place.setVisibility(View.VISIBLE);
+                viewHolder.iv_origin_thumb.setVisibility(View.GONE);
+
+                if(info.getFeed_place_type() == Constant.PLACE_TYPES.PLACE_TYPE_CAFE) {
+                    viewHolder.iv_place.setBackgroundResource(R.drawable.icon_type_cafe);
+                }else if(info.getFeed_place_type() == Constant.PLACE_TYPES.PLACE_TYPE_HOSPITAL) {
+                    viewHolder.iv_place.setBackgroundResource(R.drawable.icon_type_hospital);
+                }else{
+                    viewHolder.iv_place.setBackgroundResource(R.drawable.icon_type_gowalk);
+                }
+            }else{
+                viewHolder.iv_origin_thumb.setVisibility(View.VISIBLE);
+                viewHolder.iv_place.setVisibility(View.GONE);
+
+                Glide.with(context)
+                        .load(info.getOrigin_thumb_path())
+                        .crossFade()
+                        .bitmapTransform(new RoundedCornersTransformation(new CustomBitmapPool(), 10, 5))
+                        .into(viewHolder.iv_origin_thumb);
+            }
 
             viewHolder.iv_feed_thumb.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -186,14 +245,16 @@ public class FeedFragment extends BaseFragment {
             public ImageView iv_feed_thumb;
             public TextView tv_feed_content;
             public ImageView iv_origin_thumb;
-            public TextView tv_feed_date;
+            public ImageView iv_place;
+            //public TextView tv_feed_date;
 
             public ViewHolder(View view) {
                 super(view);
                 iv_feed_thumb = (ImageView) view.findViewById(R.id.iv_feed_thumb);
                 tv_feed_content = (TextView) view.findViewById(R.id.tv_feed_content);
                 iv_origin_thumb = (ImageView) view.findViewById(R.id.iv_origin_thumb);
-                tv_feed_date = (TextView) view.findViewById(R.id.tv_feed_date);
+                iv_place = (ImageView) view.findViewById(R.id.iv_place);
+                //tv_feed_date = (TextView) view.findViewById(R.id.tv_feed_date);
             }
         }
     }

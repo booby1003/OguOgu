@@ -79,8 +79,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textColor="@color/color_txt_5c"
-                            android:textSize="@dimen/dimen_13sp"
-                            android:layout_marginTop="@dimen/dimen_2dp_m"
+                            android:textSize="@dimen/dimen_14sp"
+                            android:layout_marginTop="@dimen/dimen_3dp_m"
                             android:text="유저id" />
 
                         <TextView
@@ -89,7 +89,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="@color/color_txt_90"
                             android:textSize="@dimen/dimen_12sp"
-                            android:layout_marginTop="@dimen/dimen_2dp_m"
+                            android:layout_marginTop="@dimen/dimen_3dp_m"
                             android:text="등록일" />
                     </LinearLayout>
                 </LinearLayout>

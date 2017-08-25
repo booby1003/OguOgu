@@ -102,7 +102,7 @@
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingRight="@dimen/dimen_2dp"
-            android:paddingLeft="@dimen/dimen_2dp"/>
+            android:paddingRight="@dimen/dimen_5dp"
+            android:paddingLeft="@dimen/dimen_5dp"/>
     </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>

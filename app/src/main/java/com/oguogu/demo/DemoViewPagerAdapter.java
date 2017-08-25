@@ -5,7 +5,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.view.ViewGroup;
 
 import com.oguogu.fragment.BaseFragment;
-import com.oguogu.fragment.BookmarkFragment;
+import com.oguogu.fragment.PlaceFragment;
 import com.oguogu.fragment.FeedFragment;
 import com.oguogu.fragment.HomeFragment;
 import com.oguogu.fragment.MyInfoFragment;
@@ -24,7 +24,7 @@ public class DemoViewPagerAdapter extends FragmentPagerAdapter {
 		super(fm);
 		fragments.clear();
 		fragments.add(new HomeFragment());
-		fragments.add(new BookmarkFragment());
+		fragments.add(new PlaceFragment());
 		fragments.add(DemoFragment.newInstance(0));
 		fragments.add(new FeedFragment());
 		fragments.add(new MyInfoFragment());

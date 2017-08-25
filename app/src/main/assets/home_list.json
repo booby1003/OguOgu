@@ -12,7 +12,7 @@
       "isBookmark": 1,
       "imgPath": "http://sunghun.smilefinger.com/test/해림동물병원.png",
       "regUserID": "gogooma",
-      "regThunmbPath": "",
+      "regThunmbPath": "http://sunghun.smilefinger.com/test/해림동물병원.png",
       "regDate": "2016.12.02"
     },
     {
@@ -25,7 +25,7 @@
       "isBookmark": 0,
       "imgPath": "http://sunghun.smilefinger.com/test/인천대공원.png",
       "regUserID": "gogooma",
-      "regThunmbPath": "",
+      "regThunmbPath": "http://sunghun.smilefinger.com/test/인천대공원.png",
       "regDate": "2016.12.04"
     },
     {
@@ -51,7 +51,7 @@
       "isBookmark": 0,
       "imgPath": "http://sunghun.smilefinger.com/test/반려견.png",
       "regUserID": "",
-      "regThunmbPath": "",
+      "regThunmbPath": "http://sunghun.smilefinger.com/test/반려견.png",
       "regDate": ""
     }
   ]

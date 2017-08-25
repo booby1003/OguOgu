@@ -39,7 +39,7 @@
     <dimen name="top_srch_width">230dp</dimen>
 
     <!-- DP -->
-    <dimen name="dimen_2dp_m">-2dp</dimen>
+    <dimen name="dimen_3dp_m">-3dp</dimen>
     <dimen name="dimen_2dp">2dp</dimen>
     <dimen name="dimen_5dp">5dp</dimen>
     <dimen name="dimen_7dp">7dp</dimen>
@@ -53,5 +53,7 @@
     <!-- Text Size -->
     <dimen name="dimen_12sp">12sp</dimen>
     <dimen name="dimen_13sp">13sp</dimen>
+    <dimen name="dimen_14sp">14sp</dimen>
     <dimen name="dimen_15sp">15sp</dimen>
+    <dimen name="dimen_16sp">16sp</dimen>
 </resources>
