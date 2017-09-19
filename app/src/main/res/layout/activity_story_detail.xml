@@ -9,38 +9,42 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/white"
-        android:padding="2dp"
-        app:popupTheme="@style/AppTheme.PopupOverlay"
+        android:layout_height="@dimen/top_toolbar"
+        app:popupTheme="@style/AppTheme.NoActionBar"
+        android:paddingTop="@dimen/dimen_4dp"
+        android:paddingLeft="@dimen/dimen_2dp"
+        android:weightSum="1"
         app:title="">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_weight="0.82">
 
-            <Button
+            <ImageButton
                 android:id="@+id/btn_back"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:background="@drawable/icon_back"
+                android:background="@drawable/sel_btn_prev"
                 android:transitionName="back" />
 
             <TextView
                 android:id="@+id/tv_store_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true" />
+                android:layout_centerInParent="true"
+                android:textSize="@dimen/dimen_16sp"
+                android:textColor="@color/color_txt_37" />
 
-            <Button
+            <ImageButton
                 android:id="@+id/btn_edit"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                android:background="@drawable/icon_edit"
+                android:background="@drawable/sel_btn_write"
                 android:visibility="visible" />
 
         </RelativeLayout>
@@ -58,56 +62,111 @@
             <com.oguogu.custom.CustomViewPager
                 android:id="@+id/view_pager"
                 android:layout_width="wrap_content"
-                android:layout_height="300dp" />
+                android:layout_height="@dimen/story_detail_con_h"
+                android:background="#ccc"/>
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:layout_marginBottom="@dimen/dimen_10dp"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:layout_marginRight="@dimen/dimen_10dp">
 
-                <Button
-                    android:id="@+id/btn_like"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:background="@drawable/img_like" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
 
-                <View
-                    android:layout_width="10dp"
-                    android:layout_height="0dp" />
+                    <TextView
+                        android:id="@+id/tv_board_title"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginTop="@dimen/dimen_2dp"
+                        android:textSize="@dimen/dimen_18sp"
+                        android:textColor="@color/color_txt_37"
+                        android:layout_marginRight="@dimen/dimen_5dp"
+                        android:maxLines="3"/>
 
-                <Button
-                    android:id="@+id/btn_comment"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:background="@drawable/icon_comment" />
+                    <ImageButton
+                        android:id="@+id/btn_like"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/sel_btn_like" />
+
+                    <ImageButton
+                        android:id="@+id/btn_comment"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/sel_btn_commt" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/dimen_10dp">
+
+                    <ImageView
+                        android:id="@+id/iv_register_user"
+                        android:layout_width="@dimen/dimen_30dp"
+                        android:layout_height="@dimen/dimen_30dp"
+                        android:layout_marginTop="@dimen/dimen_4dp"/>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="@dimen/dimen_7dp">
+
+                        <TextView
+                            android:id="@+id/tv_register_userid"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/dimen_14sp"
+                            android:textColor="@color/color_txt_5c" />
+
+                        <TextView
+                            android:id="@+id/tv_board_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/dimen_12sp"
+                            android:textColor="@color/color_txt_9f" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
 
             </LinearLayout>
 
-            <View
+            <!--<View
                 android:layout_width="0dp"
-                android:layout_height="20dp" />
-
-            <TextView
-                android:id="@+id/tv_board_title"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textSize="24dp" />
+                android:layout_height="@dimen/dimen_10dp" />-->
 
             <TextView
                 android:id="@+id/tv_board_content"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:textSize="@dimen/dimen_15sp"
+                android:textColor="@color/color_txt_5c"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:layout_marginRight="@dimen/dimen_10dp"/>
 
             <View
                 android:layout_width="0dp"
-                android:layout_height="20dp" />
+                android:layout_height="@dimen/dimen_10dp" />
 
             <LinearLayout
                 android:id="@+id/layoutMyImg"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center_horizontal">
             </LinearLayout>
 
             <View
@@ -117,49 +176,108 @@
             <ImageView
                 android:id="@+id/iv_map"
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="@dimen/story_detail_map_h"
                 android:background="@drawable/sample_map" />
-
-            <TextView
-                android:id="@+id/tv_store_name2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/tv_store_addr"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:layout_marginRight="@dimen/dimen_10dp"
+                android:layout_marginBottom="@dimen/dimen_10dp">
 
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="@drawable/img_like" />
+                    android:id="@+id/iv_store_ico"
+                    android:layout_width="@dimen/dimen_28dp"
+                    android:layout_height="@dimen/dimen_28dp"
+                    android:layout_marginTop="@dimen/dimen_2dp"/>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:layout_marginLeft="@dimen/dimen_5dp">
+
+                    <TextView
+                        android:id="@+id/tv_store_name2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/color_txt_5c"
+                        android:textSize="@dimen/dimen_14sp"/>
+
+                    <TextView
+                        android:id="@+id/tv_store_addr"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/color_txt_90"
+                        android:textSize="@dimen/dimen_12sp"
+                        android:layout_marginTop="@dimen/dimen_3dp_m"/>
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_store_by_nm"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_txt_a4bbc1"
+                    android:textSize="@dimen/dimen_12sp"
+                    android:text="By booby1003"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:layout_marginBottom="@dimen/dimen_20dp">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/sel_small_like"
+                    android:layout_marginTop="@dimen/dimen_2dp"/>
 
                 <TextView
                     android:id="@+id/tv_like_count"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_txt_37"
+                    android:textSize="@dimen/dimen_12sp"
+                    android:layout_marginRight="@dimen/dimen_10dp"/>
 
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="@drawable/icon_comment" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/sel_small_btn_commt" />
 
                 <TextView
                     android:id="@+id/tv_comment_count"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_txt_37"
+                    android:textSize="@dimen/dimen_12sp"/>
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_show_comment_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:textColor="@color/color_txt_61"
+                android:textSize="@dimen/dimen_12sp"
+                android:text="@string/show_all_cmmt"
+                android:layout_marginRight="@dimen/dimen_5dp"
+                android:layout_marginTop="@dimen/dimen_10dp"/>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@color/black" />
+                android:background="@color/color_comm_line"
+                android:layout_marginTop="@dimen/dimen_10dp" />
 
             <LinearLayout
                 android:id="@+id/layoutComment"

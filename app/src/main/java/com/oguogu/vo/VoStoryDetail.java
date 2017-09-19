@@ -21,8 +21,10 @@ public class VoStoryDetail extends VoDetail{
     private String board_idx;
     private String board_title;
     private String board_content;
+    private String board_date;
     private String storeName;
     private String storeAddr;
+    private int boardType;
     private int isLike;
     private String regUserNickname;
     private String regUserThumbPath;
@@ -63,6 +65,14 @@ public class VoStoryDetail extends VoDetail{
         this.board_content = board_content;
     }
 
+    public String getBoard_date() {
+        return board_date;
+    }
+
+    public void setBoard_date(String board_date) {
+        this.board_date = board_date;
+    }
+
     public String getStoreName() {
         return storeName;
     }
@@ -77,6 +87,14 @@ public class VoStoryDetail extends VoDetail{
 
     public void setStoreAddr(String storeAddr) {
         this.storeAddr = storeAddr;
+    }
+
+    public int getBoardType() {
+        return boardType;
+    }
+
+    public void setBoardType(int boardType) {
+        this.boardType = boardType;
     }
 
     public int getIsLike() {

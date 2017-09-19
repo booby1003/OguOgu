@@ -6,6 +6,8 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
 
+    <color name="colorBottomNavigationAccent">#f27242</color>
+
     <color name="blue_grey_500">#607D8B</color>
     <color name="blue_grey_600">#546E7A</color>
     <color name="blue_grey_700">#455A64</color>
@@ -38,9 +40,15 @@
     <!-- TextColor -->
     <color name="color_txt_37">#373737</color>
     <color name="color_txt_5c">#5c5c5c</color>
+    <color name="color_txt_45">#454545</color>
+    <color name="color_txt_61">#616161</color>
     <color name="color_txt_90">#909090</color>
+    <color name="color_txt_9f">#9f9f9f</color>
+    <color name="color_txt_a4bbc1">#a4bbc1</color>
 
     <color name="pop_bg">#CC4B4B4B</color>
     <color name="write_btn">#e1e1e1</color>
     <color name="top_srch_btn">#6799ca</color>
+
+    <color name="color_comm_line">#d0d1d1</color>
 </resources>

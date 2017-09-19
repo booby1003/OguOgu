@@ -22,10 +22,12 @@ public class VoStoreDetail extends VoDetail{
     private String board_idx;
     private String storeName;
     private String addr;
+    private String conts;
     private int boardType;
     private int isLike;
     private int isBookmark;
     private String regUserNickname;
+    private String time;
     private String tel_no;
     private String total_like_cnt;
     private String total_bookmark_cnt;
@@ -72,6 +74,14 @@ public class VoStoreDetail extends VoDetail{
         this.addr = addr;
     }
 
+    public String getConts() {
+        return conts;
+    }
+
+    public void setConts(String conts) {
+        this.conts = conts;
+    }
+
     public int getBoardType() {
         return boardType;
     }
@@ -110,6 +120,14 @@ public class VoStoreDetail extends VoDetail{
 
     public void setTel_no(String tel_no) {
         this.tel_no = tel_no;
+    }
+
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
     }
 
     public String getTotal_like_cnt() {

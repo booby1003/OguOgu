@@ -9,9 +9,9 @@
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/white"
-        android:padding="2dp"
+        android:layout_height="@dimen/top_toolbar"
+        android:paddingTop="@dimen/dimen_4dp"
+        android:paddingLeft="@dimen/dimen_2dp"
         app:popupTheme="@style/AppTheme.PopupOverlay"
         app:title="">
 
@@ -19,23 +19,37 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <Button
+            <ImageButton
                 android:id="@+id/btn_back"
-                android:layout_width="30dp"
-                android:layout_height="30dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_alignParentLeft="true"
                 android:layout_centerVertical="true"
-                android:background="@drawable/icon_back"
+                android:background="@drawable/sel_btn_prev"
                 android:transitionName="back" />
 
             <TextView
                 android:id="@+id/tv_store_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true" />
+                android:layout_centerInParent="true"
+                android:textSize="@dimen/dimen_16sp"
+                android:textColor="@color/color_txt_37" />
+
+            <ImageButton
+                android:id="@+id/btn_location"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/sel_tab_place" />
+
         </RelativeLayout>
     </android.support.v7.widget.Toolbar>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -45,137 +59,222 @@
             <com.oguogu.custom.CustomViewPager
                 android:id="@+id/view_pager"
                 android:layout_width="wrap_content"
-                android:layout_height="300dp" />
+                android:layout_height="@dimen/story_detail_con_h"
+                android:background="#ccc"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:layout_marginBottom="@dimen/dimen_5dp"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:layout_marginRight="@dimen/dimen_10dp">
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_centerVertical="true">
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/dimen_5dp">
 
-                    <Button
-                        android:id="@+id/btn_like"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:background="@drawable/img_like" />
+                    <ImageView
+                        android:id="@+id/iv_store_type"
+                        android:layout_width="@dimen/dimen_25dp"
+                        android:layout_height="@dimen/dimen_25dp" />
 
-                    <View
-                        android:layout_width="10dp"
-                        android:layout_height="0dp" />
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="@dimen/dimen_5dp"
+                        android:layout_marginTop="@dimen/dimen_3dp_m">
 
-                    <Button
-                        android:id="@+id/btn_bookmark"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:background="@drawable/img_bookmark" />
+                        <TextView
+                            android:id="@+id/tv_store_name2"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/color_txt_5c"
+                            android:textSize="@dimen/dimen_17sp"/>
 
-                    <View
-                        android:layout_width="10dp"
-                        android:layout_height="0dp" />
+                        <TextView
+                            android:id="@+id/tv_addr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/color_txt_90"
+                            android:textSize="@dimen/dimen_13sp" />
 
-                    <Button
-                        android:id="@+id/btn_comment"
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:background="@drawable/icon_comment" />
+                    </LinearLayout>
+
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:gravity="right"
                     android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:orientation="vertical">
+                    android:layout_centerVertical="true">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageButton
+                            android:id="@+id/btn_like"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/sel_btn_like" />
+
+                        <ImageButton
+                            android:id="@+id/btn_comment"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/sel_btn_commt" />
+
+                        <ImageButton
+                            android:id="@+id/btn_bookmark"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/sel_btn_storage" />
+
+                    </LinearLayout>
 
                     <TextView
                         android:id="@+id/tv_register"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="register" />
+                        android:textColor="@color/color_txt_a4bbc1"
+                        android:textSize="@dimen/dimen_12sp"
+                        android:layout_marginRight="@dimen/dimen_5dp"
+                        android:text="By booby1003"/>
+
                 </LinearLayout>
             </RelativeLayout>
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/tv_content"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <TextView
-                    android:id="@+id/tv_store_name2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <ImageView
-                    android:id="@+id/iv_store_type"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp" />
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/tv_addr"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/tv_tel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:textSize="@dimen/dimen_15sp"
+                android:textColor="@color/color_txt_5c"
+                android:layout_marginLeft="@dimen/dimen_15dp"
+                android:layout_marginRight="@dimen/dimen_15dp"/>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="1px"
-                android:background="@color/black" />
+                android:background="@color/color_comm_line"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                android:layout_marginBottom="@dimen/dimen_10dp"/>
 
             <TextView
                 android:id="@+id/tv_store_info"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/dimen_13sp"
+                android:textColor="@color/color_txt_45"
+                android:layout_marginLeft="@dimen/dimen_10dp"/>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/black" />
+            <TextView
+                android:id="@+id/tv_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/dimen_13sp"
+                android:textColor="@color/color_txt_90"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:layout_marginTop="@dimen/dimen_2dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:gravity="center_vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/icon_phone"
+                    android:layout_marginRight="@dimen/dimen_2dp"/>
+
+                <TextView
+                    android:id="@+id/tv_tel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/dimen_13sp"
+                    android:textColor="@color/color_txt_90"/>
+            </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/dimen_10dp"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:layout_marginRight="@dimen/dimen_10dp"
+                android:layout_marginBottom="@dimen/dimen_20dp">
 
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="@drawable/img_like" />
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/sel_small_like" />
 
                 <TextView
                     android:id="@+id/tv_like_count"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_txt_37"
+                    android:textSize="@dimen/dimen_12sp" />
 
                 <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="@drawable/img_bookmark" />
-
-                <TextView
-                    android:id="@+id/tv_bookmark_count"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
-
-                <ImageView
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:background="@drawable/icon_comment" />
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/sel_small_btn_commt"
+                    android:layout_marginLeft="@dimen/dimen_10dp"/>
 
                 <TextView
                     android:id="@+id/tv_comment_count"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_txt_37"
+                    android:textSize="@dimen/dimen_12sp"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/sel_small_btn_storage"
+                    android:layout_marginLeft="@dimen/dimen_10dp"/>
+
+                <TextView
+                    android:id="@+id/tv_bookmark_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_txt_37"
+                    android:textSize="@dimen/dimen_12sp"/>
+
+
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_show_comment_all"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:textColor="@color/color_txt_61"
+                android:textSize="@dimen/dimen_12sp"
+                android:text="@string/show_all_cmmt"
+                android:layout_marginRight="@dimen/dimen_5dp"
+                android:layout_marginTop="@dimen/dimen_10dp"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:background="@color/color_comm_line"
+                android:layout_marginTop="@dimen/dimen_10dp" />
 
             <LinearLayout
                 android:id="@+id/layoutComment"
@@ -185,26 +284,21 @@
 
             </LinearLayout>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/black" />
-
-            <TextView
-                android:id="@+id/tv_show_comment_all"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:text="전체 댓글 보기 >" />
-
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="이 장소의 글" />
+                android:textColor="@color/color_txt_90"
+                android:textSize="@dimen/dimen_12sp"
+                android:textStyle="bold"
+                android:text="@string/place_list"
+                android:layout_marginLeft="@dimen/dimen_10dp"
+                android:layout_marginTop="@dimen/dimen_20dp"/>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
         </LinearLayout>
+
+    </ScrollView>
 </LinearLayout>

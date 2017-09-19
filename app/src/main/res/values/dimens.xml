@@ -5,7 +5,7 @@
     <dimen name="fab_margin">16dp</dimen>
 
     <dimen name="g_top_margin">100dp</dimen>
-    <dimen name="top_toolbar">40dp</dimen>
+    <dimen name="top_toolbar">42dp</dimen>
 
     <dimen name="bottom_navigation_elevation">8dp</dimen>
 
@@ -19,6 +19,7 @@
     <dimen name="bottom_navigation_padding_bottom">15dp</dimen>
     <dimen name="bottom_navigation_padding_left">12dp</dimen>
     <dimen name="bottom_navigation_padding_right">12dp</dimen>
+    <dimen name="bottom_navigation_small_margin_top">6dp</dimen>
 
     <!--<dimen name="bottom_navigation_text_size_active">14sp</dimen>-->
     <!--<dimen name="bottom_navigation_text_size_inactive">12sp</dimen>-->
@@ -37,23 +38,34 @@
 
 
     <dimen name="top_srch_width">230dp</dimen>
+    <dimen name="story_detail_con_h">280dp</dimen>
+    <dimen name="story_detail_map_h">280dp</dimen>
 
     <!-- DP -->
     <dimen name="dimen_3dp_m">-3dp</dimen>
+    <dimen name="dimen_2dp_m">-2dp</dimen>
     <dimen name="dimen_2dp">2dp</dimen>
+    <dimen name="dimen_4dp">4dp</dimen>
     <dimen name="dimen_5dp">5dp</dimen>
     <dimen name="dimen_7dp">7dp</dimen>
+    <dimen name="dimen_8dp">8dp</dimen>
     <dimen name="dimen_10dp">10dp</dimen>
     <dimen name="dimen_12dp">12dp</dimen>
+    <dimen name="dimen_15dp">15dp</dimen>
     <dimen name="dimen_20dp">20dp</dimen>
+    <dimen name="dimen_25dp">25dp</dimen>
     <dimen name="dimen_28dp">28dp</dimen>
     <dimen name="dimen_30dp">30dp</dimen>
     <dimen name="dimen_40dp">40dp</dimen>
 
     <!-- Text Size -->
+    <dimen name="dimen_11sp">11sp</dimen>
     <dimen name="dimen_12sp">12sp</dimen>
     <dimen name="dimen_13sp">13sp</dimen>
     <dimen name="dimen_14sp">14sp</dimen>
     <dimen name="dimen_15sp">15sp</dimen>
     <dimen name="dimen_16sp">16sp</dimen>
+    <dimen name="dimen_17sp">17sp</dimen>
+    <dimen name="dimen_18sp">18sp</dimen>
+    <dimen name="dimen_19sp">19sp</dimen>
 </resources>

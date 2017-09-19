@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -47,16 +48,18 @@ public class StoreDetailActivity extends AppCompatActivity {
 
     @Bind(R.id.toolbar) Toolbar toolbar;
     @Bind(R.id.tv_store_name) TextView tv_store_name;
-    @Bind(R.id.btn_back) Button btn_back;
+    @Bind(R.id.btn_back) ImageButton btn_back;
     @Bind(R.id.view_pager) CustomViewPager viewPager;
-    @Bind(R.id.btn_like) Button btn_like;
-    @Bind(R.id.btn_bookmark) Button btn_bookmark;
-    @Bind(R.id.btn_comment) Button btn_comment;
+    @Bind(R.id.btn_like) ImageButton btn_like;
+    @Bind(R.id.btn_bookmark) ImageButton btn_bookmark;
+    @Bind(R.id.btn_comment) ImageButton btn_comment;
     @Bind(R.id.tv_register) TextView tv_register;
     @Bind(R.id.tv_store_name2) TextView tv_store_name2;
+    @Bind(R.id.tv_content) TextView tv_content;
     @Bind(R.id.iv_store_type) ImageView iv_store_type;
     @Bind(R.id.tv_addr) TextView tv_addr;
     @Bind(R.id.tv_tel) TextView tv_tel;
+    @Bind(R.id.tv_time) TextView tv_time;
     @Bind(R.id.tv_store_info) TextView tv_store_info;
     @Bind(R.id.tv_like_count) TextView tv_like_count;
     @Bind(R.id.tv_bookmark_count) TextView tv_bookmark_count;
@@ -107,11 +110,13 @@ public class StoreDetailActivity extends AppCompatActivity {
         storeDetail = GlobalApplication.getGson().fromJson(msg, VoStoreDetail.class);
 
         tv_store_name.setText(storeDetail.getStoreName());
-        tv_register.setText(storeDetail.getRegUserNickname());
+        tv_register.setText("By " + storeDetail.getRegUserNickname());
         tv_store_name2.setText(storeDetail.getStoreName());
         Glide.with(this).load(getBoardTypeDrawable()).into(iv_store_type);
         tv_addr.setText(storeDetail.getAddr());
+        tv_content.setText(storeDetail.getConts());
         tv_tel.setText(storeDetail.getTel_no());
+        tv_time.setText(storeDetail.getTime());
 
         String storeInfo="";
         for (int idx=0; idx<storeDetail.getStore_info_list().size(); idx++) {
@@ -149,7 +154,7 @@ public class StoreDetailActivity extends AppCompatActivity {
             TextView tv_comment_nickname = (TextView)view.findViewById(R.id.tv_comment_nickname);
             TextView tv_comment_date = (TextView)view.findViewById(R.id.tv_comment_date);
             TextView tv_comment_content = (TextView)view.findViewById(R.id.tv_comment_content);
-            Button btnDeleteComment = (Button)view.findViewById(R.id.btnDeleteComment);
+            ImageButton btnDeleteComment = (ImageButton)view.findViewById(R.id.btnDeleteComment);
 
             Glide.with(this).load(commentInfo.getComment_user_thumb_path()).bitmapTransform(new CropCircleTransformation(new CustomBitmapPool())).into(iv_comment_img);
             tv_comment_nickname.setText(commentInfo.getComment_user_nickname());
@@ -266,11 +271,11 @@ public class StoreDetailActivity extends AppCompatActivity {
     private int getBoardTypeDrawable() {
         int boardTypeDrawable = 0;
         if (storeDetail.getBoardType() == VoStoreDetail.TYPE_CAFE)
-            boardTypeDrawable = R.drawable.icon_cafe;
+            boardTypeDrawable = R.drawable.icon_type_cafe;
         else if (storeDetail.getBoardType() == VoStoreDetail.TYPE_HOSPITAL)
-            boardTypeDrawable = R.drawable.icon_hospital;
+            boardTypeDrawable = R.drawable.icon_type_hospital;
         else if (storeDetail.getBoardType() == VoStoreDetail.TYPE_PLAYGROUND)
-            boardTypeDrawable = R.drawable.icon_playground;
+            boardTypeDrawable = R.drawable.icon_type_gowalk;
 
         return boardTypeDrawable;
     }

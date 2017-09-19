@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -24,6 +25,7 @@ import com.oguogu.custom.CustomBitmapPool;
 import com.oguogu.custom.CustomViewPager;
 import com.oguogu.util.StringUtil;
 import com.oguogu.vo.VoDetail;
+import com.oguogu.vo.VoHomeList;
 import com.oguogu.vo.VoMyInfo;
 import com.oguogu.vo.VoStoreDetail;
 import com.oguogu.vo.VoStoryDetail;
@@ -46,13 +48,17 @@ public class StoryDetailActivity extends AppCompatActivity {
 
     @Bind(R.id.toolbar) Toolbar toolbar;
     @Bind(R.id.tv_store_name) TextView tv_store_name;
-    @Bind(R.id.btn_back) Button btn_back;
-    @Bind(R.id.btn_edit) Button btn_edit;
+    @Bind(R.id.tv_register_userid) TextView tv_register_userid;
+    @Bind(R.id.iv_register_user) ImageView iv_register_user;
+    @Bind(R.id.btn_back) ImageButton btn_back;
+    @Bind(R.id.btn_edit) ImageButton btn_edit;
     @Bind(R.id.view_pager) CustomViewPager viewPager;
-    @Bind(R.id.btn_like) Button btn_like;
-    @Bind(R.id.btn_comment) Button btn_comment;
+    @Bind(R.id.btn_like) ImageButton btn_like;
+    @Bind(R.id.btn_comment) ImageButton btn_comment;
     @Bind(R.id.tv_board_title) TextView tv_board_title;
     @Bind(R.id.tv_board_content) TextView tv_board_content;
+    @Bind(R.id.tv_board_date) TextView tv_board_date;
+    @Bind(R.id.iv_store_ico) ImageView iv_store_ico;
     @Bind(R.id.tv_store_name2) TextView tv_store_name2;
     @Bind(R.id.tv_store_addr) TextView tv_store_addr;
     @Bind(R.id.tv_like_count) TextView tv_like_count;
@@ -90,11 +96,24 @@ public class StoryDetailActivity extends AppCompatActivity {
 
         tv_store_name.setText(storyDetail.getStoreName());
         tv_board_title.setText(storyDetail.getBoard_title());
+        tv_register_userid.setText(storyDetail.getRegister_userid());
+        tv_board_date.setText(storyDetail.getBoard_date());
         tv_board_content.setText(storyDetail.getBoard_content());
         tv_store_name2.setText(storyDetail.getStoreName());
         tv_store_addr.setText(storyDetail.getStoreAddr());
         tv_like_count.setText(storyDetail.getTotal_like_cnt());
         tv_comment_count.setText(storyDetail.getTotal_comment_cnt());
+
+        int storeTypeResId=0;
+        if (storyDetail.getBoardType() == VoHomeList.TYPE_CAFE)
+            storeTypeResId = R.drawable.icon_type_cafe_s;
+        else if (storyDetail.getBoardType() == VoHomeList.TYPE_HOSPITAL)
+            storeTypeResId = R.drawable.icon_type_hospital_s;
+        else if (storyDetail.getBoardType() == VoHomeList.TYPE_PLAYGROUND)
+            storeTypeResId = R.drawable.icon_type_gowalk_s;
+
+        Glide.with(this).load(storeTypeResId).into(iv_store_ico);
+        Glide.with(this).load(storyDetail.getRegUserThumbPath()).bitmapTransform(new CropCircleTransformation(new CustomBitmapPool())).into(iv_register_user);
 
         if (storyDetail.getRegister_userid().equals(VoMyInfo.getInstance().getId())) {
             btn_edit.setVisibility(View.VISIBLE);
@@ -127,7 +146,7 @@ public class StoryDetailActivity extends AppCompatActivity {
             TextView tv_comment_nickname = (TextView)view.findViewById(R.id.tv_comment_nickname);
             TextView tv_comment_date = (TextView)view.findViewById(R.id.tv_comment_date);
             TextView tv_comment_content = (TextView)view.findViewById(R.id.tv_comment_content);
-            Button btnDeleteComment = (Button)view.findViewById(R.id.btnDeleteComment);
+            ImageButton btnDeleteComment = (ImageButton)view.findViewById(R.id.btnDeleteComment);
 
             Glide.with(this).load(commentInfo.getComment_user_thumb_path()).bitmapTransform(new CropCircleTransformation(new CustomBitmapPool())).into(iv_comment_img);
             tv_comment_nickname.setText(commentInfo.getComment_user_nickname());
@@ -155,7 +174,6 @@ public class StoryDetailActivity extends AppCompatActivity {
                     }
                 });
             }
-
 
             layoutComment.addView(view);
         }
