@@ -1,6 +1,7 @@
 package com.oguogu.activity;
 
 import android.animation.Animator;
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -60,8 +61,8 @@ public class OguOguActivity extends AppCompatActivity {
 //    @Bind(R.id.btn_kakao_sign_out) Button btnKakaoSignOut;
 
     @Bind(R.id.bottom_navigation) AHBottomNavigation bottomNavigation;
-    @Bind(R.id.toolbar) Toolbar toolbar;
-    @Bind(R.id.btn_search) Button btn_search;
+    //@Bind(R.id.toolbar) Toolbar toolbar;
+   // @Bind(R.id.btn_search) Button btn_search;
 
 //    @Bind(R.id.floating_action_button) FloatingActionButton floatingActionButton;
     @Bind(R.id.view_pager) AHBottomNavigationViewPager viewPager;
@@ -70,9 +71,9 @@ public class OguOguActivity extends AppCompatActivity {
     @Bind(R.id.btn_write_place) ImageButton btn_write_place;
     @Bind(R.id.btn_write_mypet) ImageButton btn_write_mypet;
     @Bind(R.id.btn_write_mine) ImageButton btn_write_mine;
-    @Bind(R.id.editSearch) EditText editSearch;
-    @Bind(R.id.btn_back) Button btn_back;
-    @Bind(R.id.btn_toolbar_location) Button btn_toolbar_location;
+    //@Bind(R.id.editSearch) EditText editSearch;
+    //@Bind(R.id.btn_back) Button btn_back;
+    //@Bind(R.id.btn_toolbar_location) Button btn_toolbar_location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,9 +95,9 @@ public class OguOguActivity extends AppCompatActivity {
             }
         });
 
-        setSupportActionBar(toolbar);
+        //setSupportActionBar(toolbar);
 
-        getSupportActionBar().setDisplayShowTitleEnabled(false);
+        //getSupportActionBar().setDisplayShowTitleEnabled(false);
 
 //        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -328,11 +329,13 @@ public class OguOguActivity extends AppCompatActivity {
                 .build();
     }
 
-    @OnClick({R.id.btn_write_place, R.id.btn_write_mypet, R.id.btn_write_mine, R.id.btn_search, R.id.editSearch, R.id.btn_back, R.id.btn_toolbar_location})
+    @OnClick({R.id.btn_write_place, R.id.btn_write_mypet, R.id.btn_write_mine})
     public void onClickButton(View view) {
         switch (view.getId()) {
             case R.id.btn_write_place:
                 Toast.makeText(this, "버튼1 클릭", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(OguOguActivity.this, WritePlaceActivity.class));
+                overridePendingTransition(R.anim.slide_right_to_left, R.anim.slide_center_to_left);
                 break;
             case R.id.btn_write_mypet:
                 Toast.makeText(this, "버튼2 클릭", Toast.LENGTH_SHORT).show();
@@ -340,22 +343,22 @@ public class OguOguActivity extends AppCompatActivity {
             case R.id.btn_write_mine:
                 Toast.makeText(this, "버튼3 클릭", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.btn_search:
-//                    startActivity(new Intent(OguOguActivity.this, SearchActivity.class));
-//                    overridePendingTransition(R.anim.hold, R.anim.slide_right_to_left);
-                break;
-            case R.id.editSearch:
-                Intent intent = new Intent(this, SearchActivity.class);
-
-                Pair<View, String> p1 = Pair.create((View)editSearch, "edit");
-                Pair<View, String> p2 = Pair.create((View)btn_back, "back");
-                Pair<View, String> p3 = Pair.create((View)btn_toolbar_location, "location");
-
-                ActivityOptionsCompat options = ActivityOptionsCompat.
-                        makeSceneTransitionAnimation(this, p1, p2, p3);
-
-                startActivity(intent, options.toBundle());
-                break;
+//            case R.id.btn_search:
+////                    startActivity(new Intent(OguOguActivity.this, SearchActivity.class));
+////                    overridePendingTransition(R.anim.hold, R.anim.slide_right_to_left);
+//                break;
+//            case R.id.btn_srch:
+//                Intent intent = new Intent(this, SearchActivity.class);
+//
+//                Pair<View, String> p1 = Pair.create((View)editSearch, "edit");
+//                //Pair<View, String> p2 = Pair.create((View)btn_back, "back");
+//                Pair<View, String> p3 = Pair.create((View)btn_toolbar_location, "location");
+//
+//                ActivityOptionsCompat options = ActivityOptionsCompat.
+//                        makeSceneTransitionAnimation(this, p1, p3);
+//
+//                startActivity(intent, options.toBundle());
+//                break;
         }
     }
 

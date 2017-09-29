@@ -8,11 +8,13 @@
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
-        app:popupTheme="@style/AppTheme.PopupOverlay"
-        app:title=""
         android:layout_width="match_parent"
         android:layout_height="@dimen/top_toolbar"
-        android:paddingTop="@dimen/dimen_7dp">
+        android:gravity="center_vertical"
+        app:contentInsetStart="@dimen/dimen_5dp"
+        app:contentInsetEnd="@dimen/dimen_5dp"
+        app:title=""
+        app:popupTheme="@style/AppTheme.PopupOverlay">
 
         <ImageButton
             android:id="@+id/btn_srch"
@@ -28,6 +30,7 @@
             android:transitionName="edit"
             android:hint="@string/srch"
             android:textSize="@dimen/dimen_15sp"
+            android:inputType="text"
             android:imeOptions="actionSearch"
             android:layout_marginLeft="@dimen/dimen_2dp"
             android:layout_marginRight="@dimen/dimen_10dp"

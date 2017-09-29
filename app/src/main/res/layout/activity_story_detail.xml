@@ -11,9 +11,10 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/top_toolbar"
         app:popupTheme="@style/AppTheme.NoActionBar"
-        android:paddingTop="@dimen/dimen_4dp"
-        android:paddingLeft="@dimen/dimen_2dp"
         android:weightSum="1"
+        android:gravity="center_vertical"
+        app:contentInsetStart="@dimen/dimen_2dp"
+        app:contentInsetEnd="@dimen/dimen_5dp"
         app:title="">
 
         <RelativeLayout

@@ -10,9 +10,9 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/top_toolbar"
-        android:paddingTop="@dimen/dimen_4dp"
-        android:paddingLeft="@dimen/dimen_2dp"
-        app:popupTheme="@style/AppTheme.PopupOverlay"
+        android:gravity="center_vertical"
+        app:contentInsetStart="@dimen/dimen_2dp"
+        app:contentInsetEnd="@dimen/dimen_5dp"
         app:title="">
 
         <RelativeLayout

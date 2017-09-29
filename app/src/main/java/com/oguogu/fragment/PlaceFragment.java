@@ -58,7 +58,7 @@ public class PlaceFragment extends BaseFragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View view = inflater.inflate(R.layout.fragment_bookmark, container, false);
+        View view = inflater.inflate(R.layout.fragment_place, container, false);
         ButterKnife.bind(this, view);
 
         ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);

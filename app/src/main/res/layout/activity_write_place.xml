@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/top_toolbar"
+        android:gravity="center_vertical"
+        app:contentInsetStart="@dimen/dimen_5dp"
+        app:contentInsetEnd="@dimen/dimen_5dp">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageButton
+                android:id="@+id/btn_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/sel_btn_close"
+                android:transitionName="close" />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:id="@+id/ll_place"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:focusable="true"
+        android:focusableInTouchMode="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal">
+
+            <ImageButton
+                android:id="@+id/btn_cafe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/sel_bookmark_cafe" />
+
+            <View
+                android:layout_width="@dimen/dimen_7dp"
+                android:layout_height="0dp" />
+
+            <ImageButton
+                android:id="@+id/btn_hospital"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/sel_bookmark_hospital" />
+
+            <View
+                android:layout_width="@dimen/dimen_7dp"
+                android:layout_height="0dp" />
+
+            <ImageButton
+                android:id="@+id/btn_playground"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/sel_bookmark_gowalk" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_place"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_txt_37"
+            android:textSize="@dimen/dimen_14sp"
+            android:text="@string/place_cafe"
+            android:textStyle="bold"
+            android:gravity="center_horizontal" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_srch"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="@dimen/dimen_5dp"
+        android:paddingLeft="@dimen/dimen_10dp"
+        android:paddingRight="@dimen/dimen_10dp">
+
+        <ImageButton
+            android:id="@+id/btn_srch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/sel_top_serch" />
+
+        <EditText
+            android:id="@+id/et_srch"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textSize="@dimen/dimen_15sp"
+            android:textColorHint="@color/color_txt_90"
+            android:hint="@string/place_srch_hint"
+            android:imeOptions="actionSearch"
+            android:windowSoftInputMode="adjustResize"
+            android:inputType="text" />
+
+        <Button
+            android:id="@+id/btn_srch_cancel"
+            android:layout_width="@dimen/dimen_30dp"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/dimen_15sp"
+            android:text="@string/cancel"
+            android:textColor="@color/top_srch_btn"
+            android:background="@android:color/transparent"
+            android:transitionName="srch_cancel"
+            android:textStyle="bold"
+            android:visibility="gone"/>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/color_comm_line"
+        android:layout_marginTop="@dimen/dimen_5dp" />
+
+    <LinearLayout
+        android:id="@+id/ll_write_explain"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:gravity="center_vertical">
+        
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_txt_a4bbc1"
+            android:textSize="@dimen/dimen_15sp"
+            android:text="@string/place_srch_explain"
+            android:gravity="center_horizontal" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_lists"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="gone">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_vertical"
+            android:background="@color/cmm_bg">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/color_txt_5c"
+                android:textSize="@dimen/dimen_15sp"
+                android:text="@string/place_no_place"
+                android:layout_marginLeft="@dimen/dimen_10dp"/>
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:textSize="@dimen/dimen_15sp"
+                android:textColor="@color/top_srch_btn"
+                android:text="@string/place_new_place"
+                android:layout_marginRight="@dimen/dimen_10dp"/>
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>

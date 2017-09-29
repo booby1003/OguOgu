@@ -21,6 +21,8 @@
     <dimen name="bottom_navigation_padding_right">12dp</dimen>
     <dimen name="bottom_navigation_small_margin_top">6dp</dimen>
 
+
+
     <!--<dimen name="bottom_navigation_text_size_active">14sp</dimen>-->
     <!--<dimen name="bottom_navigation_text_size_inactive">12sp</dimen>-->
 
@@ -37,7 +39,7 @@
     <dimen name="bottom_navigation_small_selected_width_difference">10dp</dimen>
 
 
-    <dimen name="top_srch_width">230dp</dimen>
+    <dimen name="top_srch_width">240dp</dimen>
     <dimen name="story_detail_con_h">280dp</dimen>
     <dimen name="story_detail_map_h">280dp</dimen>
 
@@ -57,6 +59,7 @@
     <dimen name="dimen_28dp">28dp</dimen>
     <dimen name="dimen_30dp">30dp</dimen>
     <dimen name="dimen_40dp">40dp</dimen>
+    <dimen name="dimen_50dp">50dp</dimen>
 
     <!-- Text Size -->
     <dimen name="dimen_11sp">11sp</dimen>

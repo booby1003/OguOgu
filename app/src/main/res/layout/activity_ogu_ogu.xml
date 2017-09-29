@@ -10,62 +10,79 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="@color/white"
-            android:visibility="gone"
-            app:title=""
-            app:popupTheme="@style/AppTheme.PopupOverlay" >
 
-            <Button
-                android:id="@+id/btn_back"
-                android:translationX="-50dp"
-                android:layout_width="0dp"
-                android:layout_height="30dp"
-                android:background="@drawable/icon_back"
-                android:transitionName="back"
-                />
+        <!--<android.support.v7.widget.Toolbar-->
+            <!--android:id="@+id/toolbar"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="@dimen/top_toolbar"-->
+            <!--android:gravity="center_vertical"-->
+            <!--app:contentInsetStart="@dimen/dimen_5dp"-->
+            <!--app:contentInsetEnd="@dimen/dimen_5dp"-->
+            <!--app:title=""-->
+            <!--app:popupTheme="@style/AppTheme.PopupOverlay"-->
+            <!--android:visibility="gone">-->
 
-            <EditText
-                android:id="@+id/editSearch"
-                android:layout_width="320dp"
-                android:layout_height="wrap_content"
-                android:hint="검색"
-                android:transitionName="edit"
-                android:focusable="false"/>
-
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true">
-
-                <Button
-                    android:id="@+id/btn_search"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="right"
-                    android:background="@drawable/icon_search"
-                    android:visibility="gone"
-                    />
-
-                <View
-                    android:layout_width="10dp"
-                    android:layout_height="0dp"/>
-
-                <Button
-                    android:id="@+id/btn_toolbar_location"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:layout_gravity="right"
-                    android:transitionName="location"
-                    android:background="@drawable/icon_location"/>
-            </LinearLayout>
+            <!--&lt;!&ndash;<Button&ndash;&gt;-->
+                <!--&lt;!&ndash;android:id="@+id/btn_back"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:translationX="-50dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="0dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="30dp"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:background="@drawable/icon_back"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:transitionName="back"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:visibility="gone"/>&ndash;&gt;-->
+            <!--<ImageButton-->
+                <!--android:id="@+id/btn_srch"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:background="@drawable/sel_top_serch" />-->
 
 
-        </android.support.v7.widget.Toolbar>
+            <!--<EditText-->
+                <!--android:id="@+id/editSearch"-->
+                <!--android:layout_width="@dimen/top_srch_width"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:transitionName="edit"-->
+                <!--android:hint="@string/srch"-->
+                <!--android:textSize="@dimen/dimen_15sp"-->
+                <!--android:imeOptions="actionSearch"-->
+                <!--android:layout_marginLeft="@dimen/dimen_2dp"-->
+                <!--android:layout_marginRight="@dimen/dimen_10dp"-->
+                <!--android:background="@android:color/transparent"-->
+                <!--android:focusable="false"/>-->
+
+            <!--<Button-->
+                <!--android:id="@+id/btn_toolbar_location"-->
+                <!--android:layout_width="30dp"-->
+                <!--android:layout_height="30dp"-->
+                <!--android:layout_gravity="right"-->
+                <!--android:transitionName="location"-->
+                <!--android:background="@drawable/icon_location"-->
+                <!--android:visibility="gone"/>-->
+
+
+            <!--&lt;!&ndash;<LinearLayout&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_width="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_alignParentEnd="true"&ndash;&gt;-->
+                <!--&lt;!&ndash;android:layout_alignParentRight="true">&ndash;&gt;-->
+
+                <!--&lt;!&ndash;&lt;!&ndash;<Button&ndash;&gt;&ndash;&gt;-->
+                    <!--&lt;!&ndash;&lt;!&ndash;android:id="@+id/btn_search"&ndash;&gt;&ndash;&gt;-->
+                    <!--&lt;!&ndash;&lt;!&ndash;android:layout_width="30dp"&ndash;&gt;&ndash;&gt;-->
+                    <!--&lt;!&ndash;&lt;!&ndash;android:layout_height="30dp"&ndash;&gt;&ndash;&gt;-->
+                    <!--&lt;!&ndash;&lt;!&ndash;android:layout_gravity="right"&ndash;&gt;&ndash;&gt;-->
+                    <!--&lt;!&ndash;&lt;!&ndash;android:background="@drawable/icon_search"&ndash;&gt;&ndash;&gt;-->
+                    <!--&lt;!&ndash;&lt;!&ndash;android:visibility="gone" />&ndash;&gt;&ndash;&gt;-->
+
+                <!--&lt;!&ndash;<View&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_width="10dp"&ndash;&gt;-->
+                    <!--&lt;!&ndash;android:layout_height="0dp"/>&ndash;&gt;-->
+
+
+            <!--&lt;!&ndash;</LinearLayout>&ndash;&gt;-->
+
+
+        <!--</android.support.v7.widget.Toolbar>-->
 
         <com.aurelhubert.ahbottomnavigation.AHBottomNavigationViewPager
             android:id="@+id/view_pager"

@@ -89,6 +89,16 @@
     <string name="place_list">이 장소의 글</string>
 
     <string name="facebook_app_id">1417436908281436</string>
+
+    <string name="place_cafe">카페/음식점</string>
+    <string name="place_hospital">병원</string>
+    <string name="place_walk">공원/놀이터</string>
+
+    <string name="place_srch_hint">장소명 검색</string>
+
+    <string name="place_srch_explain">먼저 등록 할 장소를 선택 후 검색해 주세요.</string>
+    <string name="place_no_place">찾으시는 장소가 없으시면?</string>
+    <string name="place_new_place">새로운 장소 등록</string>
 </resources>
 
 

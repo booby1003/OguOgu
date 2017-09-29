@@ -12,7 +12,9 @@
         app:title=""
         android:layout_width="match_parent"
         android:layout_height="@dimen/top_toolbar"
-        android:paddingTop="@dimen/dimen_7dp">
+        android:gravity="center_vertical"
+        app:contentInsetStart="@dimen/dimen_5dp"
+        app:contentInsetEnd="@dimen/dimen_5dp">
 
         <ImageButton
             android:id="@+id/btn_srch"
@@ -59,7 +61,7 @@
             android:textColor="@color/top_srch_btn"
             android:background="@android:color/transparent"
             android:transitionName="srch_cancel"
-            android:translationX="@dimen/dimen_40dp"
+            android:translationX="@dimen/dimen_50dp"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -104,5 +106,6 @@
             android:layout_height="wrap_content"
             android:paddingRight="@dimen/dimen_5dp"
             android:paddingLeft="@dimen/dimen_5dp"/>
+
     </android.support.v4.widget.SwipeRefreshLayout>
 </LinearLayout>
