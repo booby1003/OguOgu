@@ -99,6 +99,10 @@
     <string name="place_srch_explain">먼저 등록 할 장소를 선택 후 검색해 주세요.</string>
     <string name="place_no_place">찾으시는 장소가 없으시면?</string>
     <string name="place_new_place">새로운 장소 등록</string>
+
+    <string name="add_detail_info">추가 상세 정보</string>
+    <string name="title">제목</string>
+    <string name="place_detail_conts">상세 내용을 입력해 주세요.</string>
 </resources>
 
 

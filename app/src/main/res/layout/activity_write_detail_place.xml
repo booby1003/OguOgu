@@ -47,8 +47,58 @@
         android:layout_weight="1"
         android:orientation="vertical"
         android:focusable="true"
-        android:focusableInTouchMode="true"
-        android:padding="@dimen/dimen_7dp">
+        android:focusableInTouchMode="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="@dimen/dimen_7dp">
+
+            <ImageView
+                android:id="@+id/iv_place_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/icon_type_cafe"
+                android:layout_marginRight="@dimen/dimen_5dp"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_place_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_txt_37"
+                    android:textSize="@dimen/dimen_17sp"
+                    android:text="@string/place_no_place"
+                    android:textStyle="bold"
+                    android:layout_marginLeft="@dimen/dimen_10dp"/>
+
+                <TextView
+                    android:id="@+id/tv_addr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_txt_5c"
+                    android:textSize="@dimen/dimen_15sp"
+                    android:text="@string/place_no_place"
+                    android:layout_marginLeft="@dimen/dimen_10dp"/>
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_place_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_txt_5c"
+                android:textSize="@dimen/dimen_15sp"
+                android:text="@string/place_no_place"
+                android:layout_marginLeft="@dimen/dimen_10dp"/>
+
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -58,11 +108,126 @@
             <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/icon_type_cafe"/>
+                android:src="@drawable/icon_type_cafe"
+                android:visibility="invisible"
+                android:layout_marginRight="@dimen/dimen_5dp"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/color_txt_5c"
+                    android:textSize="@dimen/dimen_15sp"
+                    android:text="@string/place_no_place"
+                    android:layout_marginLeft="@dimen/dimen_10dp"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="@dimen/dimen_2dp"
+                        android:src="@drawable/icon_phone" />
+
+                    <TextView
+                        android:id="@+id/tv_tel_no"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/color_txt_5c"
+                        android:textSize="@dimen/dimen_15sp"
+                        android:text="@string/place_no_place"
+                        android:layout_marginLeft="@dimen/dimen_10dp"/>
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/color_comm_line"
+            android:layout_marginTop="@dimen/dimen_10dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/dimen_10dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_txt_a6"
+                android:textSize="@dimen/dimen_14sp"
+                android:text="@string/add_detail_info"
+                android:textStyle="bold"
+                android:layout_marginLeft="@dimen/dimen_10dp"/>
+
 
         </LinearLayout>
 
 
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/color_comm_line"
+            android:layout_marginTop="@dimen/dimen_10dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="@color/color_txt_90"
+            android:hint="@string/title"
+            android:textColor="@color/color_txt_37"
+            android:textSize="@dimen/dimen_15sp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1px"
+            android:background="@color/color_comm_line"
+            android:layout_marginTop="@dimen/dimen_10dp" />
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:textColorHint="@color/color_txt_90"
+            android:hint="@string/place_detail_conts"
+            android:textColor="@color/color_txt_37"
+            android:textSize="@dimen/dimen_15sp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/dimen_7dp">
+
+            </LinearLayout>
+
+
+        </LinearLayout>
 
     </LinearLayout>
 

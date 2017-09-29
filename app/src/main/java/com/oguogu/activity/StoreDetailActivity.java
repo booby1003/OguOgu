@@ -112,7 +112,7 @@ public class StoreDetailActivity extends AppCompatActivity {
         tv_store_name.setText(storeDetail.getStoreName());
         tv_register.setText("By " + storeDetail.getRegUserNickname());
         tv_store_name2.setText(storeDetail.getStoreName());
-        Glide.with(this).load(getBoardTypeDrawable()).into(iv_store_type);
+        Glide.with(this).load(StringUtil.getBoardTypeDrawable(storeDetail.getBoardType())).into(iv_store_type);
         tv_addr.setText(storeDetail.getAddr());
         tv_content.setText(storeDetail.getConts());
         tv_tel.setText(storeDetail.getTel_no());
@@ -268,15 +268,15 @@ public class StoreDetailActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.slide_left_to_center, R.anim.slide_left_to_right);
     }
 
-    private int getBoardTypeDrawable() {
-        int boardTypeDrawable = 0;
-        if (storeDetail.getBoardType() == VoStoreDetail.TYPE_CAFE)
-            boardTypeDrawable = R.drawable.icon_type_cafe;
-        else if (storeDetail.getBoardType() == VoStoreDetail.TYPE_HOSPITAL)
-            boardTypeDrawable = R.drawable.icon_type_hospital;
-        else if (storeDetail.getBoardType() == VoStoreDetail.TYPE_PLAYGROUND)
-            boardTypeDrawable = R.drawable.icon_type_gowalk;
-
-        return boardTypeDrawable;
-    }
+//    private int getBoardTypeDrawable() {
+//        int boardTypeDrawable = 0;
+//        if (storeDetail.getBoardType() == VoStoreDetail.TYPE_CAFE)
+//            boardTypeDrawable = R.drawable.icon_type_cafe;
+//        else if (storeDetail.getBoardType() == VoStoreDetail.TYPE_HOSPITAL)
+//            boardTypeDrawable = R.drawable.icon_type_hospital;
+//        else if (storeDetail.getBoardType() == VoStoreDetail.TYPE_PLAYGROUND)
+//            boardTypeDrawable = R.drawable.icon_type_gowalk;
+//
+//        return boardTypeDrawable;
+//    }
 }
