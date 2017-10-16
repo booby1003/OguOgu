@@ -22,7 +22,7 @@ import android.widget.TextView;
 
 import com.oguogu.GlobalApplication;
 import com.oguogu.R;
-import com.oguogu.adapter.PhotoListAdapter;
+import com.oguogu.adapter.ContentListAdapter;
 import com.oguogu.util.SharedPrefUtil;
 import com.oguogu.util.StringUtil;
 import com.oguogu.vo.VoHomeList;
@@ -148,7 +148,7 @@ public class SearchActivity extends AppCompatActivity {
 
         homeList.getData().remove(0);
         homeList.getData().remove(1);
-        PhotoListAdapter adapter = new PhotoListAdapter(homeList.getData(), this);
+        ContentListAdapter adapter = new ContentListAdapter(homeList.getData(), this);
         recycler_view.setAdapter(adapter);
     }
 

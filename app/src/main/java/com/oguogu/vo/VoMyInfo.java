@@ -5,9 +5,10 @@ package com.oguogu.vo;
  */
 public class VoMyInfo extends VoBase{
 
-    private static VoMyInfo instance;
+    private volatile static VoMyInfo instance;
 
     private VoMyInfo() {
+        instance = this;
     }
 
     public static synchronized VoMyInfo getInstance() {
@@ -21,14 +22,22 @@ public class VoMyInfo extends VoBase{
     public static final int LOGIN_KAKAO = 3;
     public static final int LOGIN_FACEBOOK = 4;
 
+    private String email;
     private String id;
-    private String nickname;
-    private String picture;
+    private String imgPath;
     private String token;
-    private int login_type;
+    private int loginType;
 
     public void clear(){
         instance = null;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getId() {
@@ -39,20 +48,12 @@ public class VoMyInfo extends VoBase{
         this.id = id;
     }
 
-    public String getNickname() {
-        return nickname;
+    public String getImgPath() {
+        return imgPath;
     }
 
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
-
-    public String getPicture() {
-        return picture;
-    }
-
-    public void setPicture(String picture) {
-        this.picture = picture;
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
     }
 
     public String getToken() {
@@ -63,11 +64,11 @@ public class VoMyInfo extends VoBase{
         this.token = token;
     }
 
-    public int getLogin_type() {
-        return login_type;
+    public int getLoginType() {
+        return loginType;
     }
 
-    public void setLogin_type(int login_type) {
-        this.login_type = login_type;
+    public void setLoginType(int loginType) {
+        this.loginType = loginType;
     }
 }

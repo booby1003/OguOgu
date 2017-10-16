@@ -87,13 +87,13 @@ public class OguOguActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        viewPager.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                Toast.makeText(OguOguActivity.this, "터치", Toast.LENGTH_SHORT).show();
-                return false;
-            }
-        });
+//        viewPager.setOnTouchListener(new View.OnTouchListener() {
+//            @Override
+//            public boolean onTouch(View v, MotionEvent event) {
+//                Toast.makeText(OguOguActivity.this, "터치", Toast.LENGTH_SHORT).show();
+//                return false;
+//            }
+//        });
 
         //setSupportActionBar(toolbar);
 

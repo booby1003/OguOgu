@@ -1,6 +1,9 @@
 {
   "RESULT_CODE": "777",
   "RESULT_MSG": null,
+  "pageNum": 1,
+  "pageSize": 20,
+  "isLastPage": true,
   "Data": [
     {
       "board_idx": "100",
@@ -10,7 +13,7 @@
       "boardType": 3,
       "isLike": 1,
       "isBookmark": 1,
-      "imgPath": "http://sunghun.smilefinger.com/test/해림동물병원.png",
+      "imgPath": "http://118.107.161.87/data/img/동물병원13.jpg",
       "regUserID": "gogooma",
       "regThunmbPath": "http://sunghun.smilefinger.com/test/해림동물병원.png",
       "regDate": "2016.12.02"
@@ -23,7 +26,7 @@
       "boardType": 4,
       "isLike": 0,
       "isBookmark": 0,
-      "imgPath": "http://sunghun.smilefinger.com/test/인천대공원.png",
+      "imgPath": "http://118.107.161.87/data/img/thumb-8987ff0d0c0bc1d96d53dbd386f4c5f6_1445326961_2248_765x509.jpg",
       "regUserID": "gogooma",
       "regThunmbPath": "http://sunghun.smilefinger.com/test/인천대공원.png",
       "regDate": "2016.12.04"
@@ -36,7 +39,7 @@
       "boardType": 1,
       "isLike": 0,
       "isBookmark": 0,
-      "imgPath": "http://sunghun.smilefinger.com/test/코코루이.jpg",
+      "imgPath": "http://118.107.161.87/data/img/강아지.jpg",
       "regUserID": "gogooma100g",
       "regThunmbPath": "http://api.mm.moumou.co.kr/Upload/Picture/whd.png",
       "regDate": "2016.12.21"
@@ -49,7 +52,7 @@
       "boardType": 2,
       "isLike": 0,
       "isBookmark": 0,
-      "imgPath": "http://sunghun.smilefinger.com/test/반려견.png",
+      "imgPath": "http://118.107.161.87/data/img/다운로드.jpg",
       "regUserID": "",
       "regThunmbPath": "http://sunghun.smilefinger.com/test/반려견.png",
       "regDate": ""

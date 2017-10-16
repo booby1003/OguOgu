@@ -1,6 +1,9 @@
 {
   "RESULT_CODE": "777",
   "RESULT_MSG": null,
+  "pageNum": 1,
+  "pageSize": 20,
+  "isLastPage": true,
   "Data": [
     {
       "board_idx": "100",

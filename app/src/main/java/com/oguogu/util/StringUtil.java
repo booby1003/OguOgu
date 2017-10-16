@@ -2,6 +2,10 @@ package com.oguogu.util;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -73,16 +77,22 @@ public class StringUtil {
 		return result;
 	}
 
-	public static int getBoardTypeDrawable(int storeType) {
-		int boardTypeDrawable = 0;
-		if (storeType == VoStoreDetail.TYPE_CAFE)
-			boardTypeDrawable = R.drawable.icon_type_cafe;
-		else if (storeType == VoStoreDetail.TYPE_HOSPITAL)
-			boardTypeDrawable = R.drawable.icon_type_hospital;
-		else if (storeType == VoStoreDetail.TYPE_PLAYGROUND)
-			boardTypeDrawable = R.drawable.icon_type_gowalk;
+	/**
+	 * text에 color 입히기
+	 */
+	public static void setTextByResColor(View view, int resId, String text, int start, int end, int color) {
 
-		return boardTypeDrawable;
+		View tvTmp = view.findViewById(resId);
+		Spannable spannable = new SpannableStringBuilder(text);
+		spannable.setSpan(new ForegroundColorSpan(color), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+		if(tvTmp instanceof TextView) {
+			TextView tv = (TextView) tvTmp;
+			tv.setText(spannable);
+		}else if(tvTmp instanceof  EditText) {
+			EditText et = (EditText) tvTmp;
+			et.setText(spannable);
+		}
 	}
 	
 }

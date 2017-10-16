@@ -3,6 +3,7 @@ package com.oguogu.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,6 +13,10 @@ import android.view.ViewGroup;
  */
 
 public abstract class BaseFragment extends Fragment {
+
+    public boolean isLoading = false;
+    public boolean isLastPage = false;
+    public int PAGE_SIZE = 20;
 
     public abstract void refresh();
     public abstract void willBeHidden();

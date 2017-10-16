@@ -27,6 +27,7 @@ import com.oguogu.adapter.RelationPhotoListAdapter;
 import com.oguogu.custom.CustomBitmapPool;
 import com.oguogu.custom.CustomViewPager;
 import com.oguogu.util.StringUtil;
+import com.oguogu.util.UIUtil;
 import com.oguogu.vo.VoDetail;
 import com.oguogu.vo.VoStoreDetail;
 
@@ -112,7 +113,7 @@ public class StoreDetailActivity extends AppCompatActivity {
         tv_store_name.setText(storeDetail.getStoreName());
         tv_register.setText("By " + storeDetail.getRegUserNickname());
         tv_store_name2.setText(storeDetail.getStoreName());
-        Glide.with(this).load(StringUtil.getBoardTypeDrawable(storeDetail.getBoardType())).into(iv_store_type);
+        Glide.with(this).load(UIUtil.getBoardTypeDrawable(storeDetail.getBoardType())).into(iv_store_type);
         tv_addr.setText(storeDetail.getAddr());
         tv_content.setText(storeDetail.getConts());
         tv_tel.setText(storeDetail.getTel_no());

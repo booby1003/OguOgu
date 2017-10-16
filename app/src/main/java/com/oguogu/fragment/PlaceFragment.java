@@ -21,7 +21,7 @@ import android.widget.ImageButton;
 import com.oguogu.GlobalApplication;
 import com.oguogu.R;
 import com.oguogu.activity.SearchActivity;
-import com.oguogu.adapter.PhotoListAdapter;
+import com.oguogu.adapter.ContentListAdapter;
 import com.oguogu.util.StringUtil;
 import com.oguogu.vo.VoHomeList;
 
@@ -51,7 +51,7 @@ public class PlaceFragment extends BaseFragment {
     @Bind(R.id.swipeRefresh) SwipeRefreshLayout swipeRefresh;
     @Bind(R.id.recycler_view) RecyclerView recyclerView;
 
-    private PhotoListAdapter photoListAdapter;
+    private ContentListAdapter photoListAdapter;
     private VoHomeList bookmarkList;
 
     @Nullable
@@ -104,7 +104,7 @@ public class PlaceFragment extends BaseFragment {
 
         bookmarkList = GlobalApplication.getGson().fromJson(msg, VoHomeList.class);
 
-        photoListAdapter = new PhotoListAdapter(bookmarkList.getData(), getActivity());
+        photoListAdapter = new ContentListAdapter(bookmarkList.getData(), getActivity());
         recyclerView.setAdapter(photoListAdapter);
     }
 

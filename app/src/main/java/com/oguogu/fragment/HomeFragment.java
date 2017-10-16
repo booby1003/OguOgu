@@ -21,7 +21,7 @@ import android.widget.Toast;
 import com.oguogu.GlobalApplication;
 import com.oguogu.R;
 import com.oguogu.activity.SearchActivity;
-import com.oguogu.adapter.PhotoListAdapter;
+import com.oguogu.adapter.ContentListAdapter;
 import com.oguogu.bus.BusEvent;
 import com.oguogu.bus.BusProvider;
 import com.oguogu.util.StringUtil;
@@ -109,7 +109,7 @@ public class HomeFragment extends BaseFragment {
 
         VoHomeList homeList = GlobalApplication.getGson().fromJson(msg, VoHomeList.class);
 
-        PhotoListAdapter adapter = new PhotoListAdapter(homeList.getData(), getActivity());
+        ContentListAdapter adapter = new ContentListAdapter(homeList.getData(), getActivity());
         recyclerView.setAdapter(adapter);
     }
 
