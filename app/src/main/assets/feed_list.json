@@ -3,52 +3,58 @@
   "RESULT_MSG": null,
   "Data": [
     {
-      "feed_thumb_path": "http://api.mm.moumou.co.kr/Upload/Picture/sss5257.png",
-      "feed_nickname": "김민주",
-      "feed_place_type":1,
-      "feed_type": 1,
-      "feed_date": "2017.02.25",
-      "origin_thumb_path": "http://sunghun.smilefinger.com/test/코코루이.jpg"
+      "boardIdx":"B0000000001",
+      "regThunmbPath": "http://api.mm.moumou.co.kr/Upload/Picture/sss5257.png",
+      "feedUserId": "김민주",
+      "boardType":1,
+      "feedType": 1,
+      "date": "2017.02.25",
+      "imgPath": ""
     },
     {
-      "feed_thumb_path": "http://api.mm.moumou.co.kr/Upload/Picture/whd.png",
-      "feed_nickname": "우효동",
-      "feed_place_type":2,
-      "feed_type": 2,
-      "feed_date": "2016.12.27",
-      "origin_thumb_path": "http://sunghun.smilefinger.com/test/반려견.png"
+      "boardIdx":"B0000000002",
+      "regThunmbPath": "http://api.mm.moumou.co.kr/Upload/Picture/whd.png",
+      "feedUserId": "우효동",
+      "boardType":2,
+      "feedType": 2,
+      "date": "2016.12.27",
+      "imgPath": ""
     },
     {
-      "feed_thumb_path": "http://api.mm.moumou.co.kr/Upload/Picture/whd.png",
-      "feed_nickname": "booby1003",
-      "feed_place_type":3,
-      "feed_type": 2,
-      "feed_date": "2016.12.27",
-      "origin_thumb_path": "http://sunghun.smilefinger.com/test/반려견.png"
+      "boardIdx":"B0000000003",
+      "regThunmbPath": "http://api.mm.moumou.co.kr/Upload/Picture/whd.png",
+      "feedUserId": "booby1003",
+      "boardType":3,
+      "feedType": 2,
+      "date": "2016.12.27",
+      "imgPath": ""
     },
     {
-      "feed_thumb_path": "http://api.mm.moumou.co.kr/Upload/Picture/taehui5.png",
-      "feed_nickname": "booby1003",
-      "feed_place_type":3,
-      "feed_type": 3,
-      "feed_date": "2016.10.02",
-      "origin_thumb_path": "http://sunghun.smilefinger.com/test/해림동물병원.png"
+      "boardIdx":"B0000000003",
+      "regThunmbPath": "http://api.mm.moumou.co.kr/Upload/Picture/taehui5.png",
+      "feedUserId": "booby1003",
+      "boardType":3,
+      "feedType": 3,
+      "date": "2016.10.02",
+      "imgPath": ""
     },
     {
-      "feed_thumb_path": "http://api.mm.moumou.co.kr/Upload/Picture/whd.png",
-      "feed_nickname": "gogooma",
-      "feed_place_type":4,
-      "feed_type": 1,
-      "feed_date": "2017.11.05",
-      "origin_thumb_path": "http://sunghun.smilefinger.com/test/인천대공원.png"
+      "boardIdx":"B0000000004",
+      "regThunmbPath": "http://api.mm.moumou.co.kr/Upload/Picture/whd.png",
+      "feedNickname": "gogooma",
+      "boardType":4,
+      "commentType": 1,
+      "date": "2017.11.05",
+      "imgPath": "http://sunghun.smilefinger.com/test/인천대공원.png"
     },
     {
-      "feed_thumb_path": "http://api.mm.moumou.co.kr/Upload/Picture/taehui5.png",
-      "feed_nickname": "이태희",
-      "feed_place_type":4,
-      "feed_type": 2,
-      "feed_date": "2016.10.02",
-      "origin_thumb_path": "http://sunghun.smilefinger.com/test/해림동물병원.png"
+      "boardIdx":"B0000000004",
+      "regThunmbPath": "http://api.mm.moumou.co.kr/Upload/Picture/taehui5.png",
+      "feedNickname": "이태희",
+      "boardType":4,
+      "commentType": 2,
+      "date": "2016.10.02",
+      "imgPath": "http://sunghun.smilefinger.com/test/해림동물병원.png"
     }
   ]
 }

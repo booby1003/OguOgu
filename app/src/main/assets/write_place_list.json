@@ -3,100 +3,100 @@
   "RESULT_MSG": null,
   "Data": [
     {
-      "place_idx": "P0000000001",
-      "storeName": "강아지 카페",
-      "addr": "서울시 강동구 천호동",
+      "placeIdx": "P0000000001",
+      "placeName": "강아지 카페",
+      "placeAddr": "서울시 강동구 천호동",
       "boardType": 1,
       "placeTypeStr": "카페"
     },
     {
-      "place_idx": "P0000000002",
-      "storeName": "강아지가 좋아하는 카페",
-      "addr": "서울시 강남구 방배동",
+      "placeIdx": "P0000000002",
+      "placeName": "강아지가 좋아하는 카페",
+      "placeAddr": "서울시 강남구 방배동",
       "boardType": 1,
       "placeTypeStr": "애견카페"
     },
     {
-      "place_idx": "P0000000003",
-      "storeName": "강아지와 고양이",
-      "addr": "서울시 강동구 둔촌동",
+      "placeIdx": "P0000000003",
+      "placeName": "강아지와 고양이",
+      "placeAddr": "서울시 강동구 둔촌동",
       "boardType": 1,
       "placeTypeStr": "레스토랑"
     },
     {
-      "place_idx": "P0000000004",
-      "storeName": "강아지 병원",
-      "addr": "서울시 종로구 종로동",
+      "placeIdx": "P0000000004",
+      "placeName": "강아지 병원",
+      "placeAddr": "서울시 종로구 종로동",
       "boardType": 2,
       "placeTypeStr": "병원"
     },
     {
-      "place_idx": "P0000000005",
-      "storeName": "강아지와 고양이 병원",
-      "addr": "서울시 강동구 둔촌동",
+      "placeIdx": "P0000000005",
+      "placeName": "강아지와 고양이 병원",
+      "placeAddr": "서울시 강동구 둔촌동",
       "boardType": 2,
       "placeTypeStr": "병원"
     },
     {
-      "place_idx": "P0000000006",
-      "storeName": "강아지 놀이터",
-      "addr": "서울시 잠실동",
+      "placeIdx": "P0000000006",
+      "placeName": "강아지 놀이터",
+      "placeAddr": "서울시 잠실동",
       "boardType": 3,
       "placeTypeStr": "놀이터"
     },
     {
-      "place_idx": "P0000000007",
-      "storeName": "강아지 산책로",
-      "addr": "서울시 종로 중구동",
+      "placeIdx": "P0000000007",
+      "placeName": "강아지 산책로",
+      "placeAddr": "서울시 종로 중구동",
       "boardType": 3,
       "placeTypeStr": "산책로"
     },
     {
-      "place_idx": "P0000000001",
-      "storeName": "강아지 카페",
-      "addr": "서울시 강동구 천호동",
+      "placeIdx": "P0000000008",
+      "placeName": "강아지 카페",
+      "placeAddr": "서울시 강동구 천호동",
       "boardType": 1,
       "placeTypeStr": "카페"
     },
     {
-      "place_idx": "P0000000002",
+      "placeIdx": "P0000000009",
       "storeName": "강아지가 좋아하는 카페",
-      "addr": "서울시 강남구 방배동",
+      "placeAddr": "서울시 강남구 방배동",
       "boardType": 1,
       "placeTypeStr": "애견카페"
     },
     {
-      "place_idx": "P0000000003",
+      "placeIdx": "P0000000010",
       "storeName": "강아지와 고양이",
-      "addr": "서울시 강동구 둔촌동",
+      "placeAddr": "서울시 강동구 둔촌동",
       "boardType": 1,
       "placeTypeStr": "레스토랑"
     },
     {
-      "place_idx": "P0000000004",
+      "placeIdx": "P0000000011",
       "storeName": "강아지 병원",
-      "addr": "서울시 종로구 종로동",
+      "placeAddr": "서울시 종로구 종로동",
       "boardType": 2,
       "placeTypeStr": "병원"
     },
     {
-      "place_idx": "P0000000005",
+      "placeIdx": "P0000000012",
       "storeName": "강아지와 고양이 병원",
-      "addr": "서울시 강동구 둔촌동",
+      "placeAddr": "서울시 강동구 둔촌동",
       "boardType": 2,
       "placeTypeStr": "병원"
     },
     {
-      "place_idx": "P0000000006",
+      "placeIdx": "P0000000013",
       "storeName": "강아지 놀이터",
-      "addr": "서울시 잠실동",
+      "placeAddr": "서울시 잠실동",
       "boardType": 3,
       "placeTypeStr": "놀이터"
     },
     {
-      "place_idx": "P0000000007",
+      "placeIdx": "P0000000014",
       "storeName": "강아지 산책로",
-      "addr": "서울시 종로 중구동",
+      "placeAddr": "서울시 종로 중구동",
       "boardType": 3,
       "placeTypeStr": "산책로"
     }

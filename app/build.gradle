@@ -22,11 +22,11 @@ android {
 
     signingConfigs {
         debug {
-            storeFile file("C:/dev_mumu/oguogu_debug_keystore.jks")
-            storePassword "121212"
+//            storeFile file("/Users/juyoungkim/androidsignkey/debug.jks")
             //storeFile file("C:/Users/Administrator/AndroidStudioProjects/oguogu_debug_keystore.jks")
             //storePassword "121212"
-            //storeFile file("C:/Users/김민정/.android/debug.keystore")
+            storeFile file("C:/booby/projects/android/oguogu_debug_keystore.jks")
+            storePassword "121212"
             keyAlias "oguogu_debug.keystore"
             keyPassword "121212"
         }

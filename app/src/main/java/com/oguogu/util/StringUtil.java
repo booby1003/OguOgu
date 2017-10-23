@@ -6,7 +6,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.oguogu.R;
-import com.oguogu.vo.VoStoreDetail;
+import com.oguogu.vo.VoPlaceDetail;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -75,11 +75,11 @@ public class StringUtil {
 
 	public static int getBoardTypeDrawable(int storeType) {
 		int boardTypeDrawable = 0;
-		if (storeType == VoStoreDetail.TYPE_CAFE)
+		if (storeType == VoPlaceDetail.TYPE_CAFE)
 			boardTypeDrawable = R.drawable.icon_type_cafe;
-		else if (storeType == VoStoreDetail.TYPE_HOSPITAL)
+		else if (storeType == VoPlaceDetail.TYPE_HOSPITAL)
 			boardTypeDrawable = R.drawable.icon_type_hospital;
-		else if (storeType == VoStoreDetail.TYPE_PLAYGROUND)
+		else if (storeType == VoPlaceDetail.TYPE_PLAYGROUND)
 			boardTypeDrawable = R.drawable.icon_type_gowalk;
 
 		return boardTypeDrawable;

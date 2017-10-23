@@ -13,7 +13,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -28,7 +27,7 @@ import com.oguogu.custom.CustomBitmapPool;
 import com.oguogu.custom.CustomViewPager;
 import com.oguogu.util.StringUtil;
 import com.oguogu.vo.VoDetail;
-import com.oguogu.vo.VoStoreDetail;
+import com.oguogu.vo.VoPlaceDetail;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -42,7 +41,7 @@ import jp.wasabeef.glide.transformations.CropCircleTransformation;
  * Created by Administrator on 2016-12-26.
  */
 
-public class StoreDetailActivity extends AppCompatActivity {
+public class PlaceDetailActivity extends AppCompatActivity {
 
     public static final String BOARD_IDX = "BOARD_IDX";
 
@@ -69,7 +68,7 @@ public class StoreDetailActivity extends AppCompatActivity {
     @Bind(R.id.recycler_view) RecyclerView recyclerView;
 //    @Bind(R.id.scrollView) ScrollView scrollView;
 
-    private VoStoreDetail storeDetail;
+    private VoPlaceDetail storeDetail;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -101,13 +100,13 @@ public class StoreDetailActivity extends AppCompatActivity {
 
         String msg = null;
         try {
-            msg = StringUtil.getData(this, "store_detail.json");
+            msg = StringUtil.getData(this, "place_detail.json");
 
         } catch (IOException e) {
             e.printStackTrace();
         }
 
-        storeDetail = GlobalApplication.getGson().fromJson(msg, VoStoreDetail.class);
+        storeDetail = GlobalApplication.getGson().fromJson(msg, VoPlaceDetail.class);
 
         tv_store_name.setText(storeDetail.getStoreName());
         tv_register.setText("By " + storeDetail.getRegUserNickname());
@@ -121,12 +120,12 @@ public class StoreDetailActivity extends AppCompatActivity {
         String storeInfo="";
         for (int idx=0; idx<storeDetail.getStore_info_list().size(); idx++) {
 
-            VoStoreDetail.VoStore voStore = storeDetail.getStore_info_list().get(idx);
+            String infoStr = storeDetail.getStore_info_list().get(idx);
 
             if (idx > 0)
                 storeInfo += " | ";
 
-            storeInfo += voStore.getStore_info();
+            storeInfo += infoStr;
         }
         tv_store_info.setText(storeInfo);
 
@@ -136,7 +135,7 @@ public class StoreDetailActivity extends AppCompatActivity {
 
         setCommentList();
 
-        ViewPagerImgAdapter viewPagerImgAdapter = new ViewPagerImgAdapter(StoreDetailActivity.this, storeDetail.getImg_list());
+        ViewPagerImgAdapter viewPagerImgAdapter = new ViewPagerImgAdapter(PlaceDetailActivity.this, storeDetail.getImg_list());
         viewPager.setAdapter(viewPagerImgAdapter);
 
         RelationPhotoListAdapter relationPhotoListAdapter = new RelationPhotoListAdapter(storeDetail.getRelation_list(), this);
@@ -164,7 +163,7 @@ public class StoreDetailActivity extends AppCompatActivity {
             iv_comment_img.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(StoreDetailActivity.this, "유저 정보로 이동", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PlaceDetailActivity.this, "유저 정보로 이동", Toast.LENGTH_SHORT).show();
                 }
             });
 
@@ -178,7 +177,7 @@ public class StoreDetailActivity extends AppCompatActivity {
                         storeDetail.getComment_list().remove(deleteComment);
                         setCommentList();
 
-                        Toast.makeText(StoreDetailActivity.this, "삭제!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PlaceDetailActivity.this, "삭제!", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -191,16 +190,16 @@ public class StoreDetailActivity extends AppCompatActivity {
     public class ViewPagerImgAdapter extends PagerAdapter {
 
         private Context context;
-        private ArrayList<VoStoreDetail.VoImagePath> items;
+        private ArrayList<String> photos;
 
-        public ViewPagerImgAdapter(Context context, ArrayList<VoStoreDetail.VoImagePath> items) {
+        public ViewPagerImgAdapter(Context context, ArrayList<String> photos) {
             this.context = context;
-            this.items = items;
+            this.photos = photos;
         }
 
         @Override
         public int getCount() {
-            return items.size();
+            return photos.size();
         }
 
         @Override
@@ -213,10 +212,10 @@ public class StoreDetailActivity extends AppCompatActivity {
             ImageView imageView = new ImageView(context);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 
-            VoStoreDetail.VoImagePath info = items.get(position);
+            String img_path = photos.get(position);
 
             Glide.with(context)
-                    .load(info.getImg_path())
+                    .load(img_path)
                     .crossFade()
                     .into(imageView);
 
@@ -270,11 +269,11 @@ public class StoreDetailActivity extends AppCompatActivity {
 
 //    private int getBoardTypeDrawable() {
 //        int boardTypeDrawable = 0;
-//        if (storeDetail.getBoardType() == VoStoreDetail.TYPE_CAFE)
+//        if (storeDetail.getBoardType() == VoPlaceDetail.TYPE_CAFE)
 //            boardTypeDrawable = R.drawable.icon_type_cafe;
-//        else if (storeDetail.getBoardType() == VoStoreDetail.TYPE_HOSPITAL)
+//        else if (storeDetail.getBoardType() == VoPlaceDetail.TYPE_HOSPITAL)
 //            boardTypeDrawable = R.drawable.icon_type_hospital;
-//        else if (storeDetail.getBoardType() == VoStoreDetail.TYPE_PLAYGROUND)
+//        else if (storeDetail.getBoardType() == VoPlaceDetail.TYPE_PLAYGROUND)
 //            boardTypeDrawable = R.drawable.icon_type_gowalk;
 //
 //        return boardTypeDrawable;

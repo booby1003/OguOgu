@@ -114,7 +114,6 @@
                 android:layout_height="30dp"
                 android:layout_gravity="right"
                 android:transitionName="location"
-                android:background="@drawable/icon_location"
                 android:visibility="gone"/>
         </LinearLayout>
 

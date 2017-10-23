@@ -103,6 +103,7 @@
     <string name="add_detail_info">추가 상세 정보</string>
     <string name="title">제목</string>
     <string name="place_detail_conts">상세 내용을 입력해 주세요.</string>
+    <string name="price">가격</string>
 </resources>
 
 

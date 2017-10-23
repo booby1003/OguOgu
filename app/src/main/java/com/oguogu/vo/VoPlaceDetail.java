@@ -5,22 +5,23 @@ import java.util.ArrayList;
 /**
  * Created by Administrator on 2016-07-03.
  */
-public class VoStoreDetail extends VoDetail{
+public class VoPlaceDetail extends VoDetail{
 
-    private static VoStoreDetail instance;
+    private static VoPlaceDetail instance;
 
-    private VoStoreDetail() {
+    private VoPlaceDetail() {
     }
 
-    public static synchronized VoStoreDetail getInstance() {
+    public static synchronized VoPlaceDetail getInstance() {
         if (instance == null)
-            instance = new VoStoreDetail();
+            instance = new VoPlaceDetail();
         return instance;
     }
 
     private String id;
     private String board_idx;
     private String storeName;
+    private String placeType;
     private String addr;
     private String conts;
     private int boardType;
@@ -35,8 +36,9 @@ public class VoStoreDetail extends VoDetail{
 
     private ArrayList<VoComment> comment_list = new ArrayList<VoComment>();
     private ArrayList<VoRelation> relation_list = new ArrayList<VoRelation>();
-    private ArrayList<VoStore> store_info_list = new ArrayList<VoStore>();
-    private ArrayList<VoImagePath> img_list = new ArrayList<VoImagePath>();
+    private ArrayList<String> store_info_list = new ArrayList<String>();
+    private ArrayList<String> img_list = new ArrayList<String>();
+    private ArrayList<String> price_list = new ArrayList<String>();
 
     public void clear(){
         instance = null;
@@ -64,6 +66,14 @@ public class VoStoreDetail extends VoDetail{
 
     public void setStoreName(String storeName) {
         this.storeName = storeName;
+    }
+
+    public String getPlaceType() {
+        return placeType;
+    }
+
+    public void setPlaceType(String placeType) {
+        this.placeType = placeType;
     }
 
     public String getAddr() {
@@ -170,20 +180,28 @@ public class VoStoreDetail extends VoDetail{
         this.relation_list = relation_list;
     }
 
-    public ArrayList<VoStore> getStore_info_list() {
+    public ArrayList<String> getStore_info_list() {
         return store_info_list;
     }
 
-    public void setStore_info_list(ArrayList<VoStore> store_info_list) {
+    public void setStore_info_list(ArrayList<String> store_info_list) {
         this.store_info_list = store_info_list;
     }
 
-    public ArrayList<VoImagePath> getImg_list() {
+    public ArrayList<String> getImg_list() {
         return img_list;
     }
 
-    public void setImg_list(ArrayList<VoImagePath> img_list) {
+    public void setImg_list(ArrayList<String> img_list) {
         this.img_list = img_list;
+    }
+
+    public ArrayList<String> getPrice_list() {
+        return price_list;
+    }
+
+    public void setPrice_list(ArrayList<String> price_list) {
+        this.price_list = price_list;
     }
 
     public static class VoRelation {
@@ -215,18 +233,5 @@ public class VoStoreDetail extends VoDetail{
             this.relation_thumb_path = relation_thumb_path;
         }
     }
-
-    public static class VoStore {
-        private String store_info;
-
-        public String getStore_info() {
-            return store_info;
-        }
-
-        public void setStore_info(String store_info) {
-            this.store_info = store_info;
-        }
-    }
-
 
 }

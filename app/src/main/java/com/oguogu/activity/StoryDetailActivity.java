@@ -11,7 +11,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -27,7 +26,7 @@ import com.oguogu.util.StringUtil;
 import com.oguogu.vo.VoDetail;
 import com.oguogu.vo.VoHomeList;
 import com.oguogu.vo.VoMyInfo;
-import com.oguogu.vo.VoStoreDetail;
+import com.oguogu.vo.VoPlaceDetail;
 import com.oguogu.vo.VoStoryDetail;
 
 import java.io.IOException;
@@ -123,7 +122,7 @@ public class StoryDetailActivity extends AppCompatActivity {
         viewPager.setAdapter(adapter);
 
         for (int idx=0; idx<storyDetail.getMy_img_list().size(); idx++) {
-            VoStoreDetail.VoImagePath imgInfo = storyDetail.getMy_img_list().get(idx);
+            VoPlaceDetail.VoImagePath imgInfo = storyDetail.getMy_img_list().get(idx);
 
             View view = LayoutInflater.from(this).inflate(R.layout.story_my_imageview, null);
             ImageView ivMyImg = (ImageView)view.findViewById(R.id.ivMyImg);
@@ -182,9 +181,9 @@ public class StoryDetailActivity extends AppCompatActivity {
     public class ViewPagerImgAdapter extends PagerAdapter {
 
         private Context context;
-        private ArrayList<VoStoreDetail.VoImagePath> items;
+        private ArrayList<VoPlaceDetail.VoImagePath> items;
 
-        public ViewPagerImgAdapter(Context context, ArrayList<VoStoreDetail.VoImagePath> items) {
+        public ViewPagerImgAdapter(Context context, ArrayList<VoPlaceDetail.VoImagePath> items) {
             this.context = context;
             this.items = items;
         }
@@ -204,7 +203,7 @@ public class StoryDetailActivity extends AppCompatActivity {
             ImageView imageView = new ImageView(context);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 
-            VoStoreDetail.VoImagePath info = items.get(position);
+            VoPlaceDetail.VoImagePath info = items.get(position);
 
             Glide.with(context)
                     .load(info.getImg_path())

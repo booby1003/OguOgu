@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -17,7 +16,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.oguogu.R;
-import com.oguogu.activity.StoreDetailActivity;
+import com.oguogu.activity.PlaceDetailActivity;
 import com.oguogu.activity.StoryDetailActivity;
 import com.oguogu.custom.CustomBitmapPool;
 import com.oguogu.util.LogUtil;
@@ -101,8 +100,8 @@ public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.View
                 public void onClick(View v) {
                     VoHomeList.VoHomeInfo tagInfo =  (VoHomeList.VoHomeInfo)v.getTag();
 
-                    Intent intent = new Intent(context, StoreDetailActivity.class);
-                    intent.putExtra(StoreDetailActivity.BOARD_IDX, tagInfo.getBoard_idx());
+                    Intent intent = new Intent(context, PlaceDetailActivity.class);
+                    intent.putExtra(PlaceDetailActivity.BOARD_IDX, tagInfo.getBoard_idx());
                     context.startActivity(intent);
                     ((Activity)context).overridePendingTransition(R.anim.slide_right_to_left, R.anim.slide_center_to_left);
                 }
@@ -136,7 +135,7 @@ public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.View
                 VoHomeList.VoHomeInfo tagInfo =  (VoHomeList.VoHomeInfo)v.getTag();
 
                 Intent intent = new Intent(context, StoryDetailActivity.class);
-                intent.putExtra(StoreDetailActivity.BOARD_IDX, tagInfo.getBoard_idx());
+                intent.putExtra(PlaceDetailActivity.BOARD_IDX, tagInfo.getBoard_idx());
                 context.startActivity(intent);
                 ((Activity)context).overridePendingTransition(R.anim.slide_right_to_left, R.anim.slide_center_to_left);
             }
