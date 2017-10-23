@@ -35,11 +35,16 @@ import com.kakao.usermgmt.callback.MeResponseCallback;
 import com.kakao.usermgmt.response.model.UserProfile;
 import com.kakao.util.exception.KakaoException;
 import com.kakao.util.helper.log.Logger;
+import com.oguogu.GlobalApplication;
 import com.oguogu.R;
 import com.oguogu.util.LogUtil;
+import com.oguogu.util.SharedPrefUtil;
+import com.oguogu.util.StringUtil;
 import com.oguogu.vo.VoMyInfo;
 
 import org.json.JSONObject;
+
+import java.io.IOException;
 
 /**
  * Created by Administrator on 2016-12-01.
@@ -124,7 +129,7 @@ public class SignIn {
         LogUtil.d("페이스북 로그인 체크 시작===================");
         AccessToken fbAccessToken = AccessToken.getCurrentAccessToken();
         if (fbAccessToken != null) {
-            handleSignInSccuess(VoMyInfo.LOGIN_FACEBOOK);
+            handleSignInSccuess(VoMyInfo.LOGIN_FACEBOOK, "");
         } else {
             LogUtil.d("카카오톡 로그인 체크 시작========================================================");
             if (!Session.getCurrentSession().checkAndImplicitOpen()) {
@@ -135,29 +140,29 @@ public class SignIn {
 
     }
 
-    ResultCallback checkSignInListener = new ResultCallback(){
-        @Override
-        public void signInSccuess(int loginType) {
-            handleSignInSccuess(loginType);
-        }
-
-        @Override
-        public void signInFail(int loginType) {
-
+//    ResultCallback checkSignInListener = new ResultCallback(){
+//        @Override
+//        public void signInSccuess(int loginType) {
+//            handleSignInSccuess(loginType);
+//        }
+//
+//        @Override
+//        public void signInFail(int loginType) {
+//
+////            handleSignInFail(loginType);
+//
+//            LogUtil.d("==================로그인 모두 실패===================");
 //            handleSignInFail(loginType);
-
-            LogUtil.d("==================로그인 모두 실패===================");
-            handleSignInFail(loginType);
-
-            if (loginType == VoMyInfo.LOGIN_GOOGLE) {
-//                LogUtil.d("3. 페이스북 로그인 체크 시작===================");
-//                checkFacebookSignIn();
-            } else if (loginType == VoMyInfo.LOGIN_FACEBOOK) {
-//                LogUtil.d("==================로그인 모두 실패===================");
-//                handleSignInFail(loginType);
-            }
-        }
-    };
+//
+//            if (loginType == VoMyInfo.LOGIN_GOOGLE) {
+////                LogUtil.d("3. 페이스북 로그인 체크 시작===================");
+////                checkFacebookSignIn();
+//            } else if (loginType == VoMyInfo.LOGIN_FACEBOOK) {
+////                LogUtil.d("==================로그인 모두 실패===================");
+////                handleSignInFail(loginType);
+//            }
+//        }
+//    };
 
     /*
     구글 로그인 체크
@@ -172,8 +177,12 @@ public class SignIn {
             // and the GoogleSignInResult will be available instantly.
             LogUtil.d("Got cached sign-in");
             GoogleSignInResult result = opr.get();
-            if (isGoogleSignIn(result))
-                handleSignInSccuess(VoMyInfo.LOGIN_GOOGLE);
+//            if (isGoogleSignIn(result))
+//                handleSignInSccuess(VoMyInfo.LOGIN_GOOGLE);
+//            else
+//                handleSignInFail(VoMyInfo.LOGIN_GOOGLE);
+            if (result.isSuccess())
+                handleSignInResult(result);
             else
                 handleSignInFail(VoMyInfo.LOGIN_GOOGLE);
 
@@ -186,8 +195,12 @@ public class SignIn {
                 @Override
                 public void onResult(GoogleSignInResult googleSignInResult) {
 //                    hideProgressDialog();
-                    if (isGoogleSignIn(googleSignInResult))
-                        handleSignInSccuess(VoMyInfo.LOGIN_GOOGLE);
+//                    if (isGoogleSignIn(googleSignInResult))
+//                        handleSignInSccuess(VoMyInfo.LOGIN_GOOGLE);
+//                    else
+//                        handleSignInFail(VoMyInfo.LOGIN_GOOGLE);
+                    if (googleSignInResult.isSuccess())
+                        handleSignInResult(googleSignInResult);
                     else
                         handleSignInFail(VoMyInfo.LOGIN_GOOGLE);
                 }
@@ -234,7 +247,7 @@ public class SignIn {
             LogUtil.d("PhotoUrl : " + acct.getPhotoUrl());
             LogUtil.d("token id : " + acct.getIdToken());
 
-            handleSignInSccuess(VoMyInfo.LOGIN_GOOGLE);
+            handleSignInSccuess(VoMyInfo.LOGIN_GOOGLE, acct.getEmail());
         } else {
             handleSignInFail(VoMyInfo.LOGIN_GOOGLE);
         }
@@ -283,7 +296,7 @@ public class SignIn {
                     LogUtil.e("UserProfile : " + userProfile.toString());
                     LogUtil.d("카톡 로그인 성공 : " + userProfile.toString());
                     LogUtil.d("id : " + userProfile.getId() + " / " + userProfile.getUUID());
-                    handleSignInSccuess(VoMyInfo.LOGIN_KAKAO);
+                    handleSignInSccuess(VoMyInfo.LOGIN_KAKAO, userProfile.getUUID());
                 }
             });
         }
@@ -359,10 +372,11 @@ public class SignIn {
         }
     }
 
-    private void handleSignInSccuess(int loginType) {
+    private void handleSignInSccuess(int loginType, String id) {
         LogUtil.d("handleSignInSccuess : " + loginType);
-        VoMyInfo.getInstance().setLogin_type(loginType);
-        resultCallback.signInSccuess(loginType);
+        //VoMyInfo.getInstance().setLoginType(loginType);
+        //resultCallback.signInSccuess(loginType);
+        getLoginInfo(id);
     }
 
     private void handleSignInFail(int loginType) {
@@ -379,7 +393,7 @@ public class SignIn {
                 public void onCompleted(JSONObject object, GraphResponse response) {
                     LogUtil.d("result : " + object.toString());
 
-                    handleSignInSccuess(VoMyInfo.LOGIN_FACEBOOK);
+                    handleSignInSccuess(VoMyInfo.LOGIN_FACEBOOK, "");
                 }
             });
 
@@ -426,5 +440,23 @@ public class SignIn {
                         signOutCallback.signOutFail();
                     }
                 });
+    }
+
+    private void getLoginInfo(String id) {
+
+        LogUtil.i("서버에서 로그인 정보 가져오기=============================");
+        String msg = null;
+
+        try {
+            msg = StringUtil.getData(context, "login_info.json");
+            VoMyInfo loginInfo = GlobalApplication.getGson().fromJson(msg, VoMyInfo.class);
+            resultCallback.signInSccuess(loginInfo.getLoginType());
+
+            LogUtil.i("loginInfo : " + loginInfo.getId());
+            LogUtil.i("loginInfo : " + loginInfo.getEmail());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

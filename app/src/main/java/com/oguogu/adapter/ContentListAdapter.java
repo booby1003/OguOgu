@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -31,14 +30,14 @@ import jp.wasabeef.glide.transformations.CropCircleTransformation;
  * Created by Administrator on 2016-12-23.
  */
 
-public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.ViewHolder> {
+public class ContentListAdapter extends RecyclerView.Adapter<ContentListAdapter.ViewHolder> {
 
     private Context context;
     private ArrayList<VoHomeList.VoHomeInfo> mItems;
 
     private int lastPosition = -1;
 
-    public PhotoListAdapter(ArrayList<VoHomeList.VoHomeInfo> items, Context mContext) {
+    public ContentListAdapter(ArrayList<VoHomeList.VoHomeInfo> items, Context mContext) {
         mItems = items;
         context = mContext;
     }

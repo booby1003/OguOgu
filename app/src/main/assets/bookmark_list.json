@@ -1,0 +1,54 @@
+{
+  "RESULT_CODE": "777",
+  "RESULT_MSG": null,
+  "pageNum": 1,
+  "pageSize": 20,
+  "isLastPage": true,
+  "data": [
+    {
+      "placeIdx": "P0000000001",
+      "boardType": 2,
+      "imgThumbPath": "http://118.107.161.87/data/img/KakaoTalk_20170201_001854592.jpg"
+    },
+    {
+      "placeIdx": "P0000000002",
+      "boardType": 2,
+      "imgThumbPath": "http://118.107.161.87/data/img/KakaoTalk_20170201_001854592.jpg"
+    },
+    {
+      "placeIdx": "P0000000003",
+      "boardType": 3,
+      "imgThumbPath": "http://118.107.161.87/data/img/KakaoTalk_20170201_002325519.jpg"
+    },
+    {
+      "placeIdx": "P0000000004",
+      "boardType": 4,
+      "imgThumbPath": "http://118.107.161.87/data/img/thumb-8987ff0d0c0bc1d96d53dbd386f4c5f6_1445326961_2248_765x509.jpg"
+    },
+    {
+      "placeIdx": "P0000000005",
+      "boardType": 3,
+      "imgThumbPath": "http://118.107.161.87/data/img/KakaoTalk_20170201_001854592.jpg"
+    },
+    {
+      "placeIdx": "P0000000006",
+      "boardType": 4,
+      "imgThumbPath": "http://118.107.161.87/data/img/KakaoTalk_20170201_001854592.jpg"
+    },
+    {
+      "placeIdx": "P0000000007",
+      "boardType": 3,
+      "imgThumbPath": "http://118.107.161.87/data/img/KakaoTalk_20170115_204613473.jpg"
+    },
+    {
+      "placeIdx": "P0000000008",
+      "boardType": 4,
+      "imgThumbPath": "http://118.107.161.87/data/img/KakaoTalk_20170201_002325519.jpg"
+    },
+    {
+      "placeIdx": "P0000000009",
+      "boardType": 2,
+      "imgThumbPath": "http://118.107.161.87/data/img/thumb-8987ff0d0c0bc1d96d53dbd386f4c5f6_1445326961_2248_765x509.jpg"
+    }
+  ]
+}

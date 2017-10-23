@@ -1,0 +1,209 @@
+{
+  "RESULT_CODE": "777",
+  "RESULT_MSG": null,
+  "pageNum": 1,
+  "pageSize": 20,
+  "isLastPage": true,
+  "data": [
+    {
+      "boardIdx": "B0000000001",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/KakaoTalk_20161211_222531304.jpg"
+    },
+    {
+      "boardIdx": "B0000000002",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/08.jpg"
+    },
+    {
+      "boardIdx": "B0000000003",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/406331041.jpg"
+    },
+    {
+      "boardIdx": "B0000000004",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/예쁜동물병원인테리어19.jpg"
+    },
+    {
+      "boardIdx": "B0000000005",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/I7ZnUhB9b65eUtp5ahRa5GhD1UcU.jpg"
+    },
+    {
+      "boardIdx": "B0000000006",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/KakaoTalk_20161211_222532607.jpg"
+    },
+    {
+      "boardIdx": "B0000000007",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/다운로드.jpg"
+    },
+    {
+      "boardIdx": "B0000000008",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/KakaoTalk_20161211_222532607.jpg"
+    },
+    {
+      "boardIdx": "B0000000009",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/KakaoTalk_20170201_002325519.jpg"
+    },
+    {
+      "boardIdx": "B0000000010",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/thumb-8987ff0d0c0bc1d96d53dbd386f4c5f6_1445326961_2248_765x509.jpg"
+    },
+    {
+      "boardIdx": "B0000000011",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/KakaoTalk_20161211_222532607.jpg"
+    },
+    {
+      "boardIdx": "B0000000012",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/동물병원13.jpg"
+    },
+    {
+      "boardIdx": "B0000000013",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/KakaoTalk_20161211_222532607.jpg"
+    },
+    {
+      "boardIdx": "B0000000014",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/KakaoTalk_20170129_023121696.jpg"
+    },
+    {
+      "boardIdx": "B0000000015",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/KakaoTalk_20161211_222532607.jpg"
+    },
+    {
+      "boardIdx": "B0000000016",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/KakaoTalk_20170201_002325519.jpg"
+    },
+    {
+      "boardIdx": "B0000000017",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/KakaoTalk_20170201_001854592.jpg"
+    },
+    {
+      "boardIdx": "B0000000018",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/KakaoTalk_20170115_204613473.jpg"
+    },
+    {
+      "boardIdx": "B0000000019",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/mug_obj_201602181835499995.jpg"
+    },
+    {
+      "boardIdx": "B0000000020",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/thumb-8987ff0d0c0bc1d96d53dbd386f4c5f6_1445326961_2248_765x509.jpg"
+    },
+    {
+      "boardIdx": "B0000000021",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/KakaoTalk_20161211_222531304.jpg"
+    },
+    {
+      "boardIdx": "B0000000022",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/08.jpg"
+    },
+    {
+      "boardIdx": "B0000000023",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/406331041.jpg"
+    },
+    {
+      "boardIdx": "B0000000024",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/예쁜동물병원인테리어19.jpg"
+    },
+    {
+      "boardIdx": "B0000000025",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/I7ZnUhB9b65eUtp5ahRa5GhD1UcU.jpg"
+    },
+    {
+      "boardIdx": "B0000000026",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/KakaoTalk_20161211_222532607.jpg"
+    },
+    {
+      "boardIdx": "B0000000027",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/다운로드.jpg"
+    },
+    {
+      "boardIdx": "B0000000028",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/KakaoTalk_20161211_222532607.jpg"
+    },
+    {
+      "boardIdx": "B0000000029",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/KakaoTalk_20170201_002325519.jpg"
+    },
+    {
+      "boardIdx": "B0000000030",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/thumb-8987ff0d0c0bc1d96d53dbd386f4c5f6_1445326961_2248_765x509.jpg"
+    },
+    {
+      "boardIdx": "B0000000031",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/KakaoTalk_20161211_222532607.jpg"
+    },
+    {
+      "boardIdx": "B0000000032",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/동물병원13.jpg"
+    },
+    {
+      "boardIdx": "B0000000033",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/KakaoTalk_20161211_222532607.jpg"
+    },
+    {
+      "boardIdx": "B0000000034",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/KakaoTalk_20170129_023121696.jpg"
+    },
+    {
+      "boardIdx": "B0000000035",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/KakaoTalk_20161211_222532607.jpg"
+    },
+    {
+      "boardIdx": "B0000000036",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/KakaoTalk_20170201_002325519.jpg"
+    },
+    {
+      "boardIdx": "B0000000037",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/KakaoTalk_20170201_001854592.jpg"
+    },
+    {
+      "boardIdx": "B0000000038",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/KakaoTalk_20170115_204613473.jpg"
+    },
+    {
+      "boardIdx": "B0000000039",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/mug_obj_201602181835499995.jpg"
+    },
+    {
+      "boardIdx": "B0000000040",
+      "boardType": 1,
+      "imgThumbPath": "http://118.107.161.87/data/img/thumb-8987ff0d0c0bc1d96d53dbd386f4c5f6_1445326961_2248_765x509.jpg"
+    }
+  ]
+}
