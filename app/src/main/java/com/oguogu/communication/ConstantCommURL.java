@@ -22,10 +22,12 @@ public class ConstantCommURL {
     public final static String REQUEST_GET_HOME = "HomeList";
     public final static String REQUEST_GET_FEED = "Feed";
     public final static String REQUEST_GET_STORY = "Story";
+    public final static String REQUEST_GET_WRITE_PLACE = "WritePlace";
 
     public final static String REQUEST_TAG_PLACE = "TagPlace";
     public final static String REQUEST_TAG_HOME = "TagHome";
     public final static String REQUEST_TAG_FEED = "TagFeed";
     public final static String REQUEST_TAG_STORY = "TagStory";
+    public final static String REQUEST_TAG_WRITE_PLACE = "TagWritePlace";
 
 }
