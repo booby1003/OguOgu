@@ -74,7 +74,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/color_txt_37"
                     android:textSize="@dimen/dimen_17sp"
-                    android:text="@string/place_no_place"
+                    android:text="강아지 카페"
                     android:textStyle="bold"
                     android:layout_marginLeft="@dimen/dimen_10dp"/>
 
@@ -83,8 +83,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/color_txt_5c"
-                    android:textSize="@dimen/dimen_15sp"
-                    android:text="@string/place_no_place"
+                    android:textSize="@dimen/dimen_14sp"
+                    android:text="서울시 강동구 천호동"
                     android:layout_marginLeft="@dimen/dimen_10dp"/>
 
             </LinearLayout>
@@ -95,7 +95,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/color_txt_5c"
                 android:textSize="@dimen/dimen_15sp"
-                android:text="@string/place_no_place"
+                android:text="카페/디저트"
                 android:layout_marginLeft="@dimen/dimen_10dp"/>
 
         </LinearLayout>

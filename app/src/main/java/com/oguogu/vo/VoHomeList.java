@@ -25,108 +25,108 @@ public class VoHomeList extends VoBase{
     }
 
     public class VoHomeInfo {
-        private String title;
-        private String board_idx;
-        private String storeName;
-        private String addr;
-        private int boardType;
-        private int isLike;
-        private int isBookmark;
-        private String imgPath;
-        private String regUserID;
-        private String regThunmbPath;
-        private String regDate;
+        private String Title;
+        private String Board_idx;
+        private String StoreName;
+        private String Addr;
+        private int BoardType;
+        private boolean IsLike;
+        private boolean IsBookmark;
+        private String ImgPath;
+        private String RegUserID;
+        private String RegThunmbPath;
+        private String RegDate;
 
         public void clear(){
             instance = null;
         }
 
         public String getTitle() {
-            return title;
+            return Title;
         }
 
         public void setTitle(String title) {
-            this.title = title;
-        }
-
-        public String getStoreName() {
-            return storeName;
-        }
-
-        public void setStoreName(String storeName) {
-            this.storeName = storeName;
-        }
-
-        public String getAddr() {
-            return addr;
-        }
-
-        public void setAddr(String addr) {
-            this.addr = addr;
-        }
-
-        public int getBoardType() {
-            return boardType;
-        }
-
-        public void setBoardType(int boardType) {
-            this.boardType = boardType;
-        }
-
-        public int getIsLike() {
-            return isLike;
-        }
-
-        public void setIsLike(int isLike) {
-            this.isLike = isLike;
-        }
-
-        public int getIsBookmark() {
-            return isBookmark;
-        }
-
-        public void setIsBookmark(int isBookmark) {
-            this.isBookmark = isBookmark;
-        }
-
-        public String getImgPath() {
-            return imgPath;
-        }
-
-        public void setImgPath(String imgPath) {
-            this.imgPath = imgPath;
+            Title = title;
         }
 
         public String getBoard_idx() {
-            return board_idx;
+            return Board_idx;
         }
 
         public void setBoard_idx(String board_idx) {
-            this.board_idx = board_idx;
+            Board_idx = board_idx;
+        }
+
+        public String getStoreName() {
+            return StoreName;
+        }
+
+        public void setStoreName(String storeName) {
+            StoreName = storeName;
+        }
+
+        public String getAddr() {
+            return Addr;
+        }
+
+        public void setAddr(String addr) {
+            Addr = addr;
+        }
+
+        public int getBoardType() {
+            return BoardType;
+        }
+
+        public void setBoardType(int boardType) {
+            BoardType = boardType;
+        }
+
+        public boolean isLike() {
+            return IsLike;
+        }
+
+        public void setLike(boolean like) {
+            IsLike = like;
+        }
+
+        public boolean isBookmark() {
+            return IsBookmark;
+        }
+
+        public void setBookmark(boolean bookmark) {
+            IsBookmark = bookmark;
+        }
+
+        public String getImgPath() {
+            return ImgPath;
+        }
+
+        public void setImgPath(String imgPath) {
+            ImgPath = imgPath;
         }
 
         public String getRegUserID() {
-            return regUserID;
+            return RegUserID;
         }
 
         public void setRegUserID(String regUserID) {
-            this.regUserID = regUserID;
+            RegUserID = regUserID;
         }
 
         public String getRegThunmbPath() {
-            return regThunmbPath;
+            return RegThunmbPath;
         }
 
         public void setRegThunmbPath(String regThunmbPath) {
-            this.regThunmbPath = regThunmbPath;
+            RegThunmbPath = regThunmbPath;
         }
 
         public String getRegDate() {
-            return regDate;
+            return RegDate;
         }
 
         public void setRegDate(String regDate) {
-            this.regDate = regDate;
+            RegDate = regDate;
         }
     }
 

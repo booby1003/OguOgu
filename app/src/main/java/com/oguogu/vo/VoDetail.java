@@ -8,71 +8,59 @@ public class VoDetail extends VoBase {
 
     public static class VoComment {
 
-        private String comment_idx;
-        private String comment_user_thumb_path;
-        private String comment_user_nickname;
-        private String comment;
-        private String comment_date;
-        private boolean is_my_comment;
+        private String CommentIdx;
+        private String CommentUserThumbPath;
+        private String CommentUserId;
+        private String Comment;
+        private String CommentDate;
+        private boolean IsMyComment;
 
-        public String getComment_user_thumb_path() {
-            return comment_user_thumb_path;
+        public String getCommentIdx() {
+            return CommentIdx;
         }
 
-        public String getComment_idx() {
-            return comment_idx;
+        public void setCommentIdx(String commentIdx) {
+            CommentIdx = commentIdx;
         }
 
-        public void setComment_idx(String comment_idx) {
-            this.comment_idx = comment_idx;
+        public String getCommentUserThumbPath() {
+            return CommentUserThumbPath;
         }
 
-        public void setComment_user_thumb_path(String comment_user_thumb_path) {
-            this.comment_user_thumb_path = comment_user_thumb_path;
+        public void setCommentUserThumbPath(String commentUserThumbPath) {
+            CommentUserThumbPath = commentUserThumbPath;
         }
 
-        public String getComment_user_nickname() {
-            return comment_user_nickname;
+        public String getCommentUserId() {
+            return CommentUserId;
         }
 
-        public void setComment_user_nickname(String comment_user_nickname) {
-            this.comment_user_nickname = comment_user_nickname;
+        public void setCommentUserId(String commentUserId) {
+            CommentUserId = commentUserId;
         }
 
         public String getComment() {
-            return comment;
+            return Comment;
         }
 
         public void setComment(String comment) {
-            this.comment = comment;
+            Comment = comment;
         }
 
-        public String getComment_date() {
-            return comment_date;
+        public String getCommentDate() {
+            return CommentDate;
         }
 
-        public void setComment_date(String comment_date) {
-            this.comment_date = comment_date;
+        public void setCommentDate(String commentDate) {
+            CommentDate = commentDate;
         }
 
-        public boolean is_my_comment() {
-            return is_my_comment;
+        public boolean isMyComment() {
+            return IsMyComment;
         }
 
-        public void setIs_my_comment(boolean is_my_comment) {
-            this.is_my_comment = is_my_comment;
-        }
-    }
-
-    public static class VoImagePath {
-        private String img_path;
-
-        public String getImg_path() {
-            return img_path;
-        }
-
-        public void setImg_path(String img_path) {
-            this.img_path = img_path;
+        public void setMyComment(boolean myComment) {
+            IsMyComment = myComment;
         }
     }
 }

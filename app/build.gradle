@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion '25.0.0'
+    buildToolsVersion '26.0.2'
     defaultConfig {
         applicationId "com.oguogu"
         minSdkVersion 21
@@ -14,6 +14,11 @@ android {
 
         testInstrumentationRunner "anroid.support.test.runner.AndroidUnitRunner"
 
+        javaCompileOptions {
+            annotationProcessorOptions {
+                includeCompileClasspath = true
+            }
+        }
     }
 
     aaptOptions{
@@ -22,7 +27,7 @@ android {
 
     signingConfigs {
         debug {
-            storeFile file("C:/dev_mumu/oguogu_debug_keystore.jks")
+            storeFile file("E:/dev_mumu/oguogu_debug_keystore.jks")
             storePassword "121212"
             //storeFile file("C:/Users/Administrator/AndroidStudioProjects/oguogu_debug_keystore.jks")
             //storePassword "121212"

@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.oguogu.R;
-import com.oguogu.vo.VoStoreDetail;
+import com.oguogu.vo.VoPlaceDetail;
 
 import java.util.ArrayList;
 
@@ -22,11 +22,11 @@ import java.util.ArrayList;
 public class RelationPhotoListAdapter extends RecyclerView.Adapter<RelationPhotoListAdapter.ViewHolder> {
 
     private Context context;
-    private ArrayList<VoStoreDetail.VoRelation> mItems;
+    private ArrayList<VoPlaceDetail.VoRelation> mItems;
 
     private int lastPosition = -1;
 
-    public RelationPhotoListAdapter(ArrayList<VoStoreDetail.VoRelation> items, Context mContext) {
+    public RelationPhotoListAdapter(ArrayList<VoPlaceDetail.VoRelation> items, Context mContext) {
         mItems = items;
         context = mContext;
     }
@@ -45,10 +45,10 @@ public class RelationPhotoListAdapter extends RecyclerView.Adapter<RelationPhoto
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        VoStoreDetail.VoRelation info = mItems.get(position);
+        VoPlaceDetail.VoRelation info = mItems.get(position);
 
-        Glide.with(context).load(info.getRelation_thumb_path()).crossFade().into(holder.iv_relation_thumb);
-        holder.tv_relation_title.setText(info.getRelation_nickname());
+        Glide.with(context).load(info.getRelationThumbPath()).crossFade().into(holder.iv_relation_thumb);
+        holder.tv_relation_title.setText(info.getRelationUserId());
 
         holder.iv_relation_thumb.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -58,7 +58,7 @@ public class RelationPhotoListAdapter extends RecyclerView.Adapter<RelationPhoto
         });
     }
 
-    public void setItems(ArrayList<VoStoreDetail.VoRelation> items) {
+    public void setItems(ArrayList<VoPlaceDetail.VoRelation> items) {
         mItems = items;
         notifyDataSetChanged();
     }

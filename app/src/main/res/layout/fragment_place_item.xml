@@ -1,0 +1,86 @@
+<!--?xml version="1.0" encoding="utf-8"?-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="@dimen/dimen_2dp">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:cardBackgroundColor="@color/cmm_bg">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="@dimen/dimen_7dp">
+
+                <LinearLayout
+                    android:id="@+id/layout_store"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginTop="@dimen/dimen_5dp"
+                    android:paddingBottom="@dimen/dimen_20dp">
+
+                    <ImageView
+                        android:id="@+id/iv_place"
+                        android:layout_width="@dimen/dimen_28dp"
+                        android:layout_height="@dimen/dimen_28dp" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:layout_marginLeft="@dimen/dimen_7dp">
+
+                        <TextView
+                            android:id="@+id/tv_place_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/color_txt_5c"
+                            android:textSize="@dimen/dimen_14sp"
+                            android:layout_marginTop="@dimen/dimen_3dp_m"
+                            android:text="스토어명" />
+
+                        <TextView
+                            android:id="@+id/tv_place_addr"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/color_txt_90"
+                            android:textSize="@dimen/dimen_12sp"
+                            android:layout_marginTop="@dimen/dimen_3dp_m"
+                            android:text="주소" />
+
+                    </LinearLayout>
+                </LinearLayout>
+
+                <ImageButton
+                    android:id="@+id/btn_like"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dimen_2dp"
+                    android:layout_marginRight="@dimen/dimen_5dp"
+                    android:layout_alignParentRight="true"
+                    android:background="@drawable/sel_small_like"/>
+
+            </RelativeLayout>
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+</RelativeLayout>

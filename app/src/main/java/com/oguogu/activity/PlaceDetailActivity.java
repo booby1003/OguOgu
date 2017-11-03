@@ -13,25 +13,28 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.VolleyError;
 import com.bumptech.glide.Glide;
 import com.oguogu.GlobalApplication;
 import com.oguogu.R;
 import com.oguogu.adapter.RelationPhotoListAdapter;
+import com.oguogu.communication.ConstantCommURL;
+import com.oguogu.communication.HttpRequest;
 import com.oguogu.custom.CustomBitmapPool;
 import com.oguogu.custom.CustomViewPager;
-import com.oguogu.util.StringUtil;
 import com.oguogu.util.UIUtil;
 import com.oguogu.vo.VoDetail;
-import com.oguogu.vo.VoStoreDetail;
+import com.oguogu.vo.VoPlaceDetail;
 
-import java.io.IOException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 
 import butterknife.Bind;
@@ -43,9 +46,10 @@ import jp.wasabeef.glide.transformations.CropCircleTransformation;
  * Created by Administrator on 2016-12-26.
  */
 
-public class StoreDetailActivity extends AppCompatActivity {
+public class PlaceDetailActivity extends AppCompatActivity {
 
-    public static final String BOARD_IDX = "BOARD_IDX";
+    public static final String PLACE_IDX = "PLACE_IDX";
+    HttpRequest mRequest = null;
 
     @Bind(R.id.toolbar) Toolbar toolbar;
     @Bind(R.id.tv_store_name) TextView tv_store_name;
@@ -70,7 +74,7 @@ public class StoreDetailActivity extends AppCompatActivity {
     @Bind(R.id.recycler_view) RecyclerView recyclerView;
 //    @Bind(R.id.scrollView) ScrollView scrollView;
 
-    private VoStoreDetail storeDetail;
+    private VoPlaceDetail storeDetail;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -81,7 +85,7 @@ public class StoreDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        String boardIdx = intent.getStringExtra(BOARD_IDX);
+        String placeIdx = intent.getStringExtra(PLACE_IDX);
 
 //        recyclerView.setHasFixedSize(true);
 
@@ -93,62 +97,97 @@ public class StoreDetailActivity extends AppCompatActivity {
         // 지정된 레이아웃매니저를 RecyclerView에 Set 해주어야한다.
         recyclerView.setLayoutManager(layoutManager);
 
-        getStoreDetail();
+        placeIdx = "P0000000001";
+        getStoreDetail(placeIdx);
 
 
     }
 
-    private void getStoreDetail() {
+    private void getStoreDetail(String placeIdx) {
 
-        String msg = null;
-        try {
-            msg = StringUtil.getData(this, "store_detail.json");
+//        String msg = null;
+//        try {
+//            msg = StringUtil.getData(this, "store_detail.json");
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-        storeDetail = GlobalApplication.getGson().fromJson(msg, VoStoreDetail.class);
+        if(mRequest == null) mRequest = HttpRequest.getInstance(this);
 
-        tv_store_name.setText(storeDetail.getStoreName());
-        tv_register.setText("By " + storeDetail.getRegUserNickname());
-        tv_store_name2.setText(storeDetail.getStoreName());
+        String url = ConstantCommURL.getURL(ConstantCommURL.URL_API, ConstantCommURL.REQUEST_GET_PLACE);
+        url = url + "/" + placeIdx;
+        //builder.appendQueryParameter("", "");
+
+        mRequest.StringRequest(ConstantCommURL.REQUEST_TAG_PLACE, Request.Method.GET, url, "", new HttpRequest.ListenerHttpResponse() {
+
+            @Override
+            public void success(String response) {
+
+                storeDetail = GlobalApplication.getGson().fromJson(response, VoPlaceDetail.class);
+                setPlaceDetail();
+                setCommentList();
+            }
+
+            @Override
+            public void fail(JSONObject response) {
+
+            }
+
+            @Override
+            public void exception(VolleyError error) {
+
+            }
+
+            @Override
+            public void networkerror() {
+
+            }
+        });
+    }
+
+    private  void setPlaceDetail() {
+
+        tv_store_name.setText(storeDetail.getPlaceName());
+        tv_register.setText("By " + storeDetail.getRegUserId());
+        tv_store_name2.setText(storeDetail.getPlaceName());
         Glide.with(this).load(UIUtil.getBoardTypeDrawable(storeDetail.getBoardType())).into(iv_store_type);
-        tv_addr.setText(storeDetail.getAddr());
+        tv_addr.setText(storeDetail.getPlaceAddr());
         tv_content.setText(storeDetail.getConts());
-        tv_tel.setText(storeDetail.getTel_no());
+        tv_tel.setText(storeDetail.getTelNo());
         tv_time.setText(storeDetail.getTime());
 
         String storeInfo="";
-        for (int idx=0; idx<storeDetail.getStore_info_list().size(); idx++) {
+        for (int idx=0; idx<storeDetail.getExtraInfoList().size(); idx++) {
 
-            VoStoreDetail.VoStore voStore = storeDetail.getStore_info_list().get(idx);
+            String info = storeDetail.getExtraInfoList().get(idx);
 
             if (idx > 0)
                 storeInfo += " | ";
 
-            storeInfo += voStore.getStore_info();
+            storeInfo += info;
         }
         tv_store_info.setText(storeInfo);
 
-        tv_like_count.setText(storeDetail.getTotal_like_cnt());
-        tv_bookmark_count.setText(storeDetail.getTotal_bookmark_cnt());
-        tv_comment_count.setText(storeDetail.getTotal_comment_cnt());
+        tv_like_count.setText(storeDetail.getTotalLikeCnt());
+        tv_bookmark_count.setText(storeDetail.getTotalBookmarkCnt());
+        tv_comment_count.setText(storeDetail.getTotalCommentCnt());
 
-        setCommentList();
+        //setCommentList();
 
-        ViewPagerImgAdapter viewPagerImgAdapter = new ViewPagerImgAdapter(StoreDetailActivity.this, storeDetail.getImg_list());
+        ViewPagerImgAdapter viewPagerImgAdapter = new ViewPagerImgAdapter(PlaceDetailActivity.this, storeDetail.getImgList());
         viewPager.setAdapter(viewPagerImgAdapter);
 
-        RelationPhotoListAdapter relationPhotoListAdapter = new RelationPhotoListAdapter(storeDetail.getRelation_list(), this);
+        RelationPhotoListAdapter relationPhotoListAdapter = new RelationPhotoListAdapter(storeDetail.getRelationList(), this);
         recyclerView.setAdapter(relationPhotoListAdapter);
     }
 
     private void setCommentList() {
         layoutComment.removeAllViews();
 
-        for (int idx=0; idx<storeDetail.getComment_list().size(); idx++) {
-            VoDetail.VoComment commentInfo = storeDetail.getComment_list().get(idx);
+        for (int idx=0; idx<storeDetail.getCommentList().size(); idx++) {
+            VoDetail.VoComment commentInfo = storeDetail.getCommentList().get(idx);
 
             View view = LayoutInflater.from(this).inflate(R.layout.detail_comment_item, null);
             ImageView iv_comment_img = (ImageView)view.findViewById(R.id.iv_comment_img);
@@ -157,29 +196,29 @@ public class StoreDetailActivity extends AppCompatActivity {
             TextView tv_comment_content = (TextView)view.findViewById(R.id.tv_comment_content);
             ImageButton btnDeleteComment = (ImageButton)view.findViewById(R.id.btnDeleteComment);
 
-            Glide.with(this).load(commentInfo.getComment_user_thumb_path()).bitmapTransform(new CropCircleTransformation(new CustomBitmapPool())).into(iv_comment_img);
-            tv_comment_nickname.setText(commentInfo.getComment_user_nickname());
-            tv_comment_date.setText(commentInfo.getComment_date());
+            Glide.with(this).load(commentInfo.getCommentUserThumbPath()).bitmapTransform(new CropCircleTransformation(new CustomBitmapPool())).into(iv_comment_img);
+            tv_comment_nickname.setText(commentInfo.getCommentUserId());
+            tv_comment_date.setText(commentInfo.getCommentDate());
             tv_comment_content.setText(commentInfo.getComment());
 
             iv_comment_img.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    Toast.makeText(StoreDetailActivity.this, "유저 정보로 이동", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(PlaceDetailActivity.this, "유저 정보로 이동", Toast.LENGTH_SHORT).show();
                 }
             });
 
             btnDeleteComment.setTag(commentInfo);
-            if (commentInfo.is_my_comment()) {
+            if (commentInfo.isMyComment()) {
                 btnDeleteComment.setVisibility(View.VISIBLE);
                 btnDeleteComment.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
                         VoDetail.VoComment deleteComment = (VoDetail.VoComment)v.getTag();
-                        storeDetail.getComment_list().remove(deleteComment);
+                        storeDetail.getCommentList().remove(deleteComment);
                         setCommentList();
 
-                        Toast.makeText(StoreDetailActivity.this, "삭제!", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(PlaceDetailActivity.this, "삭제!", Toast.LENGTH_SHORT).show();
                     }
                 });
             }
@@ -192,9 +231,9 @@ public class StoreDetailActivity extends AppCompatActivity {
     public class ViewPagerImgAdapter extends PagerAdapter {
 
         private Context context;
-        private ArrayList<VoStoreDetail.VoImagePath> items;
+        private ArrayList<String> items;
 
-        public ViewPagerImgAdapter(Context context, ArrayList<VoStoreDetail.VoImagePath> items) {
+        public ViewPagerImgAdapter(Context context, ArrayList<String> items) {
             this.context = context;
             this.items = items;
         }
@@ -214,10 +253,10 @@ public class StoreDetailActivity extends AppCompatActivity {
             ImageView imageView = new ImageView(context);
             imageView.setScaleType(ImageView.ScaleType.FIT_XY);
 
-            VoStoreDetail.VoImagePath info = items.get(position);
+            String imgPath = items.get(position);
 
             Glide.with(context)
-                    .load(info.getImg_path())
+                    .load(imgPath)
                     .crossFade()
                     .into(imageView);
 
@@ -271,11 +310,11 @@ public class StoreDetailActivity extends AppCompatActivity {
 
 //    private int getBoardTypeDrawable() {
 //        int boardTypeDrawable = 0;
-//        if (storeDetail.getBoardType() == VoStoreDetail.TYPE_CAFE)
+//        if (storeDetail.getBoardType() == VoPlaceDetail.TYPE_CAFE)
 //            boardTypeDrawable = R.drawable.icon_type_cafe;
-//        else if (storeDetail.getBoardType() == VoStoreDetail.TYPE_HOSPITAL)
+//        else if (storeDetail.getBoardType() == VoPlaceDetail.TYPE_HOSPITAL)
 //            boardTypeDrawable = R.drawable.icon_type_hospital;
-//        else if (storeDetail.getBoardType() == VoStoreDetail.TYPE_PLAYGROUND)
+//        else if (storeDetail.getBoardType() == VoPlaceDetail.TYPE_PLAYGROUND)
 //            boardTypeDrawable = R.drawable.icon_type_gowalk;
 //
 //        return boardTypeDrawable;

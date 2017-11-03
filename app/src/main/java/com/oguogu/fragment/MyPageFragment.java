@@ -1,5 +1,6 @@
 package com.oguogu.fragment;
 
+import android.content.Intent;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
@@ -22,6 +23,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.oguogu.GlobalApplication;
 import com.oguogu.R;
+import com.oguogu.activity.MyPetsActivity;
+import com.oguogu.activity.SettingActivity;
 import com.oguogu.adapter.PhotoListAdapter;
 import com.oguogu.custom.CustomBitmapPool;
 import com.oguogu.util.LogUtil;
@@ -149,7 +152,7 @@ public class MyPageFragment extends BaseFragment  {
         getDataList();
     }
 
-    @OnClick({R.id.btn_post_writing, R.id.btn_bookmark})
+    @OnClick({R.id.btn_post_writing, R.id.btn_bookmark, R.id.btn_mypet, R.id.btn_setting})
     public void onClickButton(View view) {
         switch (view.getId()) {
             case R.id.btn_post_writing:
@@ -159,6 +162,12 @@ public class MyPageFragment extends BaseFragment  {
             case R.id.btn_bookmark:
                 currentMenu = TabMenu.BookMark;
                 selectedTab();
+                break;
+            case R.id.btn_mypet:
+                startActivity(new Intent(getContext(), MyPetsActivity.class));
+                break;
+            case R.id.btn_setting:
+                startActivity(new Intent(getContext(), SettingActivity.class));
                 break;
         }
     }

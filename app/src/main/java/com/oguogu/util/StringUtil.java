@@ -9,9 +9,6 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.oguogu.R;
-import com.oguogu.vo.VoStoreDetail;
-
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -80,17 +77,21 @@ public class StringUtil {
 	/**
 	 * text에 color 입히기
 	 */
-	public static void setTextByResColor(View view, int resId, String text, int start, int end, int color) {
+	public static void setTextByResColor(View view, String text, String colorStr, int color) {
 
-		View tvTmp = view.findViewById(resId);
+		int start = text.indexOf(colorStr);
+		int end = start + colorStr.length();
+
+		if(start == -1) return;
+
 		Spannable spannable = new SpannableStringBuilder(text);
 		spannable.setSpan(new ForegroundColorSpan(color), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-		if(tvTmp instanceof TextView) {
-			TextView tv = (TextView) tvTmp;
+		if(view instanceof TextView) {
+			TextView tv = (TextView) view;
 			tv.setText(spannable);
-		}else if(tvTmp instanceof  EditText) {
-			EditText et = (EditText) tvTmp;
+		}else if(view instanceof  EditText) {
+			EditText et = (EditText) view;
 			et.setText(spannable);
 		}
 	}

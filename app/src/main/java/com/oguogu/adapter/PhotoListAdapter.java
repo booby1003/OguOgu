@@ -7,12 +7,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.bumptech.glide.Glide;
 import com.oguogu.R;
-import com.oguogu.activity.StoreDetailActivity;
+import com.oguogu.activity.PlaceDetailActivity;
 import com.oguogu.activity.StoryDetailActivity;
 import com.oguogu.util.UIUtil;
 import com.oguogu.vo.VoHomeList;
@@ -87,7 +86,7 @@ public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.View
                 }
                 else{
                     //장소로 이동
-                    context.startActivity(new Intent(context, StoreDetailActivity.class));
+                    context.startActivity(new Intent(context, PlaceDetailActivity.class));
                 }
 
             }

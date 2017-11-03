@@ -1,6 +1,7 @@
 package com.oguogu.fragment;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -18,15 +19,22 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.VolleyError;
 import com.oguogu.GlobalApplication;
 import com.oguogu.R;
 import com.oguogu.activity.SearchActivity;
 import com.oguogu.adapter.ContentListAdapter;
 import com.oguogu.bus.BusEvent;
 import com.oguogu.bus.BusProvider;
+import com.oguogu.communication.ConstantCommURL;
+import com.oguogu.communication.HttpRequest;
+import com.oguogu.util.LogUtil;
 import com.oguogu.util.StringUtil;
 import com.oguogu.vo.VoHomeList;
 import com.squareup.otto.Subscribe;
+
+import org.json.JSONObject;
 
 import java.io.IOException;
 
@@ -39,6 +47,8 @@ import butterknife.OnClick;
  */
 
 public class HomeFragment extends BaseFragment {
+
+    HttpRequest mRequest = null;
 
     @Bind(R.id.toolbar) Toolbar toolbar;
    // @Bind(R.id.btn_search) Button btn_search;
@@ -99,18 +109,41 @@ public class HomeFragment extends BaseFragment {
     }
 
     private void getHomeList() {
-        String msg = null;
-        try {
-            msg = StringUtil.getData(getActivity(), "home_list.json");
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        if(mRequest == null) mRequest = HttpRequest.getInstance(getContext());
 
-        VoHomeList homeList = GlobalApplication.getGson().fromJson(msg, VoHomeList.class);
+        String url = ConstantCommURL.getURL(ConstantCommURL.URL_API, ConstantCommURL.REQUEST_GET_HOME);
+        Uri.Builder builder = Uri.parse(url).buildUpon();
+        //builder.appendQueryParameter("", "");
 
-        ContentListAdapter adapter = new ContentListAdapter(homeList.getData(), getActivity());
-        recyclerView.setAdapter(adapter);
+        mRequest.StringRequest(ConstantCommURL.REQUEST_TAG_HOME, Request.Method.GET, builder.toString(), "", new HttpRequest.ListenerHttpResponse() {
+
+            @Override
+            public void success(String response) {
+
+                LogUtil.d("HomeFragment response : " + response.toString());
+
+                VoHomeList homeList = GlobalApplication.getGson().fromJson(response, VoHomeList.class);
+                ContentListAdapter adapter = new ContentListAdapter(homeList.getData(), getActivity());
+                recyclerView.setAdapter(adapter);
+
+            }
+
+            @Override
+            public void fail(JSONObject response) {
+
+            }
+
+            @Override
+            public void exception(VolleyError error) {
+
+            }
+
+            @Override
+            public void networkerror() {
+
+            }
+        });
     }
 
     @OnClick({R.id.btn_srch, R.id.btn_toolbar_location})

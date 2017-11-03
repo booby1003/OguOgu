@@ -28,7 +28,6 @@ public class DemoViewPagerAdapter extends FragmentPagerAdapter {
 		fragments.add(DemoFragment.newInstance(0));
 		fragments.add(new FeedFragment());
 		fragments.add(new MyPageFragment());
-
 	}
 
 	@Override

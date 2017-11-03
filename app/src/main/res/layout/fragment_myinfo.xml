@@ -24,7 +24,8 @@
                 android:id="@+id/btn_mypet"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/sel_btn_mypet" />
+                android:background="@drawable/sel_btn_mypet"
+                android:visibility="gone"/>
 
             <ImageButton
                 android:id="@+id/btn_setting"

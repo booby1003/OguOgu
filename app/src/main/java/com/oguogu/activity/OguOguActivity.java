@@ -70,7 +70,7 @@ public class OguOguActivity extends AppCompatActivity {
     @Bind(R.id.ll_write_bg) LinearLayout ll_write_bg;
     @Bind(R.id.btn_write_place) ImageButton btn_write_place;
     @Bind(R.id.btn_write_mypet) ImageButton btn_write_mypet;
-    @Bind(R.id.btn_write_mine) ImageButton btn_write_mine;
+    //@Bind(R.id.btn_write_mine) ImageButton btn_write_mine;
     //@Bind(R.id.editSearch) EditText editSearch;
     //@Bind(R.id.btn_back) Button btn_back;
     //@Bind(R.id.btn_toolbar_location) Button btn_toolbar_location;
@@ -329,7 +329,7 @@ public class OguOguActivity extends AppCompatActivity {
                 .build();
     }
 
-    @OnClick({R.id.btn_write_place, R.id.btn_write_mypet, R.id.btn_write_mine})
+    @OnClick({R.id.btn_write_place, R.id.btn_write_mypet})
     public void onClickButton(View view) {
         switch (view.getId()) {
             case R.id.btn_write_place:
@@ -340,9 +340,9 @@ public class OguOguActivity extends AppCompatActivity {
             case R.id.btn_write_mypet:
                 Toast.makeText(this, "버튼2 클릭", Toast.LENGTH_SHORT).show();
                 break;
-            case R.id.btn_write_mine:
-                Toast.makeText(this, "버튼3 클릭", Toast.LENGTH_SHORT).show();
-                break;
+//            case R.id.btn_write_mine:
+//                Toast.makeText(this, "버튼3 클릭", Toast.LENGTH_SHORT).show();
+//                break;
 //            case R.id.btn_search:
 ////                    startActivity(new Intent(OguOguActivity.this, SearchActivity.class));
 ////                    overridePendingTransition(R.anim.hold, R.anim.slide_right_to_left);
@@ -497,7 +497,7 @@ public class OguOguActivity extends AppCompatActivity {
 
         LogUtil.d("touch!!");
 
-        if (ev.getAction() == MotionEvent.ACTION_UP || ev.getAction() == MotionEvent.ACTION_MOVE) {
+        if (ev.getAction() == MotionEvent.ACTION_UP ) {
             if (!isWriteHiding && layoutWrite.getVisibility() == View.VISIBLE)
                 hideLayoutWrite();
         }

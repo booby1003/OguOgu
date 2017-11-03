@@ -1,6 +1,7 @@
 package com.oguogu.fragment;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -18,14 +19,19 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
+import com.android.volley.Request;
+import com.android.volley.VolleyError;
 import com.oguogu.GlobalApplication;
 import com.oguogu.R;
 import com.oguogu.activity.SearchActivity;
 import com.oguogu.adapter.ContentListAdapter;
-import com.oguogu.util.StringUtil;
+import com.oguogu.adapter.PlaceListAdapter;
+import com.oguogu.communication.ConstantCommURL;
+import com.oguogu.communication.HttpRequest;
 import com.oguogu.vo.VoHomeList;
+import com.oguogu.vo.VoPlaceList;
 
-import java.io.IOException;
+import org.json.JSONObject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -36,6 +42,8 @@ import butterknife.OnClick;
  */
 
 public class PlaceFragment extends BaseFragment {
+
+    HttpRequest mRequest = null;
 
     @Bind(R.id.toolbar) Toolbar toolbar;
 
@@ -51,8 +59,8 @@ public class PlaceFragment extends BaseFragment {
     @Bind(R.id.swipeRefresh) SwipeRefreshLayout swipeRefresh;
     @Bind(R.id.recycler_view) RecyclerView recyclerView;
 
-    private ContentListAdapter photoListAdapter;
-    private VoHomeList bookmarkList;
+    private PlaceListAdapter photoListAdapter;
+    private VoPlaceList voPlaceList;
 
     @Nullable
     @Override
@@ -88,24 +96,60 @@ public class PlaceFragment extends BaseFragment {
         recyclerView.setLayoutManager(layoutManager);
 
         btn_all.setSelected(true);
-        getBookMarkList();
+        getPlaceList();
 
         return view;
     }
 
-    private void getBookMarkList() {
-        String msg = null;
-        try {
-            msg = StringUtil.getData(getActivity(), "place_list.json");
+    private void getPlaceList() {
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        String msg = null;
+//        try {
+//            msg = StringUtil.getData(getActivity(), "place_list.json");
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        bookmarkList = GlobalApplication.getGson().fromJson(msg, VoHomeList.class);
+//
+//        photoListAdapter = new ContentListAdapter(bookmarkList.getData(), getActivity());
+//        recyclerView.setAdapter(photoListAdapter);
 
-        bookmarkList = GlobalApplication.getGson().fromJson(msg, VoHomeList.class);
+        if(mRequest == null) mRequest = HttpRequest.getInstance(getContext());
 
-        photoListAdapter = new ContentListAdapter(bookmarkList.getData(), getActivity());
-        recyclerView.setAdapter(photoListAdapter);
+        String url = ConstantCommURL.getURL(ConstantCommURL.URL_API, ConstantCommURL.REQUEST_GET_PLACE);
+        Uri.Builder builder = Uri.parse(url).buildUpon();
+        //builder.appendQueryParameter("", "");
+
+        mRequest.StringRequest(ConstantCommURL.REQUEST_TAG_PLACE, Request.Method.GET, builder.toString(), "", new HttpRequest.ListenerHttpResponse() {
+
+            @Override
+            public void success(String response) {
+
+                voPlaceList = GlobalApplication.getGson().fromJson(response, VoPlaceList.class);
+
+                photoListAdapter = new PlaceListAdapter(voPlaceList.getData(), getActivity());
+                recyclerView.setAdapter(photoListAdapter);
+
+            }
+
+            @Override
+            public void fail(JSONObject response) {
+
+            }
+
+            @Override
+            public void exception(VolleyError error) {
+
+            }
+
+            @Override
+            public void networkerror() {
+
+            }
+        });
+
     }
 
     @OnClick({R.id.btn_srch, R.id.btn_all, R.id.btn_cafe, R.id.btn_hospital, R.id.btn_playground})
@@ -129,16 +173,16 @@ public class PlaceFragment extends BaseFragment {
 
                 break;
             case R.id.btn_all:
-                photoListAdapter.setItems(bookmarkList.getData());
+                photoListAdapter.setItems(voPlaceList.getData());
                 break;
             case R.id.btn_cafe:
-                photoListAdapter.setItem(bookmarkList.getData(), VoHomeList.TYPE_CAFE);
+                photoListAdapter.setItem(voPlaceList.getData(), VoHomeList.TYPE_CAFE);
                 break;
             case R.id.btn_hospital:
-                photoListAdapter.setItem(bookmarkList.getData(), VoHomeList.TYPE_HOSPITAL);
+                photoListAdapter.setItem(voPlaceList.getData(), VoHomeList.TYPE_HOSPITAL);
                 break;
             case R.id.btn_playground:
-                photoListAdapter.setItem(bookmarkList.getData(), VoHomeList.TYPE_PLAYGROUND);
+                photoListAdapter.setItem(voPlaceList.getData(), VoHomeList.TYPE_PLAYGROUND);
                 break;
         }
     }

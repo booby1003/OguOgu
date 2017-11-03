@@ -7,9 +7,7 @@ import android.util.DisplayMetrics;
 import android.util.TypedValue;
 
 import com.oguogu.R;
-import com.oguogu.vo.VoStoreDetail;
-
-import java.util.HashMap;
+import com.oguogu.vo.VoPlaceDetail;
 
 /**
  * Created by 김민정 on 2017-10-11.
@@ -54,11 +52,11 @@ public class UIUtil {
      */
     public static int getBoardTypeDrawable(int storeType) {
         int boardTypeDrawable = 0;
-        if (storeType == VoStoreDetail.TYPE_CAFE)
+        if (storeType == VoPlaceDetail.TYPE_CAFE)
             boardTypeDrawable = R.drawable.icon_type_cafe;
-        else if (storeType == VoStoreDetail.TYPE_HOSPITAL)
+        else if (storeType == VoPlaceDetail.TYPE_HOSPITAL)
             boardTypeDrawable = R.drawable.icon_type_hospital;
-        else if (storeType == VoStoreDetail.TYPE_PLAYGROUND)
+        else if (storeType == VoPlaceDetail.TYPE_PLAYGROUND)
             boardTypeDrawable = R.drawable.icon_type_gowalk;
 
         return boardTypeDrawable;

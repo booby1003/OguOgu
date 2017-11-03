@@ -19,42 +19,46 @@ public class VoPlaceList extends VoBase {
     }
 
     public class VoPlace {
-        private String place_idx;
-        private String storeName;
-        private String addr;
-        private int boardType;
+        private String BoardIdx;
+        private String PlaceName;
+        private String PlaceAddr;
+        private int BoardType;
         private String placeTypeStr;
+        private boolean IsLike ;
+        private boolean IsBookmark;
+        private String ImgPath;
+        private String RegThunmbPath;
 
-        public String getPlace_idx() {
-            return place_idx;
+        public String getBoardIdx() {
+            return BoardIdx;
         }
 
-        public void setPlace_idx(String place_idx) {
-            this.place_idx = place_idx;
+        public void setBoardIdx(String boardIdx) {
+            BoardIdx = boardIdx;
         }
 
-        public String getStoreName() {
-            return storeName;
+        public String getPlaceName() {
+            return PlaceName;
         }
 
-        public void setStoreName(String storeName) {
-            this.storeName = storeName;
+        public void setPlaceName(String placeName) {
+            PlaceName = placeName;
         }
 
-        public String getAddr() {
-            return addr;
+        public String getPlaceAddr() {
+            return PlaceAddr;
         }
 
-        public void setAddr(String addr) {
-            this.addr = addr;
+        public void setPlaceAddr(String placeAddr) {
+            PlaceAddr = placeAddr;
         }
 
         public int getBoardType() {
-            return boardType;
+            return BoardType;
         }
 
         public void setBoardType(int boardType) {
-            this.boardType = boardType;
+            BoardType = boardType;
         }
 
         public String getPlaceTypeStr() {
@@ -63,6 +67,38 @@ public class VoPlaceList extends VoBase {
 
         public void setPlaceTypeStr(String placeTypeStr) {
             this.placeTypeStr = placeTypeStr;
+        }
+
+        public boolean isLike() {
+            return IsLike;
+        }
+
+        public void setLike(boolean like) {
+            IsLike = like;
+        }
+
+        public boolean isBookmark() {
+            return IsBookmark;
+        }
+
+        public void setBookmark(boolean bookmark) {
+            IsBookmark = bookmark;
+        }
+
+        public String getImgPath() {
+            return ImgPath;
+        }
+
+        public void setImgPath(String imgPath) {
+            ImgPath = imgPath;
+        }
+
+        public String getRegThunmbPath() {
+            return RegThunmbPath;
+        }
+
+        public void setRegThunmbPath(String regThunmbPath) {
+            RegThunmbPath = regThunmbPath;
         }
     }
 }
