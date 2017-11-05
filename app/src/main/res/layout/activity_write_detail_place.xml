@@ -223,7 +223,6 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:padding="@dimen/dimen_7dp">
-
             </LinearLayout>
 
 
