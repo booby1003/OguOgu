@@ -20,14 +20,20 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.android.volley.Request;
+import com.android.volley.VolleyError;
 import com.oguogu.GlobalApplication;
 import com.oguogu.R;
 import com.oguogu.adapter.WritePlaceAdapter;
+import com.oguogu.communication.ConstantCommURL;
 import com.oguogu.communication.HttpRequest;
 import com.oguogu.util.LogUtil;
 import com.oguogu.util.StringUtil;
 import com.oguogu.vo.VoBase;
+import com.oguogu.vo.VoStoryDetail;
 import com.oguogu.vo.VoWritePlaceList;
+
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -199,51 +205,51 @@ public class WritePlaceActivity extends AppCompatActivity {
     /**
      * 장소검색
      */
-    private void searchPlace(String place) {
+    private void searchPlace(final String place) {
+
         LogUtil.i("place : " + place);
+        if(mRequest == null) mRequest = HttpRequest.getInstance(this);
 
-        String msg = null;
+        String url = ConstantCommURL.getURL(ConstantCommURL.URL_API, ConstantCommURL.REQUEST_GET_WRITE_PLACE);
 
-        try {
-            msg = StringUtil.getData(this, "write_place_list.json");
-        }catch (IOException e) {
-            e.printStackTrace();
-        }
+        //url = url + "/" + place;
+        //builder.appendQueryParameter("", "");
 
+        mRequest.StringRequest(ConstantCommURL.REQUEST_TAG_WRITE_PLACE, Request.Method.GET, url, "", new HttpRequest.ListenerHttpResponse() {
 
-        VoWritePlaceList placeList = GlobalApplication.getGson().fromJson(msg, VoWritePlaceList.class);
-        setTestListView(placeList.getData(), place);
+            @Override
+            public void success(String response) {
 
+                VoWritePlaceList placeList = GlobalApplication.getGson().fromJson(response, VoWritePlaceList.class);
+                setTestListView(placeList.getData(), place);
+            }
 
+            @Override
+            public void fail(JSONObject response) {
 
-//        if(mRequest == null) mRequest = HttpRequest.getInstance(this);
-//
-//        String url = "http://api.word.moumou.co.kr/api/std/GetLevelInfo?SESSIONID=sessionid_pass&USERID=booby1003&COMMAND=1110";
-//
-//        mRequest.StringRequest(ConstantCommURL.REQUEST_TAG_PLACE, Request.Method.GET, url, "", new HttpRequest.ListenerHttpResponse() {
-//
-//            @Override
-//            public void success(String response) {
-//
-//
-//            }
-//
-//            @Override
-//            public void fail(JSONObject response) {
-//
-//            }
-//
-//            @Override
-//            public void exception(VolleyError error) {
-//
-//            }
-//
-//            @Override
-//            public void networkerror() {
-//
-//            }
-//        });
+            }
 
+            @Override
+            public void exception(VolleyError error) {
+
+            }
+
+            @Override
+            public void networkerror() {
+
+            }
+        });
+
+//        String msg = null;
+//
+//        try {
+//            msg = StringUtil.getData(this, "write_place_list.json");
+//        }catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        VoWritePlaceList placeList = GlobalApplication.getGson().fromJson(msg, VoWritePlaceList.class);
+//        setTestListView(placeList.getData(), place);
     }
 
     private void setTestListView(final ArrayList<VoWritePlaceList.VoPlace> placeList, final String place) {

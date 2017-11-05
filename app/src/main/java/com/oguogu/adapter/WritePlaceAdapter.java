@@ -44,10 +44,10 @@ public class WritePlaceAdapter extends RecyclerView.Adapter<WritePlaceAdapter.Vi
         VoWritePlaceList.VoPlace info = mItems.get(position);
 
         //holder.tv_place.setText(info.getStoreName());
-        StringUtil.setTextByResColor(holder.tv_place, info.getStoreName(), place,
+        StringUtil.setTextByResColor(holder.tv_place, info.getPlaceName(), place,
                 context.getResources().getColor(R.color.colorBottomNavigationAccent));
         holder.tv_place_type.setText(info.getPlaceTypeStr());
-        holder.tv_addr.setText(info.getAddr());
+        holder.tv_addr.setText(info.getPlaceAddr());
 
         holder.ll_place.setTag(info);
         holder.ll_place.setOnClickListener(placeClickListener);
@@ -78,7 +78,7 @@ public class WritePlaceAdapter extends RecyclerView.Adapter<WritePlaceAdapter.Vi
             VoWritePlaceList.VoPlace info = (VoWritePlaceList.VoPlace) v.getTag();
 
             Intent intent = new Intent(context, WritePlaceDetailActivity.class);
-            intent.putExtra(WritePlaceDetailActivity.PLACE_IDX, info.getPlace_idx());
+            intent.putExtra(WritePlaceDetailActivity.PLACE_IDX, info.getPlaceIdx());
             context.startActivity(intent);
             ((Activity)context).overridePendingTransition(R.anim.slide_right_to_left, R.anim.slide_center_to_left);
         }

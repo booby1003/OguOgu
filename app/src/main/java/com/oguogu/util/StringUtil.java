@@ -78,7 +78,8 @@ public class StringUtil {
 	 * text에 color 입히기
 	 */
 	public static void setTextByResColor(View view, String text, String colorStr, int color) {
-
+		LogUtil.i("text :: " + text);
+		LogUtil.i("colorStr :: " + colorStr);
 		int start = text.indexOf(colorStr);
 		int end = start + colorStr.length();
 

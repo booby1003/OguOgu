@@ -19,50 +19,50 @@ public class VoWritePlaceList extends VoBase {
     }
 
     public class VoPlace {
-        private String place_idx;
-        private String storeName;
-        private String addr;
-        private int boardType;
-        private String placeTypeStr;
+        private String PlaceIdx;
+        private String PlaceName;
+        private String PlaceAddr;
+        private int BoardType;
+        private String PlaceTypeStr;
 
-        public String getPlace_idx() {
-            return place_idx;
+        public String getPlaceIdx() {
+            return PlaceIdx;
         }
 
-        public void setPlace_idx(String place_idx) {
-            this.place_idx = place_idx;
+        public void setPlaceIdx(String placeIdx) {
+            PlaceIdx = placeIdx;
         }
 
-        public String getStoreName() {
-            return storeName;
+        public String getPlaceName() {
+            return PlaceName;
         }
 
-        public void setStoreName(String storeName) {
-            this.storeName = storeName;
+        public void setPlaceName(String placeName) {
+            PlaceName = placeName;
         }
 
-        public String getAddr() {
-            return addr;
+        public String getPlaceAddr() {
+            return PlaceAddr;
         }
 
-        public void setAddr(String addr) {
-            this.addr = addr;
+        public void setPlaceAddr(String placeAddr) {
+            PlaceAddr = placeAddr;
         }
 
         public int getBoardType() {
-            return boardType;
+            return BoardType;
         }
 
         public void setBoardType(int boardType) {
-            this.boardType = boardType;
+            BoardType = boardType;
         }
 
         public String getPlaceTypeStr() {
-            return placeTypeStr;
+            return PlaceTypeStr;
         }
 
         public void setPlaceTypeStr(String placeTypeStr) {
-            this.placeTypeStr = placeTypeStr;
+            PlaceTypeStr = placeTypeStr;
         }
     }
 }

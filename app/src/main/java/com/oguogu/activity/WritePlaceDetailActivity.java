@@ -1,5 +1,6 @@
 package com.oguogu.activity;
 
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -49,16 +50,21 @@ public class WritePlaceDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_write_detail_place);
 
         ButterKnife.bind(this);
-        getPlaceInfo();
 
+        Intent intent = getIntent();
+        String placeIdx = intent.getStringExtra(PLACE_IDX);
+        placeIdx = "P0000000002";
+
+        getPlaceInfo(placeIdx);
     }
 
-    private void getPlaceInfo() {
+    private void getPlaceInfo(String placeIdx) {
 
         if(mRequest == null) mRequest = HttpRequest.getInstance(this);
 
         String url = ConstantCommURL.getURL(ConstantCommURL.URL_API, ConstantCommURL.REQUEST_GET_WRITE_PLACE);
         Uri.Builder builder = Uri.parse(url).buildUpon();
+        url = url + "/" + placeIdx;
         //builder.appendQueryParameter("", "");
 
         mRequest.StringRequest(ConstantCommURL.REQUEST_TAG_WRITE_PLACE, Request.Method.GET, builder.toString(), "", new HttpRequest.ListenerHttpResponse() {
