@@ -2,11 +2,12 @@ package com.oguogu.util;
 
 import android.content.Context;
 import android.content.res.AssetManager;
+import android.text.Spannable;
+import android.text.SpannableStringBuilder;
+import android.text.style.ForegroundColorSpan;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
-
-import com.oguogu.R;
-import com.oguogu.vo.VoStoreDetail;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -73,16 +74,26 @@ public class StringUtil {
 		return result;
 	}
 
-	public static int getBoardTypeDrawable(int storeType) {
-		int boardTypeDrawable = 0;
-		if (storeType == VoStoreDetail.TYPE_CAFE)
-			boardTypeDrawable = R.drawable.icon_type_cafe;
-		else if (storeType == VoStoreDetail.TYPE_HOSPITAL)
-			boardTypeDrawable = R.drawable.icon_type_hospital;
-		else if (storeType == VoStoreDetail.TYPE_PLAYGROUND)
-			boardTypeDrawable = R.drawable.icon_type_gowalk;
+	/**
+	 * text에 color 입히기
+	 */
+	public static void setTextByResColor(View view, String text, String colorStr, int color) {
 
-		return boardTypeDrawable;
+		int start = text.indexOf(colorStr);
+		int end = start + colorStr.length();
+
+		if(start == -1) return;
+
+		Spannable spannable = new SpannableStringBuilder(text);
+		spannable.setSpan(new ForegroundColorSpan(color), start, end, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+		if(view instanceof TextView) {
+			TextView tv = (TextView) view;
+			tv.setText(spannable);
+		}else if(view instanceof  EditText) {
+			EditText et = (EditText) view;
+			et.setText(spannable);
+		}
 	}
 	
 }

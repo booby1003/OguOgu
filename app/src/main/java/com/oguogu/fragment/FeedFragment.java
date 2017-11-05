@@ -2,6 +2,7 @@ package com.oguogu.fragment;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -23,13 +24,22 @@ import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.VolleyError;
 import com.bumptech.glide.Glide;
 import com.oguogu.GlobalApplication;
 import com.oguogu.R;
+import com.oguogu.adapter.ContentListAdapter;
 import com.oguogu.common.Constant;
+import com.oguogu.communication.ConstantCommURL;
+import com.oguogu.communication.HttpRequest;
 import com.oguogu.custom.CustomBitmapPool;
+import com.oguogu.util.LogUtil;
 import com.oguogu.util.StringUtil;
 import com.oguogu.vo.VoFeedList;
+import com.oguogu.vo.VoHomeList;
+
+import org.json.JSONObject;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -44,6 +54,8 @@ import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
  */
 
 public class FeedFragment extends BaseFragment {
+
+    HttpRequest mRequest = null;
 
     @Bind(R.id.feed_listview) ListView feed_listview;
     @Bind(R.id.swipeRefresh) SwipeRefreshLayout swipeRefresh;
@@ -76,19 +88,39 @@ public class FeedFragment extends BaseFragment {
     }
 
     private void getFeedkList() {
-        String msg = null;
-        try {
-            msg = StringUtil.getData(getActivity(), "feed_list.json");
 
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
-        VoFeedList feedList = GlobalApplication.getGson().fromJson(msg, VoFeedList.class);
+        if(mRequest == null) mRequest = HttpRequest.getInstance(getContext());
 
-        FeedListViewAdapter adapter = new FeedListViewAdapter(feedList.getData());
-        feed_listview.setAdapter(adapter);
+        String url = ConstantCommURL.getURL(ConstantCommURL.URL_API, ConstantCommURL.REQUEST_GET_FEED);
+        Uri.Builder builder = Uri.parse(url).buildUpon();
+        //builder.appendQueryParameter("", "");
 
+        mRequest.StringRequest(ConstantCommURL.REQUEST_TAG_FEED, Request.Method.GET, builder.toString(), "", new HttpRequest.ListenerHttpResponse() {
+
+            @Override
+            public void success(String response) {
+
+                VoFeedList feedList = GlobalApplication.getGson().fromJson(response, VoFeedList.class);
+                FeedListViewAdapter adapter = new FeedListViewAdapter(feedList.getData());
+                feed_listview.setAdapter(adapter);
+            }
+
+            @Override
+            public void fail(JSONObject response) {
+
+            }
+
+            @Override
+            public void exception(VolleyError error) {
+
+            }
+
+            @Override
+            public void networkerror() {
+
+            }
+        });
     }
 
     public class FeedListViewAdapter extends BaseAdapter {
@@ -129,19 +161,19 @@ public class FeedFragment extends BaseFragment {
                 viewHolder = (FeedListViewAdapter.ViewHolder)convertView.getTag();
             }
 
-            Glide.with(context).load(info.getFeed_thumb_path()).bitmapTransform(new CropCircleTransformation(new CustomBitmapPool())).into(viewHolder.iv_feed_thumb);
+            Glide.with(context).load(info.getRegThunmbPath()).bitmapTransform(new CropCircleTransformation(new CustomBitmapPool())).into(viewHolder.iv_feed_thumb);
 
             String str_place = "";
             String str_commt = "";
             boolean isPlace = false;
 
-            if(info.getFeed_place_type() == Constant.PLACE_TYPES.PLACE_TYPE_CAFE) {
+            if(info.getBoardType() == Constant.PLACE_TYPES.PLACE_TYPE_CAFE) {
                 str_place = "강아지 카페";
                 isPlace = true;
-            }else if(info.getFeed_place_type() == Constant.PLACE_TYPES.PLACE_TYPE_HOSPITAL) {
+            }else if(info.getBoardType() == Constant.PLACE_TYPES.PLACE_TYPE_HOSPITAL) {
                 str_place = "동물병원";
                 isPlace = true;
-            }else if(info.getFeed_place_type() == Constant.PLACE_TYPES.PLACE_TYPE_GOWALK) {
+            }else if(info.getBoardType() == Constant.PLACE_TYPES.PLACE_TYPE_GOWALK) {
                 str_place = "산책/놀이터";
                 isPlace = true;
             }else{
@@ -149,25 +181,25 @@ public class FeedFragment extends BaseFragment {
                 isPlace = false;
             }
 
-            if (info.getFeed_type() == VoFeedList.TYPE_COMMENT) {
+            if (info.getFeedType() == VoFeedList.TYPE_COMMENT) {
                 str_commt = "에 댓글을 남겼습니다. ";
                // viewHolder.tv_feed_content.setText(info.getFeed_nickname() + " 님이 댓글을 남겼습니다.");
-            } else if(info.getFeed_type() == VoFeedList.TYPE_LIKE){
+            } else if(info.getFeedType() == VoFeedList.TYPE_LIKE){
                 str_commt = "에 좋아요 하였습니다. ";
                 //viewHolder.tv_feed_content.setText(info.getFeed_nickname() + " 님이 회원님의 사진을 좋아요 하였습니다.");
-            } else if(info.getFeed_type() == VoFeedList.TYPE_STORAGE){
+            } else if(info.getFeedType() == VoFeedList.TYPE_STORAGE){
                 str_commt = " 정보를 보관함에 담았습니다. ";
                 //viewHolder.tv_feed_content.setText(info.getFeed_nickname() + " 님이 ");
             }
 
-            String commt = info.getFeed_nickname() + "님이 " + str_place + str_commt + info.getFeed_date();
+            String commt = info.getFeedUserId() + "님이 " + str_place + str_commt + info.getDate();
 
             SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder(commt);
-            spannableStringBuilder.setSpan(new StyleSpan(Typeface.BOLD), 0, info.getFeed_nickname().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+            spannableStringBuilder.setSpan(new StyleSpan(Typeface.BOLD), 0, info.getFeedUserId().length(), Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
             spannableStringBuilder.setSpan(new ForegroundColorSpan(ResourcesCompat.getColor(getResources(), R.color.color_txt_90, null)),
-                    commt.length() - info.getFeed_date().length(), commt.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    commt.length() - info.getDate().length(), commt.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             spannableStringBuilder.setSpan(new AbsoluteSizeSpan((int)getResources().getDimension(R.dimen.dimen_13sp)),
-                    commt.length() - info.getFeed_date().length(), commt.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+                    commt.length() - info.getDate().length(), commt.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             viewHolder.tv_feed_content.append(spannableStringBuilder);
 
             //viewHolder.tv_feed_date.setText(info.getFeed_date());
@@ -176,9 +208,9 @@ public class FeedFragment extends BaseFragment {
                 viewHolder.iv_place.setVisibility(View.VISIBLE);
                 viewHolder.iv_origin_thumb.setVisibility(View.GONE);
 
-                if(info.getFeed_place_type() == Constant.PLACE_TYPES.PLACE_TYPE_CAFE) {
+                if(info.getBoardType() == Constant.PLACE_TYPES.PLACE_TYPE_CAFE) {
                     viewHolder.iv_place.setBackgroundResource(R.drawable.icon_type_cafe);
-                }else if(info.getFeed_place_type() == Constant.PLACE_TYPES.PLACE_TYPE_HOSPITAL) {
+                }else if(info.getBoardType() == Constant.PLACE_TYPES.PLACE_TYPE_HOSPITAL) {
                     viewHolder.iv_place.setBackgroundResource(R.drawable.icon_type_hospital);
                 }else{
                     viewHolder.iv_place.setBackgroundResource(R.drawable.icon_type_gowalk);
@@ -188,7 +220,7 @@ public class FeedFragment extends BaseFragment {
                 viewHolder.iv_place.setVisibility(View.GONE);
 
                 Glide.with(context)
-                        .load(info.getOrigin_thumb_path())
+                        .load(info.getRegThunmbPath())
                         .crossFade()
                         .bitmapTransform(new RoundedCornersTransformation(new CustomBitmapPool(), 10, 5))
                         .into(viewHolder.iv_origin_thumb);
@@ -233,7 +265,7 @@ public class FeedFragment extends BaseFragment {
         @Override
         public int getItemViewType(int position) {
 
-            if (feedList.get(position).getFeed_type() == VoFeedList.TYPE_COMMENT)
+            if (feedList.get(position).getFeedType() == VoFeedList.TYPE_COMMENT)
                 return VoFeedList.TYPE_COMMENT;
             else
                 return VoFeedList.TYPE_LIKE;

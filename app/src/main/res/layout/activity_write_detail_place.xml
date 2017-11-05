@@ -59,6 +59,7 @@
                 android:id="@+id/iv_place_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:src="@drawable/icon_type_cafe"
                 android:layout_marginRight="@dimen/dimen_5dp"/>
 
             <LinearLayout
@@ -72,16 +73,18 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/color_txt_37"
-                    android:textSize="@dimen/dimen_16sp"
+                    android:textSize="@dimen/dimen_17sp"
+                    android:text="@string/place_no_place"
                     android:textStyle="bold"
-                    android:layout_marginLeft="@dimen/dimen_7dp"/>
+                    android:layout_marginLeft="@dimen/dimen_10dp"/>
 
                 <TextView
                     android:id="@+id/tv_addr"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/color_txt_a5"
-                    android:textSize="@dimen/dimen_14sp"
+                    android:textColor="@color/color_txt_5c"
+                    android:textSize="@dimen/dimen_15sp"
+                    android:text="@string/place_no_place"
                     android:layout_marginLeft="@dimen/dimen_10dp"/>
 
             </LinearLayout>
@@ -90,8 +93,9 @@
                 android:id="@+id/tv_place_type"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/color_txt_a4bbc1"
-                android:textSize="@dimen/dimen_13sp"
+                android:textColor="@color/color_txt_5c"
+                android:textSize="@dimen/dimen_15sp"
+                android:text="@string/place_no_place"
                 android:layout_marginLeft="@dimen/dimen_10dp"/>
 
         </LinearLayout>
@@ -119,6 +123,7 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/color_txt_5c"
                     android:textSize="@dimen/dimen_15sp"
+                    android:text="@string/place_no_place"
                     android:layout_marginLeft="@dimen/dimen_10dp"/>
 
                 <LinearLayout
@@ -139,6 +144,7 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/color_txt_5c"
                         android:textSize="@dimen/dimen_15sp"
+                        android:text="@string/place_no_place"
                         android:layout_marginLeft="@dimen/dimen_10dp"/>
 
                 </LinearLayout>
@@ -166,36 +172,10 @@
                 android:textStyle="bold"
                 android:layout_marginLeft="@dimen/dimen_10dp"/>
 
-        </LinearLayout>
-
-        <TextView
-            android:id="@+id/tv_add_info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/color_txt_45"
-            android:textSize="@dimen/dimen_14sp"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/color_txt_45"
-                android:textSize="@dimen/dimen_14sp"
-                android:text="@string/price"/>
-
-            <TextView
-                android:id="@+id/tv_price"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/color_txt_87"
-                android:textSize="@dimen/dimen_14sp"
-                android:text="@string/price"/>
 
         </LinearLayout>
+
+
 
         <View
             android:layout_width="match_parent"
@@ -204,7 +184,6 @@
             android:layout_marginTop="@dimen/dimen_10dp" />
 
         <EditText
-            android:id="@+id/et_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColorHint="@color/color_txt_90"
@@ -219,11 +198,9 @@
             android:layout_marginTop="@dimen/dimen_10dp" />
 
         <EditText
-            android:id="@+id/et_conts"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
-            android:gravity="top"
             android:textColorHint="@color/color_txt_90"
             android:hint="@string/place_detail_conts"
             android:textColor="@color/color_txt_37"
@@ -239,22 +216,9 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
 
-                <ImageButton
-                    android:id="@+id/btn_camera"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/sel_btn_camera"/>
-
-                <ImageButton
-                    android:id="@+id/btn_album"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/sel_btn_album"/>
-
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/ll_photos"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"

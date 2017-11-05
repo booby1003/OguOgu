@@ -47,8 +47,8 @@ public class RelationPhotoListAdapter extends RecyclerView.Adapter<RelationPhoto
 
         VoPlaceDetail.VoRelation info = mItems.get(position);
 
-        Glide.with(context).load(info.getRelation_thumb_path()).crossFade().into(holder.iv_relation_thumb);
-        holder.tv_relation_title.setText(info.getRelation_nickname());
+        Glide.with(context).load(info.getRelationThumbPath()).crossFade().into(holder.iv_relation_thumb);
+        holder.tv_relation_title.setText(info.getRelationUserId());
 
         holder.iv_relation_thumb.setOnClickListener(new View.OnClickListener() {
             @Override

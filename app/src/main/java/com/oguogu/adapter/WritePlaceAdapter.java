@@ -13,7 +13,8 @@ import android.widget.TextView;
 import com.oguogu.R;
 import com.oguogu.activity.WritePlaceDetailActivity;
 import com.oguogu.util.LogUtil;
-import com.oguogu.vo.VoPlaceList;
+import com.oguogu.util.StringUtil;
+import com.oguogu.vo.VoWritePlaceList;
 
 import java.util.ArrayList;
 
@@ -21,12 +22,13 @@ import java.util.ArrayList;
  * Created by 김민정 on 2017-09-28.
  */
 
-public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.ViewHolder> {
+public class WritePlaceAdapter extends RecyclerView.Adapter<WritePlaceAdapter.ViewHolder> {
 
     private Context context;
-    private ArrayList<VoPlaceList.VoPlace> mItems = new ArrayList<>();
+    private ArrayList<VoWritePlaceList.VoPlace> mItems = new ArrayList<>();
+    private String place;
 
-    public PlaceAdapter(Context context) {
+    public WritePlaceAdapter(Context context) {
         this.context = context;
     }
 
@@ -39,9 +41,11 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        VoPlaceList.VoPlace info = mItems.get(position);
+        VoWritePlaceList.VoPlace info = mItems.get(position);
 
-        holder.tv_place.setText(info.getStoreName());
+        //holder.tv_place.setText(info.getStoreName());
+        StringUtil.setTextByResColor(holder.tv_place, info.getStoreName(), place,
+                context.getResources().getColor(R.color.colorBottomNavigationAccent));
         holder.tv_place_type.setText(info.getPlaceTypeStr());
         holder.tv_addr.setText(info.getAddr());
 
@@ -51,7 +55,8 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.ViewHolder> 
         LogUtil.i("position :: " + position);
     }
 
-    public void setItems(ArrayList<VoPlaceList.VoPlace> items) {
+    public void setItems(ArrayList<VoWritePlaceList.VoPlace> items, String place) {
+        this.place = place;
         mItems = items;
         notifyDataSetChanged();
     }
@@ -70,7 +75,7 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.ViewHolder> 
         @Override
         public void onClick(View v) {
 
-            VoPlaceList.VoPlace info = (VoPlaceList.VoPlace) v.getTag();
+            VoWritePlaceList.VoPlace info = (VoWritePlaceList.VoPlace) v.getTag();
 
             Intent intent = new Intent(context, WritePlaceDetailActivity.class);
             intent.putExtra(WritePlaceDetailActivity.PLACE_IDX, info.getPlace_idx());

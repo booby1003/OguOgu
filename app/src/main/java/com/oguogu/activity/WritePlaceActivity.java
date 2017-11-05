@@ -22,12 +22,12 @@ import android.widget.TextView;
 
 import com.oguogu.GlobalApplication;
 import com.oguogu.R;
-import com.oguogu.adapter.PlaceAdapter;
+import com.oguogu.adapter.WritePlaceAdapter;
 import com.oguogu.communication.HttpRequest;
 import com.oguogu.util.LogUtil;
 import com.oguogu.util.StringUtil;
 import com.oguogu.vo.VoBase;
-import com.oguogu.vo.VoPlaceList;
+import com.oguogu.vo.VoWritePlaceList;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -65,7 +65,7 @@ public class WritePlaceActivity extends AppCompatActivity {
     private Timer timer = null;
     private final long DELAY_TIME = 1000;
 
-    private PlaceAdapter adapter;
+    private WritePlaceAdapter adapter;
 
 
     @Override
@@ -80,7 +80,7 @@ public class WritePlaceActivity extends AppCompatActivity {
         recycler_view.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         recycler_view.setLayoutManager(linearLayoutManager);
-        adapter = new PlaceAdapter(this);
+        adapter = new WritePlaceAdapter(this);
         recycler_view.setAdapter(adapter);
 
         et_srch.addTextChangedListener(new TextWatcher() {
@@ -211,8 +211,8 @@ public class WritePlaceActivity extends AppCompatActivity {
         }
 
 
-        VoPlaceList placeList = GlobalApplication.getGson().fromJson(msg, VoPlaceList.class);
-        setTestListView(placeList.getData());
+        VoWritePlaceList placeList = GlobalApplication.getGson().fromJson(msg, VoWritePlaceList.class);
+        setTestListView(placeList.getData(), place);
 
 
 
@@ -246,12 +246,12 @@ public class WritePlaceActivity extends AppCompatActivity {
 
     }
 
-    private void setTestListView(final ArrayList<VoPlaceList.VoPlace> placeList) {
+    private void setTestListView(final ArrayList<VoWritePlaceList.VoPlace> placeList, final String place) {
 
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                adapter.setItems(placeList);
+                adapter.setItems(placeList, place);
             }
         });
 

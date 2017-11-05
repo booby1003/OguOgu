@@ -10,34 +10,30 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.oguogu.R;
 import com.oguogu.activity.PlaceDetailActivity;
-import com.oguogu.activity.StoryDetailActivity;
-import com.oguogu.custom.CustomBitmapPool;
 import com.oguogu.util.LogUtil;
 import com.oguogu.vo.VoHomeList;
+import com.oguogu.vo.VoPlaceList;
 
 import java.util.ArrayList;
-
-import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 /**
  * Created by Administrator on 2016-12-23.
  */
 
-public class ContentListAdapter extends RecyclerView.Adapter<ContentListAdapter.ViewHolder> {
+public class PlaceListAdapter extends RecyclerView.Adapter<PlaceListAdapter.ViewHolder> {
 
     private Context context;
-    private ArrayList<VoHomeList.VoHomeInfo> mItems;
+    private ArrayList<VoPlaceList.VoPlace> mItems;
 
     private int lastPosition = -1;
 
-    public ContentListAdapter(ArrayList<VoHomeList.VoHomeInfo> items, Context mContext) {
+    public PlaceListAdapter(ArrayList<VoPlaceList.VoPlace> items, Context mContext) {
         mItems = items;
         context = mContext;
     }
@@ -46,13 +42,7 @@ public class ContentListAdapter extends RecyclerView.Adapter<ContentListAdapter.
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = null;
-        if (viewType == VoHomeList.TYPE_STORY) {
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_home_story_item, parent, false);
-        } else {
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_home_place_item, parent, false);
-        }
-
+        View view =  LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_place_item, parent, false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
     }
@@ -61,51 +51,33 @@ public class ContentListAdapter extends RecyclerView.Adapter<ContentListAdapter.
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
 
-        VoHomeList.VoHomeInfo info = mItems.get(position);
+        VoPlaceList.VoPlace info = mItems.get(position);
 
-        if (info.getBoardType() == VoHomeList.TYPE_STORY) {
-            holder.tv_title.setText(info.getTitle());
-            holder.tv_userid.setText(info.getRegUserID());
-            holder.tv_reg_date.setText(info.getRegDate());
-            Glide.with(context).load(info.getRegThunmbPath()).bitmapTransform(new CropCircleTransformation(new CustomBitmapPool())).into(holder.iv_reg_img);
+        holder.tv_place_name.setText(info.getPlaceName());
+        holder.tv_place_addr.setText(info.getPlaceAddr());
 
-            holder.iv_reg_img.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Toast.makeText(context, "유저 정보로 이동!!", Toast.LENGTH_SHORT).show();
-                }
-            });
+        int storeTypeResId=0;
+        if (info.getBoardType() == VoHomeList.TYPE_CAFE)
+            storeTypeResId = R.drawable.icon_type_cafe_s;
+        else if (info.getBoardType() == VoHomeList.TYPE_HOSPITAL)
+            storeTypeResId = R.drawable.icon_type_hospital_s;
+        else if (info.getBoardType() == VoHomeList.TYPE_PLAYGROUND)
+            storeTypeResId = R.drawable.icon_type_gowalk_s;
 
-        } else {
-            holder.tv_title.setText(info.getTitle());
-            holder.tv_store_name.setText(info.getStoreName());
-            holder.tv_store_addr.setText(info.getAddr());
+        Glide.with(context)
+                .load(storeTypeResId)
+                .into(holder.iv_place);
 
-            int storeTypeResId=0;
-            if (info.getBoardType() == VoHomeList.TYPE_CAFE)
-                storeTypeResId = R.drawable.icon_type_cafe_s;
-            else if (info.getBoardType() == VoHomeList.TYPE_HOSPITAL)
-                storeTypeResId = R.drawable.icon_type_hospital_s;
-            else if (info.getBoardType() == VoHomeList.TYPE_PLAYGROUND)
-                storeTypeResId = R.drawable.icon_type_gowalk_s;
+        //holder.tv_reg_date.setText(info.getRegDate());
+        //Glide.with(context).load(info.getRegThunmbPath()).bitmapTransform(new CropCircleTransformation(new CustomBitmapPool())).into(holder.iv_reg_img);
 
-            Glide.with(context)
-                    .load(storeTypeResId)
-                    .into(holder.iv_store);
+//        holder.iv_reg_img.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                Toast.makeText(context, "유저 정보로 이동!!", Toast.LENGTH_SHORT).show();
+//            }
+//        });
 
-            holder.layout_store.setTag(info);
-            holder.layout_store.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    VoHomeList.VoHomeInfo tagInfo =  (VoHomeList.VoHomeInfo)v.getTag();
-
-                    Intent intent = new Intent(context, PlaceDetailActivity.class);
-                    intent.putExtra(PlaceDetailActivity.PLACE_IDX, tagInfo.getBoard_idx());
-                    context.startActivity(intent);
-                    ((Activity)context).overridePendingTransition(R.anim.slide_right_to_left, R.anim.slide_center_to_left);
-                }
-            });
-        }
 
         holder.btn_like.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -131,10 +103,10 @@ public class ContentListAdapter extends RecyclerView.Adapter<ContentListAdapter.
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                VoHomeList.VoHomeInfo tagInfo =  (VoHomeList.VoHomeInfo)v.getTag();
+                VoPlaceList.VoPlace tagInfo =  (VoPlaceList.VoPlace)v.getTag();
 
-                Intent intent = new Intent(context, StoryDetailActivity.class);
-                intent.putExtra(PlaceDetailActivity.PLACE_IDX, tagInfo.getBoard_idx());
+                Intent intent = new Intent(context, PlaceDetailActivity.class);
+                intent.putExtra(PlaceDetailActivity.PLACE_IDX, tagInfo.getBoardIdx());
                 context.startActivity(intent);
                 ((Activity)context).overridePendingTransition(R.anim.slide_right_to_left, R.anim.slide_center_to_left);
             }
@@ -151,19 +123,18 @@ public class ContentListAdapter extends RecyclerView.Adapter<ContentListAdapter.
 //            setAnimation(holder.imageView, position);
     }
 
-    public void setItems(ArrayList<VoHomeList.VoHomeInfo> items) {
+    public void setItems(ArrayList<VoPlaceList.VoPlace> items) {
         mItems = items;
         notifyDataSetChanged();
     }
 
-    public void setItem(ArrayList<VoHomeList.VoHomeInfo> items, int itemType) {
-        mItems = new ArrayList<VoHomeList.VoHomeInfo>();
+    public void setItem(ArrayList<VoPlaceList.VoPlace> items, int itemType) {
+        mItems = new ArrayList<VoPlaceList.VoPlace>();
 
-        for (VoHomeList.VoHomeInfo item : items) {
+        for (VoPlaceList.VoPlace item : items) {
             if (item.getBoardType() == itemType)
                 mItems.add(item);
         }
-
         notifyDataSetChanged();
     }
 
@@ -177,31 +148,19 @@ public class ContentListAdapter extends RecyclerView.Adapter<ContentListAdapter.
 
         public CardView cardView;
         public ImageView imageView;
-        public TextView tv_title;
+        public ImageView iv_place;
         public ImageButton btn_like;
-        public LinearLayout layout_store;
-        public ImageView iv_store;
-        public TextView tv_store_name;
-        public TextView tv_store_addr;
-
-        public ImageView iv_reg_img;
-        public TextView tv_userid;
-        public TextView tv_reg_date;
+        public TextView tv_place_name;
+        public TextView tv_place_addr;
 
         public ViewHolder(View view) {
             super(view);
             cardView = (CardView) view.findViewById(R.id.card_view);
             imageView = (ImageView) view.findViewById(R.id.image);
-            tv_title = (TextView) view.findViewById(R.id.tv_title);
             btn_like = (ImageButton) view.findViewById(R.id.btn_like);
-            layout_store = (LinearLayout) view.findViewById(R.id.layout_store);
-            iv_store = (ImageView) view.findViewById(R.id.iv_store);
-            tv_store_name = (TextView) view.findViewById(R.id.tv_store_name);
-            tv_store_addr = (TextView) view.findViewById(R.id.tv_store_addr);
-
-            iv_reg_img = (ImageView) view.findViewById(R.id.iv_reg_img);
-            tv_userid = (TextView) view.findViewById(R.id.tv_userid);
-            tv_reg_date = (TextView) view.findViewById(R.id.tv_reg_date);
+            iv_place = (ImageView) view.findViewById(R.id.iv_place);
+            tv_place_name = (TextView) view.findViewById(R.id.tv_place_name);
+            tv_place_addr = (TextView) view.findViewById(R.id.tv_place_addr);
         }
     }
 

@@ -173,31 +173,31 @@
                 android:layout_marginTop="@dimen/dimen_2dp"/>
         </LinearLayout>
 
-        <View
-            android:layout_width="30dp"
-            android:layout_height="0px" />
+        <!--<View-->
+            <!--android:layout_width="30dp"-->
+            <!--android:layout_height="0px" />-->
 
 
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:gravity="center_horizontal">
+        <!--<LinearLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:orientation="vertical"-->
+            <!--android:gravity="center_horizontal">-->
 
-            <ImageButton
-                android:id="@+id/btn_write_mine"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:background="@drawable/sel_write_mine" />
+            <!--<ImageButton-->
+                <!--android:id="@+id/btn_write_mine"-->
+                <!--android:layout_width="45dp"-->
+                <!--android:layout_height="45dp"-->
+                <!--android:background="@drawable/sel_write_mine" />-->
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/write_btn_mine"
-                android:textSize="@dimen/dimen_12dp"
-                android:textColor="@color/write_btn"
-                android:layout_marginTop="@dimen/dimen_2dp"/>
-        </LinearLayout>
+            <!--<TextView-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="@string/write_btn_mine"-->
+                <!--android:textSize="@dimen/dimen_12dp"-->
+                <!--android:textColor="@color/write_btn"-->
+                <!--android:layout_marginTop="@dimen/dimen_2dp"/>-->
+        <!--</LinearLayout>-->
 
 
     </LinearLayout>

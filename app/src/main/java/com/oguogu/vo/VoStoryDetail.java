@@ -18,165 +18,140 @@ public class VoStoryDetail extends VoDetail{
         return instance;
     }
 
-    private String board_idx;
-    private String board_title;
-    private String board_content;
-    private String board_date;
-    private String storeName;
-    private String storeAddr;
-    private int boardType;
-    private int isLike;
-    private String regUserNickname;
-    private String regUserThumbPath;
-    private String regStoreUserNickname;
-    private String total_like_cnt;
-    private String total_comment_cnt;
-    private String register_userid;
+    private String BoardIdx;
+    private String Title;
+    private String Conts;
+    private String RegDate;
+    private String PlaceName;
+    private String PlaceAddr;
+    private int BoardType;
+    private boolean IsLike;
+    private String RegUserID;
+    private String RegThunmbPath;
+    private String TotalLikeCnt;
+    private String TotalCommentCnt;
 
-    private ArrayList<VoImagePath> store_img_list = new ArrayList<VoImagePath>();
-    private ArrayList<VoImagePath> my_img_list = new ArrayList<VoImagePath>();
-    private ArrayList<VoComment> comment_list = new ArrayList<VoComment>();
+    private ArrayList<String> ImgList = new ArrayList<String>();
+    private ArrayList<VoComment> CommentList = new ArrayList<VoComment>();
 
     public void clear(){
         instance = null;
     }
 
-    public String getBoard_idx() {
-        return board_idx;
+
+    public static void setInstance(VoStoryDetail instance) {
+        VoStoryDetail.instance = instance;
     }
 
-    public void setBoard_idx(String board_idx) {
-        this.board_idx = board_idx;
+    public String getBoardIdx() {
+        return BoardIdx;
     }
 
-    public String getBoard_title() {
-        return board_title;
+    public void setBoardIdx(String boardIdx) {
+        BoardIdx = boardIdx;
     }
 
-    public void setBoard_title(String board_title) {
-        this.board_title = board_title;
+    public String getTitle() {
+        return Title;
     }
 
-    public String getBoard_content() {
-        return board_content;
+    public void setTitle(String title) {
+        Title = title;
     }
 
-    public void setBoard_content(String board_content) {
-        this.board_content = board_content;
+    public String getConts() {
+        return Conts;
     }
 
-    public String getBoard_date() {
-        return board_date;
+    public void setConts(String conts) {
+        Conts = conts;
     }
 
-    public void setBoard_date(String board_date) {
-        this.board_date = board_date;
+    public String getRegDate() {
+        return RegDate;
     }
 
-    public String getStoreName() {
-        return storeName;
+    public void setRegDate(String regDate) {
+        RegDate = regDate;
     }
 
-    public void setStoreName(String storeName) {
-        this.storeName = storeName;
+    public String getPlaceName() {
+        return PlaceName;
     }
 
-    public String getStoreAddr() {
-        return storeAddr;
+    public void setPlaceName(String placeName) {
+        PlaceName = placeName;
     }
 
-    public void setStoreAddr(String storeAddr) {
-        this.storeAddr = storeAddr;
+    public String getPlaceAddr() {
+        return PlaceAddr;
+    }
+
+    public void setPlaceAddr(String placeAddr) {
+        PlaceAddr = placeAddr;
     }
 
     public int getBoardType() {
-        return boardType;
+        return BoardType;
     }
 
     public void setBoardType(int boardType) {
-        this.boardType = boardType;
+        BoardType = boardType;
     }
 
-    public int getIsLike() {
-        return isLike;
+    public boolean isLike() {
+        return IsLike;
     }
 
-    public void setIsLike(int isLike) {
-        this.isLike = isLike;
+    public void setLike(boolean like) {
+        IsLike = like;
     }
 
-    public String getRegUserNickname() {
-        return regUserNickname;
+    public String getRegUserID() {
+        return RegUserID;
     }
 
-    public void setRegUserNickname(String regUserNickname) {
-        this.regUserNickname = regUserNickname;
+    public void setRegUserID(String regUserID) {
+        RegUserID = regUserID;
     }
 
-    public String getRegUserThumbPath() {
-        return regUserThumbPath;
+    public String getRegThunmbPath() {
+        return RegThunmbPath;
     }
 
-    public void setRegUserThumbPath(String regUserThumbPath) {
-        this.regUserThumbPath = regUserThumbPath;
+    public void setRegThunmbPath(String regThunmbPath) {
+        RegThunmbPath = regThunmbPath;
     }
 
-    public String getRegStoreUserNickname() {
-        return regStoreUserNickname;
+    public String getTotalLikeCnt() {
+        return TotalLikeCnt;
     }
 
-    public void setRegStoreUserNickname(String regStoreUserNickname) {
-        this.regStoreUserNickname = regStoreUserNickname;
+    public void setTotalLikeCnt(String totalLikeCnt) {
+        TotalLikeCnt = totalLikeCnt;
     }
 
-    public String getRegister_userid() {
-        return register_userid;
+    public String getTotalCommentCnt() {
+        return TotalCommentCnt;
     }
 
-    public void setRegister_userid(String register_userid) {
-        this.register_userid = register_userid;
+    public void setTotalCommentCnt(String totalCommentCnt) {
+        TotalCommentCnt = totalCommentCnt;
     }
 
-    public String getTotal_like_cnt() {
-        return total_like_cnt;
+    public ArrayList<String> getImgList() {
+        return ImgList;
     }
 
-    public void setTotal_like_cnt(String total_like_cnt) {
-        this.total_like_cnt = total_like_cnt;
+    public void setImgList(ArrayList<String> imgList) {
+        ImgList = imgList;
     }
 
-    public String getTotal_comment_cnt() {
-        return total_comment_cnt;
+    public ArrayList<VoComment> getCommentList() {
+        return CommentList;
     }
 
-    public void setTotal_comment_cnt(String total_comment_cnt) {
-        this.total_comment_cnt = total_comment_cnt;
+    public void setCommentList(ArrayList<VoComment> commentList) {
+        CommentList = commentList;
     }
-
-    public ArrayList<VoComment> getComment_list() {
-        return comment_list;
-    }
-
-    public void setComment_list(ArrayList<VoComment> comment_list) {
-        this.comment_list = comment_list;
-    }
-
-    public ArrayList<VoImagePath> getStore_img_list() {
-        return store_img_list;
-    }
-
-    public void setStore_img_list(ArrayList<VoImagePath> store_img_list) {
-        this.store_img_list = store_img_list;
-    }
-
-    public ArrayList<VoImagePath> getMy_img_list() {
-        return my_img_list;
-    }
-
-    public void setMy_img_list(ArrayList<VoImagePath> my_img_list) {
-        this.my_img_list = my_img_list;
-    }
-
-
-
 }

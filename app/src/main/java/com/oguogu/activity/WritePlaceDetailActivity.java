@@ -1,20 +1,24 @@
 package com.oguogu.activity;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
+import com.android.volley.Request;
+import com.android.volley.VolleyError;
 import com.oguogu.GlobalApplication;
 import com.oguogu.R;
-import com.oguogu.util.StringUtil;
+import com.oguogu.communication.ConstantCommURL;
+import com.oguogu.communication.HttpRequest;
 import com.oguogu.vo.VoPlaceDetail;
 
-import java.io.IOException;
+import org.json.JSONObject;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -26,20 +30,18 @@ import butterknife.ButterKnife;
 public class WritePlaceDetailActivity extends AppCompatActivity {
 
     public static final String PLACE_IDX = "PLACE_IDX";
-    private VoPlaceDetail detailInfo;
+    HttpRequest mRequest = null;
+    VoPlaceDetail placeInfo = null;
 
+    @Bind(R.id.toolbar) Toolbar toolbar;
+    @Bind(R.id.btn_close) ImageButton btn_close;
+    @Bind(R.id.btn_wirte) ImageButton btn_wirte;
     @Bind(R.id.iv_place_type) ImageView iv_place_type;
     @Bind(R.id.tv_place_name) TextView tv_place_name;
     @Bind(R.id.tv_addr) TextView tv_addr;
     @Bind(R.id.tv_place_type) TextView tv_place_type;
     @Bind(R.id.tv_time) TextView tv_time;
     @Bind(R.id.tv_tel_no) TextView tv_tel_no;
-    @Bind(R.id.tv_add_info) TextView tv_add_info;
-    @Bind(R.id.tv_price) TextView tv_price;
-    @Bind(R.id.et_title) EditText et_title;
-    @Bind(R.id.et_conts) EditText et_conts;
-    @Bind(R.id.btn_camera) ImageButton btn_camera;
-    @Bind(R.id.btn_album) ImageButton btn_album;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -47,61 +49,51 @@ public class WritePlaceDetailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_write_detail_place);
 
         ButterKnife.bind(this);
-        getPlaceDetail();
+        getPlaceInfo();
+
     }
 
-    private void getPlaceDetail() {
+    private void getPlaceInfo() {
 
-        String msg = null;
-        try {
-            msg = StringUtil.getData(this, "write_place_detail.json");
-        }catch (IOException e) {
-            e.printStackTrace();
-        }
+        if(mRequest == null) mRequest = HttpRequest.getInstance(this);
 
-        detailInfo = GlobalApplication.getGson().fromJson(msg, VoPlaceDetail.class);
+        String url = ConstantCommURL.getURL(ConstantCommURL.URL_API, ConstantCommURL.REQUEST_GET_WRITE_PLACE);
+        Uri.Builder builder = Uri.parse(url).buildUpon();
+        //builder.appendQueryParameter("", "");
 
-        Glide.with(this).load(StringUtil.getBoardTypeDrawable(detailInfo.getBoardType())).into(iv_place_type);
-        tv_place_name.setText(detailInfo.getStoreName());
-        tv_addr.setText(detailInfo.getAddr());
-        tv_place_type.setText(detailInfo.getPlaceType());
-        tv_time.setText(detailInfo.getTime());
-        tv_tel_no.setText(detailInfo.getTel_no());
+        mRequest.StringRequest(ConstantCommURL.REQUEST_TAG_WRITE_PLACE, Request.Method.GET, builder.toString(), "", new HttpRequest.ListenerHttpResponse() {
 
-        StringBuffer stringBuffer = new StringBuffer();
-        int i = 0;
-        for(String addInfo : detailInfo.getStore_info_list()) {
-            stringBuffer.append(addInfo);
-            if(i < detailInfo.getStore_info_list().size())
-                stringBuffer.append(" | ");
-            i++;
-        }
-        tv_add_info.setText(stringBuffer.toString());
+            @Override
+            public void success(String response) {
 
-        stringBuffer.setLength(0);
-        i = 0;
+                placeInfo = GlobalApplication.getGson().fromJson(response, VoPlaceDetail.class);
+                setPlaceInfo();
+            }
 
-        for(String price : detailInfo.getPrice_list()) {
-            stringBuffer.append(price);
-            if(i < detailInfo.getStore_info_list().size())
-                stringBuffer.append("\n");
-            i++;
-        }
-        tv_price.setText(stringBuffer.toString());
+            @Override
+            public void fail(JSONObject response) {
+
+            }
+
+            @Override
+            public void exception(VolleyError error) {
+
+            }
+
+            @Override
+            public void networkerror() {
+
+            }
+        });
+    }
+
+    private void setPlaceInfo() {
+
+        //Glide.with(this).load(StringUtil.getBoardTypeDrawable(storeDetail.getBoardType())).into(iv_store_type);
+
+
+
+
 
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
