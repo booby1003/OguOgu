@@ -9,8 +9,7 @@ public class VoPlaceDetail extends VoDetail{
 
     private static VoPlaceDetail instance;
 
-    private VoPlaceDetail() {
-    }
+    private VoPlaceDetail() {}
 
     public static synchronized VoPlaceDetail getInstance() {
         if (instance == null)
