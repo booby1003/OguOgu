@@ -74,7 +74,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
     @Bind(R.id.recycler_view) RecyclerView recyclerView;
 //    @Bind(R.id.scrollView) ScrollView scrollView;
 
-    private VoPlaceDetail storeDetail;
+    private VoPlaceDetail placeDetail;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -125,7 +125,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
             @Override
             public void success(String response) {
 
-                storeDetail = GlobalApplication.getGson().fromJson(response, VoPlaceDetail.class);
+                placeDetail = GlobalApplication.getGson().fromJson(response, VoPlaceDetail.class);
                 setPlaceDetail();
                 setCommentList();
             }
@@ -149,19 +149,19 @@ public class PlaceDetailActivity extends AppCompatActivity {
 
     private  void setPlaceDetail() {
 
-        tv_store_name.setText(storeDetail.getPlaceName());
-        tv_register.setText("By " + storeDetail.getRegUserId());
-        tv_store_name2.setText(storeDetail.getPlaceName());
-        Glide.with(this).load(UIUtil.getBoardTypeDrawable(storeDetail.getBoardType())).into(iv_store_type);
-        tv_addr.setText(storeDetail.getPlaceAddr());
-        tv_content.setText(storeDetail.getConts());
-        tv_tel.setText(storeDetail.getTelNo());
-        tv_time.setText(storeDetail.getTime());
+        tv_store_name.setText(placeDetail.getPlaceName());
+        tv_register.setText("By " + placeDetail.getRegUserId());
+        tv_store_name2.setText(placeDetail.getPlaceName());
+        Glide.with(this).load(UIUtil.getBoardTypeDrawable(placeDetail.getBoardType())).into(iv_store_type);
+        tv_addr.setText(placeDetail.getPlaceAddr());
+        tv_content.setText(placeDetail.getConts());
+        tv_tel.setText(placeDetail.getTelNo());
+        tv_time.setText(placeDetail.getTime());
 
         String storeInfo="";
-        for (int idx=0; idx<storeDetail.getExtraInfoList().size(); idx++) {
+        for (int idx=0; idx<placeDetail.getExtraInfoList().size(); idx++) {
 
-            String info = storeDetail.getExtraInfoList().get(idx);
+            String info = placeDetail.getExtraInfoList().get(idx);
 
             if (idx > 0)
                 storeInfo += " | ";
@@ -170,24 +170,24 @@ public class PlaceDetailActivity extends AppCompatActivity {
         }
         tv_store_info.setText(storeInfo);
 
-        tv_like_count.setText(storeDetail.getTotalLikeCnt());
-        tv_bookmark_count.setText(storeDetail.getTotalBookmarkCnt());
-        tv_comment_count.setText(storeDetail.getTotalCommentCnt());
+        tv_like_count.setText(placeDetail.getTotalLikeCnt());
+        tv_bookmark_count.setText(placeDetail.getTotalBookmarkCnt());
+        tv_comment_count.setText(placeDetail.getTotalCommentCnt());
 
         //setCommentList();
 
-        ViewPagerImgAdapter viewPagerImgAdapter = new ViewPagerImgAdapter(PlaceDetailActivity.this, storeDetail.getImgList());
+        ViewPagerImgAdapter viewPagerImgAdapter = new ViewPagerImgAdapter(PlaceDetailActivity.this, placeDetail.getImgList());
         viewPager.setAdapter(viewPagerImgAdapter);
 
-        RelationPhotoListAdapter relationPhotoListAdapter = new RelationPhotoListAdapter(storeDetail.getRelationList(), this);
+        RelationPhotoListAdapter relationPhotoListAdapter = new RelationPhotoListAdapter(placeDetail.getRelationList(), this);
         recyclerView.setAdapter(relationPhotoListAdapter);
     }
 
     private void setCommentList() {
         layoutComment.removeAllViews();
 
-        for (int idx=0; idx<storeDetail.getCommentList().size(); idx++) {
-            VoDetail.VoComment commentInfo = storeDetail.getCommentList().get(idx);
+        for (int idx=0; idx<placeDetail.getCommentList().size(); idx++) {
+            VoDetail.VoComment commentInfo = placeDetail.getCommentList().get(idx);
 
             View view = LayoutInflater.from(this).inflate(R.layout.detail_comment_item, null);
             ImageView iv_comment_img = (ImageView)view.findViewById(R.id.iv_comment_img);
@@ -215,7 +215,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         VoDetail.VoComment deleteComment = (VoDetail.VoComment)v.getTag();
-                        storeDetail.getCommentList().remove(deleteComment);
+                        placeDetail.getCommentList().remove(deleteComment);
                         setCommentList();
 
                         Toast.makeText(PlaceDetailActivity.this, "삭제!", Toast.LENGTH_SHORT).show();

@@ -32,6 +32,7 @@ public class VoPlaceDetail extends VoDetail{
     private String TotalLikeCnt;
     private String TotalBookmarkCnt;
     private String TotalCommentCnt;
+    private String PlaceTypeStr;
 
     private ArrayList<String> ExtraInfoList = new ArrayList<>();
     private ArrayList<String> PriceList = new ArrayList<>();
@@ -162,6 +163,14 @@ public class VoPlaceDetail extends VoDetail{
 
     public void setTotalCommentCnt(String totalCommentCnt) {
         TotalCommentCnt = totalCommentCnt;
+    }
+
+    public String getPlaceTypeStr() {
+        return PlaceTypeStr;
+    }
+
+    public void setPlaceTypeStr(String placeTypeStr) {
+        PlaceTypeStr = placeTypeStr;
     }
 
     public ArrayList<VoComment> getCommentList() {

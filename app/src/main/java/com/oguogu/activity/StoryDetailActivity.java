@@ -26,6 +26,7 @@ import com.oguogu.communication.ConstantCommURL;
 import com.oguogu.communication.HttpRequest;
 import com.oguogu.custom.CustomBitmapPool;
 import com.oguogu.custom.CustomViewPager;
+import com.oguogu.util.UIUtil;
 import com.oguogu.vo.VoDetail;
 import com.oguogu.vo.VoHomeList;
 import com.oguogu.vo.VoMyInfo;
@@ -133,15 +134,15 @@ public class StoryDetailActivity extends AppCompatActivity {
         tv_like_count.setText(storyDetail.getTotalLikeCnt());
         tv_comment_count.setText(storyDetail.getTotalCommentCnt());
 
-        int storeTypeResId=0;
-        if (storyDetail.getBoardType() == VoHomeList.TYPE_CAFE)
-            storeTypeResId = R.drawable.icon_type_cafe_s;
-        else if (storyDetail.getBoardType() == VoHomeList.TYPE_HOSPITAL)
-            storeTypeResId = R.drawable.icon_type_hospital_s;
-        else if (storyDetail.getBoardType() == VoHomeList.TYPE_PLAYGROUND)
-            storeTypeResId = R.drawable.icon_type_gowalk_s;
+        int boardTypeId = UIUtil.getBoardTypeDrawable(storyDetail.getBoardType());
+//        if (storyDetail.getBoardType() == VoHomeList.TYPE_CAFE)
+//            storeTypeResId = R.drawable.icon_type_cafe_s;
+//        else if (storyDetail.getBoardType() == VoHomeList.TYPE_HOSPITAL)
+//            storeTypeResId = R.drawable.icon_type_hospital_s;
+//        else if (storyDetail.getBoardType() == VoHomeList.TYPE_PLAYGROUND)
+//            storeTypeResId = R.drawable.icon_type_gowalk_s;
 
-        Glide.with(this).load(storeTypeResId).into(iv_store_ico);
+        Glide.with(this).load(boardTypeId).into(iv_store_ico);
         Glide.with(this).load(storyDetail.getRegThunmbPath()).bitmapTransform(new CropCircleTransformation(new CustomBitmapPool())).into(iv_register_user);
 
         if (storyDetail.getRegUserID().equals(VoMyInfo.getInstance().getId())) {

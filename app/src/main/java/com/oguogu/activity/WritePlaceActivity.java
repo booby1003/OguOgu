@@ -221,7 +221,7 @@ public class WritePlaceActivity extends AppCompatActivity {
             public void success(String response) {
 
                 VoWritePlaceList placeList = GlobalApplication.getGson().fromJson(response, VoWritePlaceList.class);
-                setTestListView(placeList.getData(), place);
+                adapter.setItems(placeList.getData(), place);
             }
 
             @Override
@@ -252,14 +252,4 @@ public class WritePlaceActivity extends AppCompatActivity {
 //        setTestListView(placeList.getData(), place);
     }
 
-    private void setTestListView(final ArrayList<VoWritePlaceList.VoPlace> placeList, final String place) {
-
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                adapter.setItems(placeList, place);
-            }
-        });
-
-    }
 }

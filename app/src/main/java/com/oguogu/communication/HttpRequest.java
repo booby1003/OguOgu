@@ -94,6 +94,7 @@ public class HttpRequest {
             listener.networkerror();
             return;
         }
+        LogUtil.d("url : " + url);
 
         StringRequest stringRequest = new StringRequest(method, url, new Response.Listener<String>(){
 
