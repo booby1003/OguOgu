@@ -104,6 +104,14 @@
     <string name="title">제목</string>
     <string name="place_detail_conts">상세 내용을 입력해 주세요.</string>
     <string name="price">가격</string>
+
+    <string name="toast_image_max">이미지는 최대 5장까지 업데이트 가능합니다.</string>
+
+    <string name="crop_image_activity_title"></string>
+    <string name="crop_image_menu_rotate_left">Rotate counter clockwise</string>
+    <string name="crop_image_menu_rotate_right">Rotate</string>
+    <string name="crop_image_menu_crop">Crop</string>
+    <string name="pick_image_intent_chooser_title">Select source</string>
 </resources>
 
 

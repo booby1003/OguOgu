@@ -5,10 +5,12 @@ import android.app.Application;
 import android.content.Context;
 import android.support.multidex.MultiDex;
 
+import com.crashlytics.android.Crashlytics;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.kakao.auth.KakaoSDK;
 import com.oguogu.signin.KakaoSDKAdapter;
+import io.fabric.sdk.android.Fabric;
 
 /**
  * Created by Administrator on 2016-11-30.
@@ -27,6 +29,7 @@ public class GlobalApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        Fabric.with(this, new Crashlytics());
         obj = this;
         KakaoSDK.init(new KakaoSDKAdapter());
     }
