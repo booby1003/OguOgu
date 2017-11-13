@@ -139,5 +139,12 @@ public class UIUtil {
         return num;
     }
 
+    // pixel -> dp
+    public static int pixelToDp(float pixel, Context context) {
+        float density = context.getResources().getDisplayMetrics().densityDpi;
+        int dp = (int) (pixel / ((float)density / DisplayMetrics.DENSITY_DEFAULT));
+        return dp;
+    }
+
 
 }

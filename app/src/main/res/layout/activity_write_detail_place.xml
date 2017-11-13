@@ -53,7 +53,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:padding="@dimen/dimen_7dp">
+            android:padding="@dimen/dimen_10dp">
 
             <ImageView
                 android:id="@+id/iv_place_type"
@@ -74,8 +74,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/color_txt_37"
-                    android:textSize="@dimen/dimen_16sp"
-                    android:text="강아지 카페"
+                    android:textSize="@dimen/dimen_17sp"
                     android:textStyle="bold" />
 
                 <TextView
@@ -83,8 +82,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/color_txt_a5"
-                    android:textSize="@dimen/dimen_13sp"
-                    android:text="서울시 강동구 천호동" />
+                    android:textSize="@dimen/dimen_13sp" />
 
             </LinearLayout>
 
@@ -94,7 +92,6 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/color_txt_a4bbc1"
                 android:textSize="@dimen/dimen_13sp"
-                android:text="카페/디저트"
                 android:layout_marginLeft="@dimen/dimen_10dp"/>
 
         </LinearLayout>
@@ -103,7 +100,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:paddingLeft="@dimen/dimen_7dp">
+            android:paddingLeft="@dimen/dimen_10dp">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -123,8 +120,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textColor="@color/color_txt_45"
-                    android:textSize="@dimen/dimen_14sp"
-                    android:text="매일 12:00~22:00(무휴)" />
+                    android:textSize="@dimen/dimen_14sp" />
 
                 <LinearLayout
                     android:layout_width="wrap_content"
@@ -143,7 +139,6 @@
                         android:layout_height="wrap_content"
                         android:textColor="@color/color_txt_5c"
                         android:textSize="@dimen/dimen_14sp"
-                        android:text="070-1111-2222"
                         android:layout_marginLeft="@dimen/dimen_5dp"/>
 
                 </LinearLayout>
@@ -151,6 +146,7 @@
         </LinearLayout>
 
         <View
+            android:id="@+id/line_more_info"
             android:layout_width="match_parent"
             android:layout_height="1px"
             android:background="@color/color_comm_line"
@@ -163,8 +159,8 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_marginTop="@dimen/dimen_10dp"
-            android:layout_marginLeft="@dimen/dimen_10dp"
-            android:layout_marginRight="@dimen/dimen_10dp"
+            android:layout_marginLeft="@dimen/dimen_15dp"
+            android:layout_marginRight="@dimen/dimen_15dp"
             android:visibility="gone">
 
             <TextView
@@ -181,7 +177,6 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/color_txt_5c"
                 android:textSize="@dimen/dimen_14sp"
-                android:text="대형견 입장 가능 | 모든 테이블 이용가능"
                 android:layout_marginTop="@dimen/dimen_7dp" />
 
             <LinearLayout
@@ -204,7 +199,6 @@
                     android:layout_height="wrap_content"
                     android:textColor="@color/color_txt_87"
                     android:textSize="@dimen/dimen_14sp"
-                    android:text="아메리카노+입장료 : 7,000원"
                     android:layout_marginTop="@dimen/dimen_7dp"
                     android:layout_marginLeft="@dimen/dimen_10dp"/>
 
@@ -228,8 +222,8 @@
             android:textColor="@color/color_txt_37"
             android:textSize="@dimen/dimen_15sp"
             android:background="@android:color/transparent"
-            android:layout_marginLeft="@dimen/dimen_10dp"
-            android:layout_marginRight="@dimen/dimen_10dp" />
+            android:layout_marginLeft="@dimen/dimen_15dp"
+            android:layout_marginRight="@dimen/dimen_15dp" />
 
         <View
             android:layout_width="match_parent"
@@ -243,8 +237,8 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:layout_marginTop="@dimen/dimen_5dp"
-            android:layout_marginRight="@dimen/dimen_8dp"
-            android:layout_marginLeft="@dimen/dimen_8dp"
+            android:layout_marginRight="@dimen/dimen_15dp"
+            android:layout_marginLeft="@dimen/dimen_15dp"
             android:textColorHint="@color/color_txt_90"
             android:hint="@string/place_detail_conts"
             android:textColor="@color/color_txt_37"
@@ -257,12 +251,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:layout_marginLeft="@dimen/dimen_8dp">
+            android:layout_marginLeft="@dimen/dimen_10dp"
+            android:layout_marginRight="@dimen/dimen_10dp"
+            android:layout_marginTop="@dimen/dimen_10dp"
+            android:layout_marginBottom="@dimen/dimen_20dp">
 
             <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:layout_marginBottom="@dimen/dimen_5dp">
 
                 <ImageButton
                     android:id="@+id/btn_camera"
@@ -283,8 +281,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:padding="@dimen/dimen_7dp"
-                android:layout_marginBottom="@dimen/dimen_7dp">
+                android:layout_marginBottom="@dimen/dimen_7dp"
+                android:background="#ccc">
             </LinearLayout>
 
 
