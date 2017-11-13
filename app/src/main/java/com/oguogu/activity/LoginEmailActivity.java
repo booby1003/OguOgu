@@ -3,7 +3,7 @@ package com.oguogu.activity;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.app.LoaderManager;
+import android.app.LoaderManager.LoaderCallbacks;
 import android.content.CursorLoader;
 import android.content.Intent;
 import android.content.Loader;
@@ -18,12 +18,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -36,13 +38,15 @@ import com.oguogu.util.LogUtil;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
+
+
 /**
- * Created by Administrator on 2016-12-29.
+ * A login screen that offers login via email/password.
  */
-
-public class RegisterActivity extends AppCompatActivity implements LoaderManager.LoaderCallbacks<Cursor> {
-
-    FirebaseAuth mFirebaseAuth;
+public class LoginEmailActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
     /**
      * A dummy authentication store containing known user names and passwords.
@@ -54,30 +58,32 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
     /**
      * Keep track of the login task to ensure we can cancel it if requested.
      */
-    private com.oguogu.activity.RegisterActivity.UserLoginTask mAuthTask = null;
+    private UserLoginTask mAuthTask = null;
 
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
-    private EditText mPasswordConfirmView;
     private View mProgressView;
     private View mLoginFormView;
+    private FirebaseAuth mFirebaseAuth;;
+
+    @Bind(R.id.tv_find_password) TextView tv_find_password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_register);
+        setContentView(R.layout.activity_login_email);
+
+        ButterKnife.bind(this);
 
         mFirebaseAuth = FirebaseAuth.getInstance();
 
         // Set up the login form.
-        mEmailView = (AutoCompleteTextView) findViewById(R.id.tv_email);
+        mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
 
-        mPasswordView = (EditText) findViewById(R.id.et_password);
-
-        mPasswordConfirmView = (EditText) findViewById(R.id.et_password_confirm);
-        mPasswordConfirmView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+        mPasswordView = (EditText) findViewById(R.id.password);
+        mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {
             @Override
             public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
                 if (id == EditorInfo.IME_ACTION_DONE || id == EditorInfo.IME_NULL) {
@@ -89,7 +95,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
         });
 
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        mEmailSignInButton.setOnClickListener(new View.OnClickListener() {
+        mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
                 attemptLogin();
@@ -104,6 +110,26 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
         getLoaderManager().initLoader(0, null, this);
     }
 
+    @OnClick({R.id.tv_find_password})
+    public void onClickButton(View view) {
+        switch (view.getId()) {
+            case R.id.tv_find_password:
+                mFirebaseAuth.sendPasswordResetEmail(mEmailView.getText().toString())
+                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(LoginEmailActivity.this, "We have sent you instructions to reset your password!", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(LoginEmailActivity.this, "Failed to send reset email!", Toast.LENGTH_SHORT).show();
+                                }
+
+                            }
+                        });
+
+                break;
+        }
+    }
 
     /**
      * Attempts to sign in or register the account specified by the login form.
@@ -118,32 +144,18 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
         // Reset errors.
         mEmailView.setError(null);
         mPasswordView.setError(null);
-        mPasswordConfirmView.setError(null);
 
         // Store values at the time of the login attempt.
         String email = mEmailView.getText().toString();
         String password = mPasswordView.getText().toString();
-        String passwordConfirm = mPasswordConfirmView.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
 
         // Check for a valid password, if the user entered one.
-        if (TextUtils.isEmpty(password) || !isPasswordValid(password)) {
+        if (!TextUtils.isEmpty(password) && !isPasswordValid(password)) {
             mPasswordView.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView;
-            cancel = true;
-        }
-
-        if (TextUtils.isEmpty(passwordConfirm) || !isPasswordValid(passwordConfirm)) {
-            mPasswordConfirmView.setError(getString(R.string.error_invalid_password));
-            focusView = mPasswordConfirmView;
-            cancel = true;
-        }
-
-        if (!isPasswordConfirmValid(password, passwordConfirm)) {
-            mPasswordConfirmView.setError(getString(R.string.error_incorrect_password));
-            focusView = mPasswordConfirmView;
             cancel = true;
         }
 
@@ -166,7 +178,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new com.oguogu.activity.RegisterActivity.UserLoginTask(email, password);
+            mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
         }
     }
@@ -181,11 +193,6 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
         return password.length() > 5;
     }
 
-    private boolean isPasswordConfirmValid(String password, String passwordConfirm) {
-        //TODO: Replace this with your own logic
-
-        return password.equals(passwordConfirm);
-    }
     /**
      * Shows the progress UI and hides the login form.
      */
@@ -227,7 +234,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
         return new CursorLoader(this,
                 // Retrieve data rows for the device user's 'profile' contact.
                 Uri.withAppendedPath(ContactsContract.Profile.CONTENT_URI,
-                        ContactsContract.Contacts.Data.CONTENT_DIRECTORY), com.oguogu.activity.RegisterActivity.ProfileQuery.PROJECTION,
+                        ContactsContract.Contacts.Data.CONTENT_DIRECTORY), ProfileQuery.PROJECTION,
 
                 // Select only email addresses.
                 ContactsContract.Contacts.Data.MIMETYPE +
@@ -244,7 +251,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
         List<String> emails = new ArrayList<>();
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
-            emails.add(cursor.getString(com.oguogu.activity.RegisterActivity.ProfileQuery.ADDRESS));
+            emails.add(cursor.getString(ProfileQuery.ADDRESS));
             cursor.moveToNext();
         }
 
@@ -259,7 +266,7 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
     private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
         //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
         ArrayAdapter<String> adapter =
-                new ArrayAdapter<>(com.oguogu.activity.RegisterActivity.this,
+                new ArrayAdapter<>(LoginEmailActivity.this,
                         android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
 
         mEmailView.setAdapter(adapter);
@@ -294,22 +301,21 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
         protected Boolean doInBackground(Void... params) {
             // TODO: attempt authentication against a network service.
 
-            try {
-                // Simulate network access.
-                Thread.sleep(2000);
-            } catch (InterruptedException e) {
-                return false;
-            }
+//            try {
+//                // Simulate network access.
+//                Thread.sleep(2000);
+//            } catch (InterruptedException e) {
+//                return false;
+//            }
+//
+//            for (String credential : DUMMY_CREDENTIALS) {
+//                String[] pieces = credential.split(":");
+//                if (pieces[0].equals(mEmail)) {
+//                    // Account exists, return true if the password matches.
+//                    return pieces[1].equals(mPassword);
+//                }
+//            }
 
-            for (String credential : DUMMY_CREDENTIALS) {
-                String[] pieces = credential.split(":");
-                if (pieces[0].equals(mEmail)) {
-                    // Account exists, return true if the password matches.
-                    return pieces[1].equals(mPassword);
-                }
-            }
-
-            // TODO: register the new account here.
             return true;
         }
 
@@ -318,32 +324,32 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
             mAuthTask = null;
             showProgress(false);
 
-            if (success) {
-                mFirebaseAuth.createUserWithEmailAndPassword(mEmail, mPassword)
-                        .addOnCompleteListener(RegisterActivity.this, new OnCompleteListener<AuthResult>() {
-                            @Override
-                            public void onComplete(@NonNull Task<AuthResult> task) {
-                                if (task.isSuccessful()) {
-                                    // Sign in success, update UI with the signed-in user's information
-                                    LogUtil.d("createUserWithEmail:success");
-                                    FirebaseUser user = mFirebaseAuth.getCurrentUser();
-                                    LogUtil.d("user info : " + user.getEmail());
+            mFirebaseAuth.signInWithEmailAndPassword(mEmail, mPassword)
+                    .addOnCompleteListener(LoginEmailActivity.this, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // Sign in success, update UI with the signed-in user's information
+                                LogUtil.d("signInWithEmail:success");
+                                FirebaseUser user = mFirebaseAuth.getCurrentUser();
 
-                                    startActivity(new Intent(RegisterActivity.this, OguOguActivity.class));
-                                    finish();
-
-                                } else {
-                                    // If sign in fails, display a message to the user.
-                                    LogUtil.d("createUserWithEmail:failure : " +  task.getException());
-                                }
-
-                                // ...
+                                startActivity(new Intent(LoginEmailActivity.this, OguOguActivity.class));
+                                finish();
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                LogUtil.d("signInWithEmail:failure : " +  task.getException());
                             }
-                        });
-            } else {
-                mPasswordView.setError(getString(R.string.error_incorrect_password));
-                mPasswordView.requestFocus();
-            }
+
+                            // ...
+                        }
+                    });
+
+//            if (success) {
+//                finish();
+//            } else {
+//                mPasswordView.setError(getString(R.string.error_incorrect_password));
+//                mPasswordView.requestFocus();
+//            }
         }
 
         @Override
@@ -353,3 +359,4 @@ public class RegisterActivity extends AppCompatActivity implements LoaderManager
         }
     }
 }
+

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="@dimen/dimen_20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MyPet"
+            android:textColor="@color/red"
+            android:textSize="@dimen/dimen_20dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" 이란?"
+            android:textSize="@dimen/dimen_18sp"
+            />
+    </LinearLayout>
+
+    <View
+        android:layout_width="0px"
+        android:layout_height="@dimen/dimen_20dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="MyPet은 애견과 함께 외출하고 싶을 때\n모든 장소를 공유하는 커뮤니티 앱입니다."
+        android:textSize="@dimen/dimen_18sp"
+        />
+
+    <View
+        android:layout_width="0px"
+        android:layout_height="@dimen/dimen_20dp" />
+
+    <Button
+        android:id="@+id/btn_user_register"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="회원가입 하시겠습니까?"
+        android:textSize="@dimen/dimen_18sp"
+        android:textColor="@color/blue"
+        android:background="@android:color/transparent"
+        />
+
+    <View
+        android:layout_width="0px"
+        android:layout_height="@dimen/dimen_20dp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/btn_google_sign_in"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="visible"
+            tools:visibility="gone" />
+
+        <View
+            android:layout_width="@dimen/dimen_20dp"
+            android:layout_height="0dp" />
+
+        <com.kakao.usermgmt.LoginButton
+            android:id="@+id/btn_login_kakao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/dimen_30dp"
+            android:layout_marginLeft="@dimen/dimen_20dp"
+            android:layout_marginRight="@dimen/dimen_20dp"/>
+
+        <View
+            android:layout_width="@dimen/dimen_20dp"
+            android:layout_height="0dp" />
+
+        <com.facebook.login.widget.LoginButton
+            android:layout_below="@+id/label"
+            android:id="@+id/btn_facebook_sign_in"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dimen_30dp"
+            android:layout_marginBottom="@dimen/dimen_30dp" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_login_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/action_sign_in"/>
+
+</LinearLayout>

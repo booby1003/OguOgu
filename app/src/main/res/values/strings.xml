@@ -3,12 +3,14 @@
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
-    <string name="prompt_password">Password (optional)</string>
-    <string name="action_sign_in">Sign in or register</string>
+    <string name="prompt_password">비밀번호 입력</string>
+    <string name="prompt_password_confirm">비밀번호 확인</string>
+    <string name="action_register">회원가입</string>
+    <string name="action_sign_in">로그인</string>
     <string name="action_sign_in_short">Sign in</string>
     <string name="error_invalid_email">This email address is invalid</string>
-    <string name="error_invalid_password">This password is too short</string>
-    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_invalid_password">패스워드를 6자 이상 입력해 주세요.</string>
+    <string name="error_incorrect_password">패스워드가 일치하지 않습니다.</string>
     <string name="error_field_required">This field is required</string>
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
@@ -61,7 +63,7 @@
     <!-- TODO(user): replace with your real server client ID -->
     <!-- Server Client ID.  This should be a valid Web OAuth 2.0 Client ID obtained
          from https://console.developers.google.com/ -->
-    <string name="server_client_id">156850887488-1v5f75buu4pukvma5qjm976i8n1l80ir.apps.googleusercontent.com</string>
+    <string name="server_client_id">941010156927-nifi4fgpesqmfkgi4kcp73fkgr9vsjee.apps.googleusercontent.com</string>
     <string name="server_client_id_test">156850887488-8lmnbfdekjit46h9iiskapu4764cia7r.apps.googleusercontent.com</string>
     <string name="title_activity_ogu_ogu">OguOguActivity</string>
     <string name="kakao_app_key">1656d12f1bf3f5dceda4c7bd2a3a9c8e</string>
@@ -88,7 +90,7 @@
     <string name="show_all_cmmt">전체 댓글 보기 ></string>
     <string name="place_list">이 장소의 글</string>
 
-    <string name="facebook_app_id">1417436908281436</string>
+    <string name="facebook_app_id">253331568529490</string>
 
     <string name="place_cafe">카페/음식점</string>
     <string name="place_hospital">병원</string>
@@ -112,6 +114,8 @@
     <string name="crop_image_menu_rotate_right">Rotate</string>
     <string name="crop_image_menu_crop">Crop</string>
     <string name="pick_image_intent_chooser_title">Select source</string>
+    <string name="title_activity_login2">Sign in</string>
+    <string name="title_activity_login_email">Sign in</string>
 </resources>
 
 

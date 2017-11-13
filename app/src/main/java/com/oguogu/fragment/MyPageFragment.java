@@ -1,7 +1,6 @@
 package com.oguogu.fragment;
 
 import android.content.Intent;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -9,10 +8,7 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
-import android.util.AttributeSet;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,15 +17,15 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
 import com.oguogu.GlobalApplication;
 import com.oguogu.R;
+import com.oguogu.activity.LoginActivity;
 import com.oguogu.activity.MyPetsActivity;
-import com.oguogu.activity.SettingActivity;
 import com.oguogu.adapter.PhotoListAdapter;
 import com.oguogu.custom.CustomBitmapPool;
 import com.oguogu.util.LogUtil;
 import com.oguogu.util.StringUtil;
-import com.oguogu.vo.VoHomeList;
 import com.oguogu.vo.VoMyInfo;
 import com.oguogu.vo.VoPhotoList;
 
@@ -167,7 +163,12 @@ public class MyPageFragment extends BaseFragment  {
                 startActivity(new Intent(getContext(), MyPetsActivity.class));
                 break;
             case R.id.btn_setting:
-                startActivity(new Intent(getContext(), SettingActivity.class));
+//                Intent intent = new Intent(getActivity(), SettingActivity.class);
+//                startActivity(intent);
+                FirebaseAuth.getInstance().signOut();
+
+                startActivity(new Intent(getActivity(), LoginActivity.class));
+                getActivity().finish();
                 break;
         }
     }

@@ -3,7 +3,6 @@ package com.oguogu.signin;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -14,8 +13,6 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.FacebookSdk;
-import com.facebook.GraphRequest;
-import com.facebook.GraphResponse;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
@@ -26,6 +23,14 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.OptionalPendingResult;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthCredential;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FacebookAuthProvider;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.auth.GoogleAuthProvider;
 import com.kakao.auth.ErrorCode;
 import com.kakao.auth.ISessionCallback;
 import com.kakao.auth.Session;
@@ -38,11 +43,8 @@ import com.kakao.util.helper.log.Logger;
 import com.oguogu.GlobalApplication;
 import com.oguogu.R;
 import com.oguogu.util.LogUtil;
-import com.oguogu.util.SharedPrefUtil;
 import com.oguogu.util.StringUtil;
 import com.oguogu.vo.VoMyInfo;
-
-import org.json.JSONObject;
 
 import java.io.IOException;
 
@@ -235,7 +237,22 @@ public class SignIn {
     구글 로그인 후 호출됨
      */
     private void handleSignInResult(GoogleSignInResult result) {
-        LogUtil.d("handleSignInResult:" + result.isSuccess());
+//        LogUtil.d("handleSignInResult:" + result.isSuccess());
+
+//        try {
+//            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+//            handleSignInSccuess(VoMyInfo.LOGIN_GOOGLE, account.getEmail());
+//
+//            // Signed in successfully, show authenticated UI.
+////            updateUI(account);
+//        } catch (ApiException e) {
+//            // The ApiException status code indicates the detailed failure reason.
+//            // Please refer to the GoogleSignInStatusCodes class reference for more information.
+//            LogUtil.d("signInResult:failed code=" + e.getStatusCode());
+//            handleSignInFail(VoMyInfo.LOGIN_GOOGLE);
+////            updateUI(null);
+//        }
+
         if (result.isSuccess()) {
             LogUtil.d("구글 로그인 성공");
             // Signed in successfully, show authenticated UI.
@@ -247,7 +264,24 @@ public class SignIn {
             LogUtil.d("PhotoUrl : " + acct.getPhotoUrl());
             LogUtil.d("token id : " + acct.getIdToken());
 
-            handleSignInSccuess(VoMyInfo.LOGIN_GOOGLE, acct.getEmail());
+            AuthCredential credential = GoogleAuthProvider.getCredential(acct.getIdToken(), null);
+            FirebaseAuth.getInstance().signInWithCredential(credential)
+                    .addOnCompleteListener((Activity) context, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // Sign in success, update UI with the signed-in user's information
+                                LogUtil.d("signInWithCredential:success");
+                                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                handleSignInSccuess(VoMyInfo.LOGIN_GOOGLE, user.getEmail());
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                LogUtil.d("signInWithCredential:failure : " + task.getException());
+                                handleSignInFail(VoMyInfo.LOGIN_GOOGLE);
+                            }
+                        }
+                    });
+
         } else {
             handleSignInFail(VoMyInfo.LOGIN_GOOGLE);
         }
@@ -367,7 +401,21 @@ public class SignIn {
 
         if (requestCode == RC_SIGN_IN) {
             GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
-
+//            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+//
+//            try {
+//                GoogleSignInAccount account = task.getResult(ApiException.class);
+//
+//                LogUtil.d("successsss!!!!!!!!!!!!!!!!!");
+//                LogUtil.d(account.getEmail());
+//                // Signed in successfully, show authenticated UI.
+////                updateUI(account);
+//            } catch (ApiException e) {
+//                // The ApiException status code indicates the detailed failure reason.
+//                // Please refer to the GoogleSignInStatusCodes class reference for more information.
+//                LogUtil.d("signInResult:failed code=" + e.getStatusCode());
+////                updateUI(null);
+//            }
             handleSignInResult(result);
         }
     }
@@ -388,19 +436,43 @@ public class SignIn {
         @Override
         public void onSuccess(LoginResult loginResult) {
             LogUtil.d("onSuccess");
-            GraphRequest graphRequest = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
-                @Override
-                public void onCompleted(JSONObject object, GraphResponse response) {
-                    LogUtil.d("result : " + object.toString());
 
-                    handleSignInSccuess(VoMyInfo.LOGIN_FACEBOOK, "");
-                }
-            });
+            AuthCredential credential = FacebookAuthProvider.getCredential(loginResult.getAccessToken().getToken());
+            FirebaseAuth.getInstance().signInWithCredential(credential)
+                    .addOnCompleteListener((Activity)context, new OnCompleteListener<AuthResult>() {
+                        @Override
+                        public void onComplete(@NonNull Task<AuthResult> task) {
+                            if (task.isSuccessful()) {
+                                // Sign in success, update UI with the signed-in user's information
+                                LogUtil.d("signInWithCredential:success");
+                                FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                                LogUtil.d("getProviderId : " + user.getProviderId());
+                                LogUtil.d("getUid : " + user.getUid());
+                                LogUtil.d("getDisplayName : " + user.getDisplayName());
 
-            Bundle parameters = new Bundle();
-            parameters.putString("fields", "id,name,email,gender,birthday");
-            graphRequest.setParameters(parameters);
-            graphRequest.executeAsync();
+                                handleSignInSccuess(VoMyInfo.LOGIN_FACEBOOK, user.getProviderId());
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                LogUtil.d("signInWithCredential:failure : " + task.getException());
+                            }
+
+                            // ...
+                        }
+                    });
+
+//            GraphRequest graphRequest = GraphRequest.newMeRequest(loginResult.getAccessToken(), new GraphRequest.GraphJSONObjectCallback() {
+//                @Override
+//                public void onCompleted(JSONObject object, GraphResponse response) {
+//                    LogUtil.d("result : " + object.toString());
+//
+//                    handleSignInSccuess(VoMyInfo.LOGIN_FACEBOOK, "");
+//                }
+//            });
+//
+//            Bundle parameters = new Bundle();
+//            parameters.putString("fields", "id,name,email,gender,birthday");
+//            graphRequest.setParameters(parameters);
+//            graphRequest.executeAsync();
         }
 
         @Override

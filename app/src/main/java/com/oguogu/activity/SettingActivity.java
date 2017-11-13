@@ -1,11 +1,13 @@
 package com.oguogu.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
@@ -16,9 +18,14 @@ import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
+import com.google.firebase.auth.FirebaseAuth;
 import com.oguogu.R;
 import com.oguogu.util.LogUtil;
 import com.oguogu.vo.VoMyInfo;
+
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by 김민정 on 2017-10-10.
@@ -26,6 +33,7 @@ import com.oguogu.vo.VoMyInfo;
 
 public class SettingActivity extends AppCompatActivity {
 
+    @Bind(R.id.btn_logout) Button btnLogout;
     private GoogleApiClient mGoogleApiClient;
     private AccessTokenTracker accessTokenTracker;
 
@@ -33,6 +41,8 @@ public class SettingActivity extends AppCompatActivity {
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
         setContentView(R.layout.activity_setting);
+
+        ButterKnife.bind(this);
 
         initGoogleSignIn();
 
@@ -60,6 +70,18 @@ public class SettingActivity extends AppCompatActivity {
             if (accessTokenTracker != null && !accessTokenTracker.isTracking()) {
                 accessTokenTracker.startTracking();
             }
+        }
+    }
+
+    @OnClick({R.id.btn_logout})
+    public void onClickButton(View view) {
+        switch (view.getId()) {
+            case R.id.btn_logout:
+                FirebaseAuth.getInstance().signOut();
+
+                startActivity(new Intent(SettingActivity.this, LoginActivity.class));
+                finish();
+                break;
         }
     }
 

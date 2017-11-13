@@ -1,1 +1,55 @@
-{"web":{"client_id":"156850887488-1v5f75buu4pukvma5qjm976i8n1l80ir.apps.googleusercontent.com","project_id":"oguogu-148401","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://accounts.google.com/o/oauth2/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"_Rf8AzXZVcD-Ij8E_tXKf1Gm"}}
+{
+  "project_info": {
+    "project_number": "941010156927",
+    "firebase_url": "https://oguogu-ecbe0.firebaseio.com",
+    "project_id": "oguogu-ecbe0",
+    "storage_bucket": "oguogu-ecbe0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:941010156927:android:af025200ca435643",
+        "android_client_info": {
+          "package_name": "com.oguogu.free"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "941010156927-j3siot1t71gq44etko9cm2p9ub6gibkg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.oguogu.free",
+            "certificate_hash": "6b4c5b8e6e79251f9a248086e7cdb4cf2ea0cd99"
+          }
+        },
+        {
+          "client_id": "941010156927-nifi4fgpesqmfkgi4kcp73fkgr9vsjee.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCfhswZHfAsqOS2vuC2K6XceJyfu6khU7s"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "941010156927-nifi4fgpesqmfkgi4kcp73fkgr9vsjee.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

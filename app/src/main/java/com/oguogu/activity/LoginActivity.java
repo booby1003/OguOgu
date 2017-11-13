@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.Button;
 
 import com.facebook.AccessToken;
 import com.facebook.FacebookSdk;
@@ -29,6 +30,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @Bind(R.id.btn_google_sign_in) SignInButton btnGoogleSignIn;
     @Bind(R.id.btn_facebook_sign_in) LoginButton btnFacebookSignIn;
+    @Bind(R.id.btn_login_email) Button btnLogin;
 
     private SignIn signIn;
 
@@ -39,8 +41,10 @@ public class LoginActivity extends AppCompatActivity {
 
         FacebookSdk.sdkInitialize(this);
 
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_login_new);
         ButterKnife.bind(this);
+
+        btnGoogleSignIn.setSize(SignInButton.SIZE_WIDE);
 
         AccessToken token;
         token = AccessToken.getCurrentAccessToken();
@@ -64,11 +68,20 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    @OnClick({R.id.btn_google_sign_in, R.id.btn_facebook_sign_in})
+    @OnClick({R.id.btn_google_sign_in, R.id.btn_facebook_sign_in, R.id.btn_user_register, R.id.btn_login_email})
     public void onClickButton(View view) {
         switch (view.getId()) {
             case R.id.btn_google_sign_in:
                 signIn.googleSignIn();
+                break;
+            case R.id.btn_user_register:
+                startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
+                finish();
+                break;
+            case R.id.btn_login_email:
+
+                startActivity(new Intent(LoginActivity.this, LoginEmailActivity.class));
+                finish();
                 break;
         }
     }
