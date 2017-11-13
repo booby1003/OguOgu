@@ -6,6 +6,8 @@ import android.net.NetworkInfo;
 
 import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.NetworkResponse;
+import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -54,6 +56,14 @@ public class HttpRequest {
         void networkerror();
     }
 
+    /**
+     * JsonObjectRequest
+     * @param tag
+     * @param method
+     * @param url
+     * @param jsonObject
+     * @param listener
+     */
     public void JsonObjectRequest(String tag, int method, String url, JSONObject jsonObject, final ListenerHttpResponse listener) {
         if(!checkNetWork()) {
             LogUtil.e("네트워크 연결 안됨");
@@ -88,6 +98,14 @@ public class HttpRequest {
         mVolleyQueue.add(jsonObjectRequest);
     }
 
+    /**
+     * StringRequest
+     * @param tag
+     * @param method
+     * @param url
+     * @param params
+     * @param listener
+     */
     public void StringRequest(String tag, int method, String url, final String params, final ListenerHttpResponse listener) {
         if(!checkNetWork()) {
             LogUtil.e("네트워크 연결 안됨");
@@ -150,6 +168,72 @@ public class HttpRequest {
         mVolleyQueue.add(stringRequest);
     }
 
+    /**
+     *
+     * @param url
+     * @param params
+     * @param dataParams
+     * @param listener
+     */
+    public void multipartRequest(String url, final Map<String, String> params,
+                                 final Map<String, DataPart> dataParams, final ListenerHttpResponse listener) {
+
+        if(!checkNetWork()) {
+            LogUtil.e("네트워크 연결 안됨");
+            listener.networkerror();
+            return;
+        }
+        LogUtil.d("url : " + url);
+
+        VolleyMultipartRequest multipartRequest = new VolleyMultipartRequest(Request.Method.POST, url, new Response.Listener<NetworkResponse>() {
+
+            @Override
+            public void onResponse(NetworkResponse response) {
+
+                LogUtil.d("Response : ");
+
+                String resultResponse = new String(response.data);
+
+                LogUtil.d("Response : " + resultResponse);
+
+                VoBase result = GlobalApplication.getGson().fromJson(resultResponse, VoBase.class);
+
+                if (result.isSuccess()) {
+                    listener.success(resultResponse);
+                    return;
+                }
+
+                try {
+                    listener.fail(new JSONObject(resultResponse));
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                listener.exception(error);
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() throws AuthFailureError {
+                return params;
+            }
+
+            @Override
+            protected Map<String, DataPart> getByteData() throws AuthFailureError {
+                return dataParams;
+            }
+        };
+
+        multipartRequest.setRetryPolicy(new DefaultRetryPolicy(TIMEOUT_MS, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        VolleySingleton.getInstance(context).addToRequestQueue(multipartRequest);
+
+//        multipartRequest.setTag(tag);
+//        multipartRequest.setRetryPolicy(new DefaultRetryPolicy(TIMEOUT_MS, 0, DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+//        mVolleyQueue.add(multipartRequest);
+
+    }
 
     private boolean checkNetWork() {
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);

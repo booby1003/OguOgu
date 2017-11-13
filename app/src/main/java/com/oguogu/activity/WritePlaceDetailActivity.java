@@ -16,14 +16,20 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.NetworkResponse;
 import com.android.volley.Request;
+import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.location.places.Place;
 import com.oguogu.GlobalApplication;
 import com.oguogu.R;
+import com.oguogu.communication.AppHelper;
 import com.oguogu.communication.ConstantCommURL;
+import com.oguogu.communication.DataPart;
 import com.oguogu.communication.HttpRequest;
+import com.oguogu.communication.VolleyMultipartRequest;
+import com.oguogu.communication.VolleySingleton;
 import com.oguogu.cropper.CropImage;
 import com.oguogu.cropper.CropImageView;
 import com.oguogu.util.LogUtil;
@@ -31,7 +37,12 @@ import com.oguogu.util.StringUtil;
 import com.oguogu.util.UIUtil;
 import com.oguogu.vo.VoPlaceDetail;
 
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.Map;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -122,6 +133,95 @@ public class WritePlaceDetailActivity extends AppCompatActivity {
         });
     }
 
+    private void testWritePlace() {
+        String url = "http://api.mm.moumou.co.kr/api/common/GetErrNotify";
+
+        VolleyMultipartRequest multipartRequest = new VolleyMultipartRequest(Request.Method.POST, url, new Response.Listener<NetworkResponse>() {
+            @Override
+            public void onResponse(NetworkResponse response) {
+                String resultResponse = new String(response.data);
+                LogUtil.i("testWritePlace ::"  + resultResponse);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                //listener.exception(error);
+                LogUtil.i("testWritePlace ::"  + error.toString());
+            }
+        }){
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("APPVER", "1.3.8");
+                params.put("SYSGB", "101003");
+                params.put("MODEL", "EMST");
+                params.put("PCODE", "999999");
+                params.put("ERRORCONTENTS", "a");
+                params.put("ERRORGUBUN", "204001");
+                params.put("CHACI", "00");
+                params.put("USERID", "booby1003");
+                return params;
+            }
+
+            @Override
+            protected Map<String, DataPart> getByteData() {
+                Map<String, DataPart> params = new HashMap<>();
+                params.put("ATTACHFILE", new DataPart("file_avatar.jpg", AppHelper.getFileDataFromDrawable(getBaseContext(), imageView.getDrawable()), "image/jpeg"));
+                return params;
+            }
+        };
+
+        VolleySingleton.getInstance(this).addToRequestQueue(multipartRequest);
+    }
+
+    private void writePlace() {
+
+        if(mRequest == null) mRequest = HttpRequest.getInstance(this);
+
+        String url = ConstantCommURL.getURL(ConstantCommURL.URL_API, ConstantCommURL.REQUEST_SET_WRITE_PLACE);
+        url = "http://api.mm.moumou.co.kr/api/common/GetErrNotify";
+
+        Map<String, String> params = new Hashtable<>();
+        params.put("APPVER", "1.3.8");
+        params.put("SYSGB", "101003");
+        params.put("MODEL", "EMST");
+        params.put("PCODE", "999999");
+        params.put("ERRORCONTENTS", "a");
+        params.put("ERRORGUBUN", "204001");
+        params.put("CHACI", "00");
+        params.put("USERID", "booby1003");
+
+        Map<String, DataPart> dataParams = new Hashtable<>();
+        dataParams.put("ATTACHFILE", new DataPart("file_avatar.jpg", AppHelper.getFileDataFromDrawable(getBaseContext(), imageView.getDrawable()), "image/jpeg"));
+
+
+        mRequest.multipartRequest(url, params, dataParams, new HttpRequest.ListenerHttpResponse(){
+
+            @Override
+            public void success(String response) {
+                LogUtil.i("response :: " + response);
+            }
+
+            @Override
+            public void fail(JSONObject response) {
+
+            }
+
+            @Override
+            public void exception(VolleyError error) {
+
+            }
+
+            @Override
+            public void networkerror() {
+
+            }
+        });
+
+
+
+    }
+
     private void setPlaceInfo() {
         LogUtil.i("boardType : " + placeInfo.getBoardType());
         int boardTypeId = UIUtil.getBoardTypeDrawable(placeInfo.getBoardType());
@@ -158,7 +258,7 @@ public class WritePlaceDetailActivity extends AppCompatActivity {
 
     }
 
-    @OnClick({R.id.btn_camera, R.id.btn_album})
+    @OnClick({R.id.btn_camera, R.id.btn_album, R.id.btn_wirte})
     public void onClickButton(View view) {
         switch (view.getId()) {
             case R.id.btn_camera:
@@ -173,10 +273,14 @@ public class WritePlaceDetailActivity extends AppCompatActivity {
                 if(imgCount > 4) Toast.makeText(this, R.string.toast_image_max, Toast.LENGTH_SHORT).show();
                 startActivityForResult(new Intent(this, GalleryActivity.class), GalleryActivity.PICK_FROM_ALBUM);
                 break;
+            case R.id.btn_wirte:
+                testWritePlace();
+                break;
         }
     }
 
     int imgCount = 0;
+    ImageView imageView = null;
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -201,6 +305,7 @@ public class WritePlaceDetailActivity extends AppCompatActivity {
 
                 ll_imgs.addView(imageView);
                 //iv_img.setImageURI(result.getUri());
+                this.imageView = imageView;
 
                 LogUtil.i("imageUrl :: " + result.getUri());
                 break;
