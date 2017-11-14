@@ -25,8 +25,8 @@ public class VolleyMultipartRequest extends Request<NetworkResponse> {
 
     private final String twoHyphens = "--";
     private final String lineEnd = "\r\n";
-    private final String boundary = "apiclient-" + System.currentTimeMillis();
-    //private final String boundary = "-------------------0xKhTmLbOuNdArY";
+    //private final String boundary = "apiclient-" + System.currentTimeMillis();
+    private final String boundary = "-------------------0xKhTmLbOuNdArY";
 
     private Response.Listener<NetworkResponse> mListener;
     private Response.ErrorListener mErrorListener;
@@ -52,16 +52,19 @@ public class VolleyMultipartRequest extends Request<NetworkResponse> {
     @Override
     public Map<String, String> getHeaders() throws AuthFailureError {
         //mHeaders = (mHeaders != null) ? mHeaders : super.getHeaders();
-        //mHeaders.put("Content-Type", "application/json; charset=utf-8");
-        //mHeaders.put("Content-Type", "application/x-www-form-urlencoded");
-        //mHeaders.put("Content-Type", "application/octet-stream");
         //return mHeaders;
-        return (mHeaders != null) ? mHeaders : super.getHeaders();
+        Map header = new HashMap();
+        header.put("Accept", "application/json");
+        //header.put("Content-Type", "multipart/form-data;");
+        header.put("Content-Type", "application/json; charset=utf-8");
+        //header.put("Content-Type","multipart/form-data; boundary=" + boundary + "; charset=utf-8");
+        return header;
+        //return (mHeaders != null) ? mHeaders : super.getHeaders();
     }
 
     @Override
     public String getBodyContentType() {
-        return "multipart/form-data;boundary=" + boundary;
+        return "multipart/form-data;boundary=" + boundary + "; charset=utf-8";
     }
 
     @Override
@@ -77,7 +80,7 @@ public class VolleyMultipartRequest extends Request<NetworkResponse> {
                 textParse(dos, params, getParamsEncoding());
             }
 
-            LogUtil.i("params :: " +params.size());
+            //LogUtil.i("params :: " +params.size());
 
             // populate data byte payload
             Map<String, DataPart> data = getByteData();
@@ -85,7 +88,7 @@ public class VolleyMultipartRequest extends Request<NetworkResponse> {
                 dataParse(dos, data);
             }
 
-            LogUtil.i("data :: " +data.size());
+            //LogUtil.i("data :: " +data.size());
 
             // close multipart form data after text and file data
             dos.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
@@ -104,6 +107,8 @@ public class VolleyMultipartRequest extends Request<NetworkResponse> {
     protected Map<String, DataPart> getByteData() throws AuthFailureError {
         return null;
     }
+
+
 
     @Override
     protected Response<NetworkResponse> parseNetworkResponse(NetworkResponse response) {
@@ -129,6 +134,7 @@ public class VolleyMultipartRequest extends Request<NetworkResponse> {
     private void textParse(DataOutputStream dataOutputStream, Map<String, String> params, String encoding) throws IOException {
         try {
             for (Map.Entry<String, String> entry : params.entrySet()) {
+                LogUtil.i("textParse :: " + entry.getKey() + " / " + entry.getValue());
                 buildTextPart(dataOutputStream, entry.getKey(), entry.getValue());
             }
         } catch (UnsupportedEncodingException uee) {
@@ -146,16 +152,11 @@ public class VolleyMultipartRequest extends Request<NetworkResponse> {
         dataOutputStream.writeBytes(twoHyphens + boundary + lineEnd);
         dataOutputStream.writeBytes("Content-Disposition: form-data; name=\"" + parameterName + "\"" + lineEnd);
         //dataOutputStream.writeBytes("Content-Type: text/plain; charset=UTF-8" + lineEnd);
-        //dataOutputStream.writeBytes("Content-Type:application/octet-stream; charset=UTF-8" + lineEnd);
         dataOutputStream.writeBytes(lineEnd);
         dataOutputStream.writeBytes(parameterValue + lineEnd);
-
-        //dos.write(("Content-Disposition:form-data;name=\""+key+"\";filename=\"" + mImgName +".jpg"+"\"" + lineEnd).getBytes("UTF-8"));
-        //dos.writeBytes("Content-Type:application/octet-stream" + lineEnd + lineEnd);
     }
 
     private void buildDataPart(DataOutputStream dataOutputStream, DataPart dataFile, String inputName) throws IOException {
-        LogUtil.i("buildDataPart :: " + inputName);
         dataOutputStream.writeBytes(twoHyphens + boundary + lineEnd);
         dataOutputStream.writeBytes("Content-Disposition: form-data; name=\"" +
                 inputName + "\"; filename=\"" + dataFile.getFileName() + "\"" + lineEnd);
