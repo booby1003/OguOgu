@@ -43,4 +43,11 @@
         <attr name="cropMaxCropResultWidthPX" format="float"/>
         <attr name="cropMaxCropResultHeightPX" format="float"/>
     </declare-styleable>
+
+    <declare-styleable name="SupportVectorDrawablesButton">
+        <attr name="drawableStartCompat" format="reference" />
+        <attr name="drawableEndCompat" format="reference" />
+        <attr name="drawableTopCompat" format="reference" />
+        <attr name="drawableBottomCompat" format="reference" />
+    </declare-styleable>
 </resources>

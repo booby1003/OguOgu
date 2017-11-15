@@ -10,7 +10,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/top_toolbar"
-        app:popupTheme="@style/AppTheme.NoActionBar"
+        app:popupTheme="@style/OguOguUI.NoActionBar"
         android:weightSum="1"
         android:gravity="center_vertical"
         app:contentInsetStart="@dimen/dimen_2dp"

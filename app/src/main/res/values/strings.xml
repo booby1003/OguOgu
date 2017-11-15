@@ -116,6 +116,11 @@
     <string name="pick_image_intent_chooser_title">Select source</string>
     <string name="title_activity_login2">Sign in</string>
     <string name="title_activity_login_email">Sign in</string>
+
+    <string name="oui_sign_in_with_google" translation_description="Sign in button text">Google 계정으로 로그인</string>
+    <string name="oui_sign_in_with_facebook" translation_description="Sign in button text">Facebook으로 로그인</string>
+    <string name="oui_sign_in_with_email" translation_description="Sign in button text">이메일로 로그인</string>
+
 </resources>
 
 

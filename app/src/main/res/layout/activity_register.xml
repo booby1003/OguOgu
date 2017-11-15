@@ -87,9 +87,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
-                android:text="@string/action_sign_in"
+                android:layout_marginBottom="@dimen/dimen_15dp"
+                android:text="@string/action_register"
                 android:textStyle="bold" />
 
+
+            <TextView
+                android:id="@+id/tv_terms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="서비스 약관 및 개인정보 보호정책"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

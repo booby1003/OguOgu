@@ -14,7 +14,7 @@
         app:contentInsetStart="@dimen/dimen_5dp"
         app:contentInsetEnd="@dimen/dimen_5dp"
         app:title=""
-        app:popupTheme="@style/AppTheme.PopupOverlay">
+        app:popupTheme="@style/OguOguUI.PopupOverlay">
 
         <ImageButton
             android:id="@+id/btn_srch"

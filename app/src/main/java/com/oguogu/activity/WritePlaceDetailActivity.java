@@ -22,7 +22,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.bumptech.glide.Glide;
-import com.google.android.gms.location.places.Place;
 import com.oguogu.GlobalApplication;
 import com.oguogu.R;
 import com.oguogu.communication.AppHelper;
@@ -34,11 +33,9 @@ import com.oguogu.communication.VolleySingleton;
 import com.oguogu.cropper.CropImage;
 import com.oguogu.cropper.CropImageView;
 import com.oguogu.util.LogUtil;
-import com.oguogu.util.StringUtil;
 import com.oguogu.util.UIUtil;
 import com.oguogu.vo.VoPlaceDetail;
 
-import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
@@ -135,7 +132,7 @@ public class WritePlaceDetailActivity extends AppCompatActivity {
     }
 
     private void testWritePlace() {
-        String url = "http://api.mm.moumou.co.kr/api/common/GetErrNotify";
+        String url = "http://api.mm.moumou.co.kr/api/common/AddErrNotify";
 
         VolleyMultipartRequest multipartRequest = new VolleyMultipartRequest(Request.Method.POST, url, new Response.Listener<NetworkResponse>() {
             @Override

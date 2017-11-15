@@ -114,6 +114,7 @@ public class LoginEmailActivity extends AppCompatActivity implements LoaderCallb
     public void onClickButton(View view) {
         switch (view.getId()) {
             case R.id.tv_find_password:
+                mFirebaseAuth.setLanguageCode("ko");
                 mFirebaseAuth.sendPasswordResetEmail(mEmailView.getText().toString())
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override

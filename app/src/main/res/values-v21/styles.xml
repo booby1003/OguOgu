@@ -1,6 +1,6 @@
 <resources>
 
-    <style name="AppTheme.NoActionBar">
+    <style name="OguOguUI.NoActionBar">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:windowDrawsSystemBarBackgrounds">true</item>
@@ -10,7 +10,7 @@
     </style>
 
     <!-- Activity with no Title -->
-    <style name="ThemeOverlay.MyNoTitleActivity" parent="AppTheme">
+    <style name="ThemeOverlay.MyNoTitleActivity" parent="OguOguUI">
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>

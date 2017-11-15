@@ -54,4 +54,15 @@
     <color name="top_srch_btn">#6799ca</color>
 
     <color name="color_comm_line">#d0d1d1</color>
+
+    <color name="oui_errorColor">#DD2C00</color>
+    <color name="oui_linkColor">#4285F4</color>
+    <color name="oui_transparent">#00000000</color>
+
+    <color name="oui_buttonShadow">#64BEBEBE</color>
+    <color name="oui_bgEmail">#D0021B</color>
+    <color name="oui_bgFacebook">#3B5998</color>
+    <color name="oui_bgGoogle">#ffffff</color>
+    <color name="oui_bgPhone">#43C5A5</color>
+    <color name="oui_bgTwitter">#FF5BAAF4</color>
 </resources>

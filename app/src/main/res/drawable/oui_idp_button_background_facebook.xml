@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <shape android:shape="rectangle">
+            <corners android:radius="3dp" />
+            <solid android:color="@color/oui_buttonShadow" />
+        </shape>
+    </item>
+    <item
+        android:bottom="@dimen/oui_button_inset_bottom"
+        android:left="@dimen/oui_button_inset_left"
+        android:right="@dimen/oui_button_inset_right"
+        android:top="@dimen/oui_button_inset_top">
+        <shape android:shape="rectangle">
+            <corners android:radius="3dp" />
+            <solid android:color="@color/oui_bgFacebook" />
+        </shape>
+    </item>
+</layer-list>

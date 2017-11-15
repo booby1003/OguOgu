@@ -72,4 +72,19 @@
     <dimen name="dimen_17sp">17sp</dimen>
     <dimen name="dimen_18sp">18sp</dimen>
     <dimen name="dimen_19sp">19sp</dimen>
+
+    <dimen name="oui_auth_method_button_width">208dp</dimen>
+    <dimen name="oui_auth_method_button_margin">4dp</dimen>
+    <dimen name="oui_auth_method_button_drawablePadding">12dp</dimen>
+
+    <dimen name="oui_body_padding_bottom">12dp</dimen>
+    <dimen name="oui_heading_padding_bottom">12dp</dimen>
+    <dimen name="oui_wrapper_padding_horiz">16dp</dimen>
+    <dimen name="oui_field_padding_vert">16dp</dimen>
+    <dimen name="oui_submit_button_margin_top">24dp</dimen>
+
+    <dimen name="oui_button_inset_top">0dp</dimen>
+    <dimen name="oui_button_inset_bottom">3dp</dimen>
+    <dimen name="oui_button_inset_left">1dp</dimen>
+    <dimen name="oui_button_inset_right">2dp</dimen>
 </resources>
