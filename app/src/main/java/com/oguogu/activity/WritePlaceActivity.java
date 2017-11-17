@@ -1,5 +1,6 @@
 package com.oguogu.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -165,7 +166,7 @@ public class WritePlaceActivity extends AppCompatActivity {
     }
 
     int[] place_title = {R.string.place_cafe, R.string.place_hospital, R.string.place_walk};
-    @OnClick({R.id.btn_close, R.id.btn_cafe, R.id.btn_hospital, R.id.btn_playground, R.id.btn_srch_cancel})
+    @OnClick({R.id.btn_close, R.id.btn_cafe, R.id.btn_hospital, R.id.btn_playground, R.id.btn_srch_cancel, R.id.btn_new_place})
     public void onClickButton(View view) {
         switch (view.getId()) {
             case R.id.btn_close:
@@ -187,6 +188,9 @@ public class WritePlaceActivity extends AppCompatActivity {
                 focusInSearch(false);
                 et_srch.setText("");
                 adapter.removeItems();
+                break;
+            case R.id.btn_new_place:
+                startActivity(new Intent(this, WriteNewPlaceActivity.class));
                 break;
         }
     }

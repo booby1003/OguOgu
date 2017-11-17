@@ -34,6 +34,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * Created by 김민정 on 2017-11-06.
@@ -50,7 +51,7 @@ public class GalleryActivity extends AppCompatActivity {
     private GalleryAdapter mAdapter;
     private StaggeredGridLayoutManager mLayoutManager;
 
-    public static final int CONTENT_PADDING = 90;
+    public static final int CONTENT_PADDING = 5;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -66,8 +67,16 @@ public class GalleryActivity extends AppCompatActivity {
         mLayoutManager = new StaggeredGridLayoutManager(3, 1);
         galleryList = (RecyclerView) findViewById(R.id.gallery_list);
         galleryList.setLayoutManager(mLayoutManager);
-        galleryList.addItemDecoration(new GridSpacingItemDecoration(3, UIUtil.pixelToDp(CONTENT_PADDING, this)));
+        galleryList.addItemDecoration(new GridSpacingItemDecoration(3, UIUtil.dpToPixel(CONTENT_PADDING, this)));
         galleryList.setAdapter(mAdapter);
+    }
+
+    @OnClick({R.id.btn_close})
+    public void onClickButton(View view) {
+        switch (view.getId()) {
+            case R.id.btn_close:
+                finish();
+        }
     }
 
 
@@ -79,7 +88,7 @@ public class GalleryActivity extends AppCompatActivity {
 
         imageCursor =managedQuery(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, proj, null, null, null);
 
-        if (imageCursor != null && imageCursor.moveToFirst()){
+        if (imageCursor != null && imageCursor.moveToLast()){
             String title;
             String thumbsID;
             String thumbsImageID;
@@ -102,7 +111,7 @@ public class GalleryActivity extends AppCompatActivity {
                     //thumbsIDList.add(thumbsID);
                     thumbsDataList.add(thumbsData);
                 }
-            }while (imageCursor.moveToNext());
+            }while (imageCursor.moveToPrevious());
         }
     }
 
@@ -185,10 +194,10 @@ public class GalleryActivity extends AppCompatActivity {
 
             PhotoItemHolder listHolder = (PhotoItemHolder) holder;
             DisplayMetrics metrics = context.getResources().getDisplayMetrics();
-            float img_w = (metrics.widthPixels - (CONTENT_PADDING * 2)) / 3;
+            float img_w = (metrics.widthPixels - (UIUtil.dpToPixel(CONTENT_PADDING , context))) / 3;
 
             RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, (int) img_w);
-            listHolder.iv_photo.setLayoutParams(params);
+            listHolder.rl_photo.setLayoutParams(params);
 
             final File file = new File(thumbsDataList.get(position));
             final Uri imageUri = Uri.fromFile(file);
@@ -219,10 +228,12 @@ public class GalleryActivity extends AppCompatActivity {
 
     public final static class PhotoItemHolder extends RecyclerView.ViewHolder {
 
+        RelativeLayout rl_photo;
         ImageView iv_photo;
 
         public PhotoItemHolder(View itemView) {
             super(itemView);
+            rl_photo = (RelativeLayout) itemView.findViewById(R.id.rl_photo);
             iv_photo = (ImageView) itemView.findViewById(R.id.iv_photo);
         }
     }

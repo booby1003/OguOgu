@@ -67,6 +67,7 @@
     <string name="server_client_id_test">156850887488-8lmnbfdekjit46h9iiskapu4764cia7r.apps.googleusercontent.com</string>
     <string name="title_activity_ogu_ogu">OguOguActivity</string>
     <string name="kakao_app_key">1656d12f1bf3f5dceda4c7bd2a3a9c8e</string>
+    <string name="google_maps_key" translatable="false" templateMergeStrategy="preserve">AIzaSyAHCzzxck3TrXLPN83_ScxYkmqoMR2CgNk</string>
 
     <string name="tab_1">Label 1</string>
     <string name="tab_2">Label 2</string>
@@ -82,6 +83,8 @@
 
     <string name="srch">검색</string>
     <string name="cancel">취소</string>
+
+    <string name="alt_network_error">네트워크가 연결되지 않았습니다.\n설정창으로 가시겠습니까?</string>
 
     <string name="write_btn_place">장소 공유</string>
     <string name="write_btn_mypet">내펫 자랑</string>
@@ -101,6 +104,12 @@
     <string name="place_srch_explain">먼저 등록 할 장소를 선택 후 검색해 주세요.</string>
     <string name="place_no_place">찾으시는 장소가 없으시면?</string>
     <string name="place_new_place">새로운 장소 등록</string>
+
+    <string name="place_input_name">장소명 입력</string>
+    <string name="place_sub_category">소 카테고리 선택</string>
+    <string name="place_add_info">기타추가</string>
+    <string name="place_addr_map">주소 및 지도</string>
+    <string name="place_addr_srch">지도검색</string>
 
     <string name="add_detail_info">추가 상세 정보</string>
     <string name="title">제목</string>

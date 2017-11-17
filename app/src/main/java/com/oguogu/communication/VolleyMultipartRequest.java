@@ -53,18 +53,18 @@ public class VolleyMultipartRequest extends Request<NetworkResponse> {
     public Map<String, String> getHeaders() throws AuthFailureError {
         //mHeaders = (mHeaders != null) ? mHeaders : super.getHeaders();
         //return mHeaders;
-        Map header = new HashMap();
-        header.put("Accept", "application/json");
+        //Map header = new HashMap();
+       //header.put("Accept", "application/json");
         //header.put("Content-Type", "multipart/form-data;");
-        header.put("Content-Type", "application/json; charset=utf-8");
+        //header.put("Content-Type", "application/json; charset=utf-8");
         //header.put("Content-Type","multipart/form-data; boundary=" + boundary + "; charset=utf-8");
-        return header;
-        //return (mHeaders != null) ? mHeaders : super.getHeaders();
+       // return header;
+        return (mHeaders != null) ? mHeaders : super.getHeaders();
     }
 
     @Override
     public String getBodyContentType() {
-        return "multipart/form-data;boundary=" + boundary + "; charset=utf-8";
+        return "multipart/form-data;boundary=" + boundary;
     }
 
     @Override
@@ -80,21 +80,14 @@ public class VolleyMultipartRequest extends Request<NetworkResponse> {
                 textParse(dos, params, getParamsEncoding());
             }
 
-            //LogUtil.i("params :: " +params.size());
-
             // populate data byte payload
             Map<String, DataPart> data = getByteData();
             if (data != null && data.size() > 0) {
                 dataParse(dos, data);
             }
 
-            //LogUtil.i("data :: " +data.size());
-
             // close multipart form data after text and file data
             dos.writeBytes(twoHyphens + boundary + twoHyphens + lineEnd);
-
-
-            LogUtil.i("getBody");
 
             return bos.toByteArray();
 
@@ -183,9 +176,6 @@ public class VolleyMultipartRequest extends Request<NetworkResponse> {
 
         dataOutputStream.writeBytes(lineEnd);
     }
-
-
-
 }
 
 

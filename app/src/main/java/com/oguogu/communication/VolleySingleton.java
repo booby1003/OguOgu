@@ -36,7 +36,6 @@ public class VolleySingleton {
 
                     @Override
                     public Bitmap getBitmap(String url) {
-                        LogUtil.i("url :: " + url);
                         return cache.get(url);
                     }
 

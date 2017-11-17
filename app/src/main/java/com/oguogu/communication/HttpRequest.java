@@ -142,21 +142,6 @@ public class HttpRequest {
                 listener.exception(error);
             }
         }) {
-
-            @Override
-            public Map<String, String> getHeaders() throws AuthFailureError {
-//                Map header = new HashMap();
-//                header.put("Accept", "application/json");
-//                header.put("Content-Type", "application/json");
-//                return header;
-                return super.getHeaders();
-            }
-
-            @Override
-            public String getBodyContentType() {
-                return "application/json";
-            }
-
             @Override
             public byte[] getBody() throws AuthFailureError {
                 return params.getBytes();

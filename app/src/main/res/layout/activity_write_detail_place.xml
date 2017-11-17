@@ -281,8 +281,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:layout_marginBottom="@dimen/dimen_7dp"
-                android:background="#ccc">
+                android:layout_marginBottom="@dimen/dimen_7dp">
             </LinearLayout>
 
 

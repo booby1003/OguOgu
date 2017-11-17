@@ -12,6 +12,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
 
     <application
         android:name=".GlobalApplication"
@@ -26,6 +27,10 @@
         <meta-data
             android:name="com.kakao.sdk.AppKey"
             android:value="@string/kakao_app_key" />
+
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="@string/google_maps_key" />
 
         <activity
             android:name=".activity.IntroActivity"
@@ -61,6 +66,10 @@
         <activity
             android:name=".activity.WritePlaceDetailActivity"
             android:theme="@style/OguOguUI.NoActionBar" />
+        <activity
+            android:name=".activity.WriteNewPlaceActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
         <activity
             android:name=".activity.SettingActivity"
             android:theme="@style/OguOguUI.NoActionBar">
