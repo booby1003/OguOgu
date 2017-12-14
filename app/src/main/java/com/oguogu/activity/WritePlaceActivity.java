@@ -49,7 +49,7 @@ import butterknife.OnClick;
  * Created by 김민정 on 2017-09-26.
  */
 
-public class WritePlaceActivity extends AppCompatActivity {
+public class WritePlaceActivity extends BaseActivity {
 
     HttpRequest mRequest = null;
 

@@ -46,7 +46,7 @@ import jp.wasabeef.glide.transformations.CropCircleTransformation;
  * Created by Administrator on 2016-12-26.
  */
 
-public class PlaceDetailActivity extends AppCompatActivity {
+public class PlaceDetailActivity extends BaseActivity {
 
     public static final String PLACE_IDX = "PLACE_IDX";
     HttpRequest mRequest = null;
@@ -125,6 +125,7 @@ public class PlaceDetailActivity extends AppCompatActivity {
             @Override
             public void success(String response) {
 
+                hideDialog();
                 placeDetail = GlobalApplication.getGson().fromJson(response, VoPlaceDetail.class);
                 setPlaceDetail();
                 setCommentList();
@@ -132,17 +133,17 @@ public class PlaceDetailActivity extends AppCompatActivity {
 
             @Override
             public void fail(JSONObject response) {
-
+                hideDialog();
             }
 
             @Override
             public void exception(VolleyError error) {
-
+                hideDialog();
             }
 
             @Override
             public void networkerror() {
-
+                hideDialog();
             }
         });
     }

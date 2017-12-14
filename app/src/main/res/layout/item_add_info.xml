@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
     android:gravity="center_vertical"
     android:paddingTop="@dimen/dimen_3dp"
-    android:paddingBottom="@dimen/dimen_3dp">
+    android:paddingBottom="@dimen/dimen_3dp"
+    android:paddingRight="@dimen/dimen_10dp">
 
     <CheckBox
         android:layout_width="wrap_content"
@@ -22,17 +23,13 @@
 
     <EditText
         android:id="@+id/et_add"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dimen_120dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:layout_marginTop="@dimen/dimen_5dp"
-        android:layout_marginRight="@dimen/dimen_15dp"
         android:layout_marginLeft="@dimen/dimen_15dp"
         android:textColorHint="@color/color_txt_90"
-        android:hint="@string/place_detail_conts"
         android:textColor="@color/color_txt_37"
         android:textSize="@dimen/dimen_15sp"
-        android:gravity="top"
-        android:background="@android:color/transparent" />
+        android:background="@drawable/add_info_bg" />
 
 </LinearLayout>

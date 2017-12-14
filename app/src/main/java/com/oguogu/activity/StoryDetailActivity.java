@@ -45,7 +45,7 @@ import jp.wasabeef.glide.transformations.CropCircleTransformation;
  * Created by Administrator on 2016-12-26.
  */
 
-public class StoryDetailActivity extends AppCompatActivity {
+public class StoryDetailActivity extends BaseActivity {
 
     public static final String BOARD_IDX = "BOARD_IDX";
     HttpRequest mRequest = null;
@@ -89,6 +89,7 @@ public class StoryDetailActivity extends AppCompatActivity {
 
     private void getStoryDetail(String boardIdx) {
 
+        showDialog();
         if(mRequest == null) mRequest = HttpRequest.getInstance(this);
 
         String url = ConstantCommURL.getURL(ConstantCommURL.URL_API, ConstantCommURL.REQUEST_GET_STORY);
@@ -99,7 +100,7 @@ public class StoryDetailActivity extends AppCompatActivity {
 
             @Override
             public void success(String response) {
-
+                hideDialog();
                 storyDetail = GlobalApplication.getGson().fromJson(response, VoStoryDetail.class);
                 setStoryDetail();
                 setCommentList();
@@ -107,17 +108,17 @@ public class StoryDetailActivity extends AppCompatActivity {
 
             @Override
             public void fail(JSONObject response) {
-
+                hideDialog();
             }
 
             @Override
             public void exception(VolleyError error) {
-
+                hideDialog();
             }
 
             @Override
             public void networkerror() {
-
+                hideDialog();
             }
         });
     }

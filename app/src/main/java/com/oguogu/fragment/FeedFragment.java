@@ -89,7 +89,7 @@ public class FeedFragment extends BaseFragment {
 
     private void getFeedkList() {
 
-
+        showDialog();
         if(mRequest == null) mRequest = HttpRequest.getInstance(getContext());
 
         String url = ConstantCommURL.getURL(ConstantCommURL.URL_API, ConstantCommURL.REQUEST_GET_FEED);
@@ -101,6 +101,7 @@ public class FeedFragment extends BaseFragment {
             @Override
             public void success(String response) {
 
+                hideDialog();
                 VoFeedList feedList = GlobalApplication.getGson().fromJson(response, VoFeedList.class);
                 FeedListViewAdapter adapter = new FeedListViewAdapter(feedList.getData());
                 feed_listview.setAdapter(adapter);
@@ -108,17 +109,17 @@ public class FeedFragment extends BaseFragment {
 
             @Override
             public void fail(JSONObject response) {
-
+                hideDialog();
             }
 
             @Override
             public void exception(VolleyError error) {
-
+                hideDialog();
             }
 
             @Override
             public void networkerror() {
-
+                hideDialog();
             }
         });
     }

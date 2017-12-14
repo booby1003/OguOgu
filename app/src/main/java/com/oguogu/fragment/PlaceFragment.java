@@ -116,6 +116,8 @@ public class PlaceFragment extends BaseFragment {
 //        photoListAdapter = new ContentListAdapter(bookmarkList.getData(), getActivity());
 //        recyclerView.setAdapter(photoListAdapter);
 
+        showDialog();
+
         if(mRequest == null) mRequest = HttpRequest.getInstance(getContext());
 
         String url = ConstantCommURL.getURL(ConstantCommURL.URL_API, ConstantCommURL.REQUEST_GET_PLACE);
@@ -127,6 +129,7 @@ public class PlaceFragment extends BaseFragment {
             @Override
             public void success(String response) {
 
+                hideDialog();
                 voPlaceList = GlobalApplication.getGson().fromJson(response, VoPlaceList.class);
 
                 photoListAdapter = new PlaceListAdapter(voPlaceList.getData(), getActivity());
@@ -136,17 +139,17 @@ public class PlaceFragment extends BaseFragment {
 
             @Override
             public void fail(JSONObject response) {
-
+                hideDialog();
             }
 
             @Override
             public void exception(VolleyError error) {
-
+                hideDialog();
             }
 
             @Override
             public void networkerror() {
-
+                hideDialog();
             }
         });
 

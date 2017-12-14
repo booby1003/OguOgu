@@ -196,7 +196,6 @@ public class WritePlaceDetailActivity extends AppCompatActivity {
         Map<String, DataPart> dataParams = new Hashtable<>();
         dataParams.put("ATTACHFILE", new DataPart("file_avatar.jpg", AppHelper.getFileDataFromDrawable(getBaseContext(), imageView.getDrawable()), "image/jpeg"));
 
-
         mRequest.multipartRequest(url, params, dataParams, new HttpRequest.ListenerHttpResponse(){
 
             @Override
@@ -219,9 +218,6 @@ public class WritePlaceDetailActivity extends AppCompatActivity {
 
             }
         });
-
-
-
     }
 
     private void setPlaceInfo() {
@@ -270,7 +266,6 @@ public class WritePlaceDetailActivity extends AppCompatActivity {
                 intent.putExtra("return-date", true);
                 startActivityForResult(intent, GalleryActivity.PICK_FROM_CAMERA);
                 break;
-
             case R.id.btn_album:
                 if(imgCount > 4) Toast.makeText(this, R.string.toast_image_max, Toast.LENGTH_SHORT).show();
                 startActivityForResult(new Intent(this, GalleryActivity.class), GalleryActivity.PICK_FROM_ALBUM);

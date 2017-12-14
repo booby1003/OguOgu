@@ -8,6 +8,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.oguogu.dialog.LoadingDialog;
+
 /**
  * Created by Administrator on 2016-12-02.
  */
@@ -26,5 +28,22 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         return super.onCreateView(inflater, container, savedInstanceState);
+    }
+
+    private LoadingDialog mLoadingDialog = null;
+
+    public void showDialog() {
+        if(mLoadingDialog == null) {
+            mLoadingDialog = new LoadingDialog(getContext());
+            mLoadingDialog.setCancelable(false);
+            mLoadingDialog.show();
+        }else{
+            mLoadingDialog.show();
+        }
+    }
+
+    public void hideDialog() {
+        if(mLoadingDialog == null) return;
+        if (mLoadingDialog.isShowing()) mLoadingDialog.dismiss();
     }
 }

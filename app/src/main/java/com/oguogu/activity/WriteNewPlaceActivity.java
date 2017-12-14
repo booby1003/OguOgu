@@ -61,7 +61,7 @@ public class WriteNewPlaceActivity extends AppCompatActivity {
 
     private void getPlaceInfo() {
 
-        new LoadingDialog(this).show();
+
     }
 }
 

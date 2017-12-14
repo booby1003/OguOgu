@@ -29,6 +29,7 @@ import com.oguogu.bus.BusEvent;
 import com.oguogu.bus.BusProvider;
 import com.oguogu.communication.ConstantCommURL;
 import com.oguogu.communication.HttpRequest;
+import com.oguogu.dialog.LoadingDialog;
 import com.oguogu.util.LogUtil;
 import com.oguogu.util.StringUtil;
 import com.oguogu.vo.VoHomeList;
@@ -110,6 +111,8 @@ public class HomeFragment extends BaseFragment {
 
     private void getHomeList() {
 
+        showDialog();
+
         if(mRequest == null) mRequest = HttpRequest.getInstance(getContext());
 
         String url = ConstantCommURL.getURL(ConstantCommURL.URL_API, ConstantCommURL.REQUEST_GET_HOME);
@@ -121,6 +124,7 @@ public class HomeFragment extends BaseFragment {
             @Override
             public void success(String response) {
 
+                hideDialog();
                 LogUtil.d("HomeFragment response : " + response.toString());
 
                 VoHomeList homeList = GlobalApplication.getGson().fromJson(response, VoHomeList.class);
@@ -131,17 +135,17 @@ public class HomeFragment extends BaseFragment {
 
             @Override
             public void fail(JSONObject response) {
-
+                hideDialog();
             }
 
             @Override
             public void exception(VolleyError error) {
-
+                hideDialog();
             }
 
             @Override
             public void networkerror() {
-
+                hideDialog();
             }
         });
     }
