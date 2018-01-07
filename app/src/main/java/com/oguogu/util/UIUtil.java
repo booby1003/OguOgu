@@ -58,6 +58,8 @@ public class UIUtil {
             boardTypeDrawable = R.drawable.icon_type_hospital;
         else if (storeType == VoPlaceDetail.TYPE_PLAYGROUND)
             boardTypeDrawable = R.drawable.icon_type_gowalk;
+        else if (storeType == VoPlaceDetail.TYPE_HOTEL)
+            boardTypeDrawable = R.drawable.icon_type_gowalk;
 
         return boardTypeDrawable;
     }

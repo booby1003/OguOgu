@@ -5,15 +5,16 @@
     android:orientation="horizontal"
     android:gravity="center_vertical"
     android:paddingTop="@dimen/dimen_3dp"
-    android:paddingBottom="@dimen/dimen_3dp"
-    android:paddingRight="@dimen/dimen_10dp">
+    android:paddingBottom="@dimen/dimen_3dp">
 
     <CheckBox
+        android:id="@+id/checkbox_extra"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:button="@drawable/sel_btn_checkbox"/>
 
     <TextView
+        android:id="@+id/tv_extra_conts"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/color_txt_45"
@@ -22,14 +23,24 @@
         android:layout_marginLeft="@dimen/dimen_10dp" />
 
     <EditText
-        android:id="@+id/et_add"
+        android:id="@+id/et_add_extra"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:layout_marginLeft="@dimen/dimen_15dp"
         android:textColorHint="@color/color_txt_90"
         android:textColor="@color/color_txt_37"
-        android:textSize="@dimen/dimen_15sp"
-        android:background="@drawable/add_info_bg" />
+        android:textSize="@dimen/dimen_13sp"
+        android:background="@drawable/add_info_bg"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/btn_extra_delete"
+        android:layout_width="@dimen/dimen_50dp"
+        android:layout_height="@dimen/dimen_25dp"
+        android:background="@android:color/transparent"
+        android:textColor="@drawable/clr_btn_serch_delete"
+        android:text="삭제"
+        android:visibility="gone"/>
 
 </LinearLayout>

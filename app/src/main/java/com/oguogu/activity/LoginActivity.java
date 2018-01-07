@@ -149,6 +149,10 @@ public class LoginActivity extends AppCompatActivity {
                 String token = result.getSignInAccount().getIdToken();
                 AuthCredential credential = GoogleAuthProvider.getCredential(token, null);
                 mFirebaseAuth.signInWithCredential(credential);
+
+                LogUtil.d("로그인성공 ");
+                startActivity(new Intent(LoginActivity.this, OguOguActivity.class));
+                finish();
             }
             else {
                 LogUtil.d("Google Login Failed." + result.getStatus());

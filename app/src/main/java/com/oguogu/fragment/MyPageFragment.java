@@ -22,6 +22,7 @@ import com.oguogu.GlobalApplication;
 import com.oguogu.R;
 import com.oguogu.activity.LoginActivity;
 import com.oguogu.activity.MyPetsActivity;
+import com.oguogu.activity.SettingActivity;
 import com.oguogu.adapter.PhotoListAdapter;
 import com.oguogu.custom.CustomBitmapPool;
 import com.oguogu.util.LogUtil;
@@ -163,12 +164,12 @@ public class MyPageFragment extends BaseFragment  {
                 startActivity(new Intent(getContext(), MyPetsActivity.class));
                 break;
             case R.id.btn_setting:
-//                Intent intent = new Intent(getActivity(), SettingActivity.class);
-//                startActivity(intent);
-                FirebaseAuth.getInstance().signOut();
-
-                startActivity(new Intent(getActivity(), LoginActivity.class));
-                getActivity().finish();
+                Intent intent = new Intent(getActivity(), SettingActivity.class);
+                startActivity(intent);
+//                FirebaseAuth.getInstance().signOut();
+//
+//                startActivity(new Intent(getActivity(), LoginActivity.class));
+//                getActivity().finish();
                 break;
         }
     }

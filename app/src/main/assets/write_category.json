@@ -1,0 +1,114 @@
+{
+  "RESULT_CODE": "777",
+  "RESULT_MSG": null,
+  "cateTypeList": [
+    {
+      "placeType" :1,
+      "placeName": "카페/음식점",
+      "cateType": "C001",
+      "cateName": "카페"
+    },
+    {
+      "placeType" :1,
+      "placeName": "카페/음식점",
+      "cateType": "C002",
+      "cateName": "레스토랑"
+    },
+    {
+      "placeType" :1,
+      "placeName": "카페/음식점",
+      "cateType": "C003",
+      "cateName": "술집"
+    },
+    {
+      "placeType" :1,
+      "placeName": "카페/음식점",
+      "cateType": "C004",
+      "cateName": "애견카페"
+    },
+    {
+      "placeType" :2,
+      "placeName": "병원",
+      "cateType": "C005",
+      "cateName": "동물병원"
+    },
+    {
+      "placeType" :2,
+      "placeName": "병원",
+      "cateType": "C006",
+      "cateName": "동물약국"
+    },
+    {
+      "placeType" :3,
+      "placeName": "산책",
+      "cateType": "C007",
+      "cateName": "산책로"
+    },
+    {
+      "placeType" :3,
+      "placeName": "산책",
+      "cateType": "C008",
+      "cateName": "공원"
+    },
+    {
+      "placeType" :3,
+      "placeName": "산책",
+      "cateType": "C009",
+      "cateName": "놀이터"
+    },
+    {
+      "placeType" :4,
+      "placeName": "숙박",
+      "cateType": "C010",
+      "cateName": "호텔"
+    },
+    {
+      "placeType" :4,
+      "placeName": "숙박",
+      "cateType": "C011",
+      "cateName": "펜션"
+    },
+    {
+      "placeType" :4,
+      "placeName": "숙박",
+      "cateType": "C012",
+      "cateName": "리조크"
+    },
+    {
+      "placeType" :4,
+      "placeName": "숙박",
+      "cateType": "C013",
+      "cateName": "캠핑"
+    }
+  ],
+  "extraInfoList": [
+    {
+      "extraInfoType" :"E001",
+      "infoConts": "대형견 입장 가능"
+    },
+    {
+      "extraInfoType" :"E002",
+      "infoConts": "모든 테이블 이용가능"
+    },
+    {
+      "extraInfoType" :"E003",
+      "infoConts": "주차 가능"
+    }
+  ]
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

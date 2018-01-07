@@ -211,6 +211,7 @@ public class GalleryActivity extends AppCompatActivity {
                     intent.putExtra("scale", true);
                     intent.putExtra("return-data", true);
                     startActivityForResult(intent, PICK_FROM_CAMERA);*/
+                    LogUtil.i("imageUri :: " + imageUri);
 
                     CropImage.activity(imageUri)
                             .setGuidelines(CropImageView.Guidelines.OFF)

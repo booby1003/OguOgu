@@ -2,6 +2,7 @@ package com.oguogu.activity;
 
 import android.animation.Animator;
 import android.app.Activity;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -36,6 +37,7 @@ import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
 import com.oguogu.R;
 import com.oguogu.demo.DemoViewPagerAdapter;
+import com.oguogu.dialog.CommonDialog;
 import com.oguogu.fragment.BaseFragment;
 import com.oguogu.util.LogUtil;
 

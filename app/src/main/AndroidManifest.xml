@@ -66,7 +66,8 @@
             android:theme="@style/OguOguUI.NoActionBar" />
         <activity
             android:name=".activity.WriteNewPlaceActivity"
-            android:theme="@style/OguOguUI.NoActionBar" />
+            android:theme="@style/OguOguUI.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".activity.SettingActivity"
             android:theme="@style/OguOguUI.NoActionBar">

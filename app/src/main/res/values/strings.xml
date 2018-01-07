@@ -83,8 +83,12 @@
 
     <string name="srch">검색</string>
     <string name="cancel">취소</string>
+    <string name="delete">삭제</string>
+    <string name="no">아니오</string>
+    <string name="yes">예</string>
 
     <string name="alt_network_error">네트워크가 연결되지 않았습니다.\n설정창으로 가시겠습니까?</string>
+    <string name="alt_delete">삭제 하시겠습니까?</string>
 
     <string name="write_btn_place">장소 공유</string>
     <string name="write_btn_mypet">내펫 자랑</string>
@@ -117,6 +121,7 @@
     <string name="price">가격</string>
 
     <string name="toast_image_max">이미지는 최대 5장까지 업데이트 가능합니다.</string>
+    <string name="place_image_descript">이미지는 최소 1장 이상 올리셔야 합니다.</string>
 
     <string name="crop_image_activity_title"></string>
     <string name="crop_image_menu_rotate_left">Rotate counter clockwise</string>
