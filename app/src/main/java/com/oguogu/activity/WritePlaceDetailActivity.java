@@ -181,7 +181,7 @@ public class WritePlaceDetailActivity extends AppCompatActivity {
         if(mRequest == null) mRequest = HttpRequest.getInstance(this);
 
         String url = ConstantCommURL.getURL(ConstantCommURL.URL_API, ConstantCommURL.REQUEST_SET_WRITE_PLACE);
-        url = "http://api.mm.moumou.co.kr/api/common/GetErrNotify";
+        url = "http://api.mm.moumou.co.kr/api/common/addErrNotify";
 
         Map<String, String> params = new Hashtable<>();
         params.put("APPVER", "1.3.8");

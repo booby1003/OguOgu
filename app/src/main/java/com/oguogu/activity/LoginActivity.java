@@ -25,10 +25,14 @@ import com.google.firebase.auth.FacebookAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.GoogleAuthProvider;
+import com.oguogu.GlobalApplication;
 import com.oguogu.R;
 import com.oguogu.signin.SignIn;
 import com.oguogu.util.LogUtil;
+import com.oguogu.util.StringUtil;
+import com.oguogu.vo.VoMyInfo;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -150,9 +154,9 @@ public class LoginActivity extends AppCompatActivity {
                 AuthCredential credential = GoogleAuthProvider.getCredential(token, null);
                 mFirebaseAuth.signInWithCredential(credential);
 
+                getLoginInfo(result.getSignInAccount().getEmail());
                 LogUtil.d("로그인성공 ");
-                startActivity(new Intent(LoginActivity.this, OguOguActivity.class));
-                finish();
+
             }
             else {
                 LogUtil.d("Google Login Failed." + result.getStatus());
@@ -230,4 +234,22 @@ public class LoginActivity extends AppCompatActivity {
             LogUtil.d("LoginErr : " + error.toString());
         }
     };
+
+    private void getLoginInfo(String id) {
+
+        LogUtil.i("서버에서 로그인 정보 가져오기=============================");
+        LogUtil.i("ID :" + id);
+        String msg = null;
+
+        try {
+            msg = StringUtil.getData(this, "login_info.json");
+            VoMyInfo loginInfo = GlobalApplication.getGson().fromJson(msg, VoMyInfo.class);
+
+            startActivity(new Intent(LoginActivity.this, OguOguActivity.class));
+            finish();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }

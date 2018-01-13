@@ -41,7 +41,6 @@ public class PlaceListAdapter extends RecyclerView.Adapter<PlaceListAdapter.View
     // 필수로 Generate 되어야 하는 메소드 1 : 새로운 뷰 생성
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-
         View view =  LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_place_item, parent, false);
         ViewHolder holder = new ViewHolder(view);
         return holder;
@@ -57,11 +56,11 @@ public class PlaceListAdapter extends RecyclerView.Adapter<PlaceListAdapter.View
         holder.tv_place_addr.setText(info.getPlaceAddr());
 
         int storeTypeResId=0;
-        if (info.getBoardType() == VoHomeList.TYPE_CAFE)
+        if (info.getBoardType() == VoHomeList.PLACE_TYPE_RESTAURANT)
             storeTypeResId = R.drawable.icon_type_cafe_s;
-        else if (info.getBoardType() == VoHomeList.TYPE_HOSPITAL)
+        else if (info.getBoardType() == VoHomeList.PLACE_TYPE_HOSPITAL)
             storeTypeResId = R.drawable.icon_type_hospital_s;
-        else if (info.getBoardType() == VoHomeList.TYPE_PLAYGROUND)
+        else if (info.getBoardType() == VoHomeList.PLACE_TYPE_PLAYGROUND)
             storeTypeResId = R.drawable.icon_type_gowalk_s;
 
         Glide.with(context)
@@ -172,18 +171,18 @@ public class PlaceListAdapter extends RecyclerView.Adapter<PlaceListAdapter.View
 //                lastPosition = position;
 //            }
 //        }
-    @Override
-    public int getItemViewType(int position) {
-        if (mItems.get(position).getBoardType() == VoHomeList.TYPE_STORY)
-            return VoHomeList.TYPE_STORY;
-        else if (mItems.get(position).getBoardType() == VoHomeList.TYPE_CAFE)
-            return VoHomeList.TYPE_CAFE;
-        else if (mItems.get(position).getBoardType() == VoHomeList.TYPE_HOSPITAL)
-            return VoHomeList.TYPE_HOSPITAL;
-        else if (mItems.get(position).getBoardType() == VoHomeList.TYPE_PLAYGROUND)
-            return VoHomeList.TYPE_PLAYGROUND;
-
-        return VoHomeList.TYPE_STORY;
-    }
+//    @Override
+//    public int getItemViewType(int position) {
+//        if (mItems.get(position).getBoardType() == VoHomeList.TYPE_STORY)
+//            return VoHomeList.TYPE_STORY;
+//        else if (mItems.get(position).getBoardType() == VoHomeList.TYPE_CAFE)
+//            return VoHomeList.TYPE_CAFE;
+//        else if (mItems.get(position).getBoardType() == VoHomeList.TYPE_HOSPITAL)
+//            return VoHomeList.TYPE_HOSPITAL;
+//        else if (mItems.get(position).getBoardType() == VoHomeList.TYPE_PLAYGROUND)
+//            return VoHomeList.TYPE_PLAYGROUND;
+//
+//        return VoHomeList.TYPE_STORY;
+//    }
 
 }

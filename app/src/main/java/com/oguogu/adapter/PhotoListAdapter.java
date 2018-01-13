@@ -55,11 +55,11 @@ public class PhotoListAdapter extends RecyclerView.Adapter<PhotoListAdapter.View
         VoPhoto info = mItems.get(position);
 
         int storeTypeResId = 0;
-        if (info.getBoardType() == VoHomeList.TYPE_CAFE)
+        if (info.getBoardType() == VoHomeList.PLACE_TYPE_RESTAURANT)
             storeTypeResId = R.drawable.icon_type_cafe_s;
-        else if (info.getBoardType() == VoHomeList.TYPE_HOSPITAL)
+        else if (info.getBoardType() == VoHomeList.PLACE_TYPE_HOSPITAL)
             storeTypeResId = R.drawable.icon_type_hospital_s;
-        else if (info.getBoardType() == VoHomeList.TYPE_PLAYGROUND)
+        else if (info.getBoardType() == VoHomeList.PLACE_TYPE_PLAYGROUND)
             storeTypeResId = R.drawable.icon_type_gowalk_s;
         else storeTypeResId = 0;
 

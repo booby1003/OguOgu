@@ -6,34 +6,34 @@
   "isLastPage": true,
   "Data": [
     {
-      "boardIdx": "100",
+      "placeIdx": "P0000000001",
       "placeName": "해림동물병원",
       "placeAddr": "인천 계양구 작전동",
-      "boardType": 3,
+      "placeType": 2,
       "isLike": 1,
       "isBookmark": 1,
-      "imgPath": "http://sunghun.smilefinger.com/test/해림동물병원.png",
-      "regThunmbPath": "http://sunghun.smilefinger.com/test/해림동물병원.png"
+      "imgPath": "http://118.107.161.87/data/img/406331041.jpg",
+      "regThunmbPath": "http://118.107.161.87/data/img/406331041.jpg"
     },
     {
-      "boardIdx": "101",
+      "placeIdx": "P0000000002",
       "placeName": "인천대공원",
       "placeAddr": "서울 광진구",
-      "boardType": 4,
+      "placeType": 3,
       "isLike": 0,
       "isBookmark": 0,
-      "imgPath": "http://sunghun.smilefinger.com/test/인천대공원.png",
-      "regThunmbPath": "http://sunghun.smilefinger.com/test/해림동물병원.png"
+      "imgPath": "http://118.107.161.87/data/img/KakaoTalk_20161211_222531304.jpg",
+      "regThunmbPath": "http://118.107.161.87/data/img/KakaoTalk_20161211_222531304.jpg"
     },
     {
-      "boardIdx": "102",
+      "placeIdx": "P0000000003",
       "placeName": "반려견",
       "placeAddr": "인천 연수구 동춘동",
-      "boardType": 2,
+      "placeType": 1,
       "isLike": 0,
       "isBookmark": 0,
-      "imgPath": "http://sunghun.smilefinger.com/test/반려견.png",
-      "regThunmbPath": "http://sunghun.smilefinger.com/test/해림동물병원.png"
+      "imgPath": "http://118.107.161.87/data/img/I7ZnUhB9b65eUtp5ahRa5GhD1UcU.jpg",
+      "regThunmbPath": "http://118.107.161.87/data/img/I7ZnUhB9b65eUtp5ahRa5GhD1UcU.jpg"
     }
   ]
 }

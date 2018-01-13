@@ -194,9 +194,9 @@ public class MyPageFragment extends BaseFragment  {
                 msg = StringUtil.getData(getActivity(), "post_writing_list.json");
 
             } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
+        e.printStackTrace();
+    }
+}
 
         isLoading = false;
 

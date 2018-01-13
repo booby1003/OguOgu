@@ -52,13 +52,13 @@ public class UIUtil {
      */
     public static int getBoardTypeDrawable(int storeType) {
         int boardTypeDrawable = 0;
-        if (storeType == VoPlaceDetail.TYPE_CAFE)
+        if (storeType == VoPlaceDetail.PLACE_TYPE_RESTAURANT)
             boardTypeDrawable = R.drawable.icon_type_cafe;
-        else if (storeType == VoPlaceDetail.TYPE_HOSPITAL)
+        else if (storeType == VoPlaceDetail.PLACE_TYPE_HOSPITAL)
             boardTypeDrawable = R.drawable.icon_type_hospital;
-        else if (storeType == VoPlaceDetail.TYPE_PLAYGROUND)
+        else if (storeType == VoPlaceDetail.PLACE_TYPE_PLAYGROUND)
             boardTypeDrawable = R.drawable.icon_type_gowalk;
-        else if (storeType == VoPlaceDetail.TYPE_HOTEL)
+        else if (storeType == VoPlaceDetail.PLACE_TYPE_HOTEL)
             boardTypeDrawable = R.drawable.icon_type_gowalk;
 
         return boardTypeDrawable;

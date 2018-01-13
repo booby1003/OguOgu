@@ -47,7 +47,7 @@ public class ContentListAdapter extends RecyclerView.Adapter<ContentListAdapter.
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         View view = null;
-        if (viewType == VoHomeList.TYPE_STORY) {
+        if (viewType == VoHomeList.BOARD_TYPE_STORY) {
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_home_story_item, parent, false);
         } else {
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_home_place_item, parent, false);
@@ -63,7 +63,7 @@ public class ContentListAdapter extends RecyclerView.Adapter<ContentListAdapter.
 
         VoHomeList.VoHomeInfo info = mItems.get(position);
 
-        if (info.getBoardType() == VoHomeList.TYPE_STORY) {
+        if (info.getBoardType() == VoHomeList.BOARD_TYPE_STORY) {
             holder.tv_title.setText(info.getTitle());
             holder.tv_userid.setText(info.getRegUserID());
             holder.tv_reg_date.setText(info.getRegDate());
@@ -78,15 +78,15 @@ public class ContentListAdapter extends RecyclerView.Adapter<ContentListAdapter.
 
         } else {
             holder.tv_title.setText(info.getTitle());
-            holder.tv_store_name.setText(info.getStoreName());
+//            holder.tv_store_name.setText(info.getStoreName());
             holder.tv_store_addr.setText(info.getAddr());
 
             int storeTypeResId=0;
-            if (info.getBoardType() == VoHomeList.TYPE_CAFE)
+            if (info.getBoardType() == VoHomeList.PLACE_TYPE_RESTAURANT)
                 storeTypeResId = R.drawable.icon_type_cafe_s;
-            else if (info.getBoardType() == VoHomeList.TYPE_HOSPITAL)
+            else if (info.getBoardType() == VoHomeList.PLACE_TYPE_HOSPITAL)
                 storeTypeResId = R.drawable.icon_type_hospital_s;
-            else if (info.getBoardType() == VoHomeList.TYPE_PLAYGROUND)
+            else if (info.getBoardType() == VoHomeList.PLACE_TYPE_PLAYGROUND)
                 storeTypeResId = R.drawable.icon_type_gowalk_s;
 
             Glide.with(context)
@@ -213,18 +213,18 @@ public class ContentListAdapter extends RecyclerView.Adapter<ContentListAdapter.
 //                lastPosition = position;
 //            }
 //        }
-    @Override
-    public int getItemViewType(int position) {
-        if (mItems.get(position).getBoardType() == VoHomeList.TYPE_STORY)
-            return VoHomeList.TYPE_STORY;
-        else if (mItems.get(position).getBoardType() == VoHomeList.TYPE_CAFE)
-            return VoHomeList.TYPE_CAFE;
-        else if (mItems.get(position).getBoardType() == VoHomeList.TYPE_HOSPITAL)
-            return VoHomeList.TYPE_HOSPITAL;
-        else if (mItems.get(position).getBoardType() == VoHomeList.TYPE_PLAYGROUND)
-            return VoHomeList.TYPE_PLAYGROUND;
-
-        return VoHomeList.TYPE_STORY;
-    }
+//    @Override
+//    public int getItemViewType(int position) {
+//        if (mItems.get(position).getBoardType() == VoHomeList.TYPE_STORY)
+//            return VoHomeList.TYPE_STORY;
+//        else if (mItems.get(position).getBoardType() == VoHomeList.TYPE_CAFE)
+//            return VoHomeList.TYPE_CAFE;
+//        else if (mItems.get(position).getBoardType() == VoHomeList.TYPE_HOSPITAL)
+//            return VoHomeList.TYPE_HOSPITAL;
+//        else if (mItems.get(position).getBoardType() == VoHomeList.TYPE_PLAYGROUND)
+//            return VoHomeList.TYPE_PLAYGROUND;
+//
+//        return VoHomeList.TYPE_STORY;
+//    }
 
 }

@@ -67,7 +67,7 @@ public class WritePlaceActivity extends AppCompatActivity {
     @Bind(R.id.rl_lists) RelativeLayout rl_lists;
     @Bind(R.id.recycler_view) RecyclerView recycler_view;
 
-    private int selectedPlace = VoBase.TYPE_CAFE;
+    private int selectedPlace = VoBase.PLACE_TYPE_RESTAURANT;
 
     private Timer timer = null;
     private final long DELAY_TIME = 1000;
@@ -174,15 +174,15 @@ public class WritePlaceActivity extends AppCompatActivity {
                 break;
             case R.id.btn_cafe:
                 selectedPlace(view, place_title[0]);
-                selectedPlace = VoBase.TYPE_CAFE;
+                selectedPlace = VoBase.PLACE_TYPE_RESTAURANT;
                 break;
             case R.id.btn_hospital:
                 selectedPlace(view, place_title[1]);
-                selectedPlace = VoBase.TYPE_HOSPITAL;
+                selectedPlace = VoBase.PLACE_TYPE_HOSPITAL;
                 break;
             case R.id.btn_playground:
                 selectedPlace(view, place_title[2]);
-                selectedPlace = VoBase.TYPE_PLAYGROUND;
+                selectedPlace = VoBase.PLACE_TYPE_PLAYGROUND;
                 break;
             case R.id.btn_srch_cancel:
                 focusInSearch(false);

@@ -179,13 +179,13 @@ public class PlaceFragment extends BaseFragment {
                 photoListAdapter.setItems(voPlaceList.getData());
                 break;
             case R.id.btn_cafe:
-                photoListAdapter.setItem(voPlaceList.getData(), VoHomeList.TYPE_CAFE);
+                photoListAdapter.setItem(voPlaceList.getData(), VoHomeList.PLACE_TYPE_RESTAURANT);
                 break;
             case R.id.btn_hospital:
-                photoListAdapter.setItem(voPlaceList.getData(), VoHomeList.TYPE_HOSPITAL);
+                photoListAdapter.setItem(voPlaceList.getData(), VoHomeList.PLACE_TYPE_HOSPITAL);
                 break;
             case R.id.btn_playground:
-                photoListAdapter.setItem(voPlaceList.getData(), VoHomeList.TYPE_PLAYGROUND);
+                photoListAdapter.setItem(voPlaceList.getData(), VoHomeList.PLACE_TYPE_PLAYGROUND);
                 break;
         }
     }
