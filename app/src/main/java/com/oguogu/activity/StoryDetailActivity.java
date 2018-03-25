@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -27,8 +26,7 @@ import com.oguogu.communication.HttpRequest;
 import com.oguogu.custom.CustomBitmapPool;
 import com.oguogu.custom.CustomViewPager;
 import com.oguogu.util.UIUtil;
-import com.oguogu.vo.VoDetail;
-import com.oguogu.vo.VoHomeList;
+import com.oguogu.vo.VoCommentList;
 import com.oguogu.vo.VoMyInfo;
 import com.oguogu.vo.VoStoryDetail;
 
@@ -135,7 +133,7 @@ public class StoryDetailActivity extends BaseActivity {
         tv_like_count.setText(storyDetail.getTotalLikeCnt());
         tv_comment_count.setText(storyDetail.getTotalCommentCnt());
 
-        int boardTypeId = UIUtil.getBoardTypeDrawable(storyDetail.getBoardType());
+        int boardTypeId = UIUtil.getPlaceTypeDrawable(storyDetail.getBoardType());
 //        if (storyDetail.getBoardType() == VoHomeList.TYPE_CAFE)
 //            storeTypeResId = R.drawable.icon_type_cafe_s;
 //        else if (storyDetail.getBoardType() == VoHomeList.TYPE_HOSPITAL)
@@ -171,7 +169,7 @@ public class StoryDetailActivity extends BaseActivity {
         for (int idx=0; idx<storyDetail.getCommentList().size(); idx++) {
             VoStoryDetail.VoComment commentInfo = storyDetail.getCommentList().get(idx);
 
-            View view = LayoutInflater.from(this).inflate(R.layout.detail_comment_item, null);
+            View view = LayoutInflater.from(this).inflate(R.layout.item_comment, null);
             ImageView iv_comment_img = (ImageView)view.findViewById(R.id.iv_comment_img);
             TextView tv_comment_nickname = (TextView)view.findViewById(R.id.tv_comment_nickname);
             TextView tv_comment_date = (TextView)view.findViewById(R.id.tv_comment_date);
@@ -196,7 +194,7 @@ public class StoryDetailActivity extends BaseActivity {
                 btnDeleteComment.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        VoDetail.VoComment deleteComment = (VoDetail.VoComment)v.getTag();
+                        VoCommentList.VoComment deleteComment = (VoCommentList.VoComment)v.getTag();
                         storyDetail.getCommentList().remove(deleteComment);
                         setCommentList();
 

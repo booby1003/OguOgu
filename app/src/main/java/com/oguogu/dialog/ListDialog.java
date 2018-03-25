@@ -76,7 +76,7 @@ public class ListDialog extends Dialog {
                 view = LayoutInflater.from(mContext).inflate(R.layout.item_place_category, null);
                 view.findViewById(R.id.iv_cate).setVisibility(View.VISIBLE);
                 ImageView imageView = (ImageView) view.findViewById(R.id.iv_cate);
-                imageView.setImageResource(UIUtil.getBoardTypeDrawable(category.getPlaceType()));
+                imageView.setImageResource(UIUtil.getPlaceTypeDrawable(category.getPlaceType()));
                 TextView tv_conts = (TextView) view.findViewById(R.id.tv_conts);
                 tv_conts.setText(category.getPlaceName());
                 view.setTag(category);

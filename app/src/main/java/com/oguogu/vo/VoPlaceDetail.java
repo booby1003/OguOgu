@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by Administrator on 2016-07-03.
  */
-public class VoPlaceDetail extends VoDetail{
+public class VoPlaceDetail extends VoCommentList {
 
     private static VoPlaceDetail instance;
 
@@ -17,15 +17,17 @@ public class VoPlaceDetail extends VoDetail{
         return instance;
     }
 
-    private String id;
+    private String ID;
     private String BoardIdx;
     private String PlaceIdx;
     private String PlaceName;
     private String PlaceAddr;
-    private String Conts;
-    private int BoardType;
+    private int PlaceType;
     private boolean IsLike;
     private boolean IsBookmark;
+    private String imgPath;
+    private String Conts;
+    private String RegThunmbPath;
     private String RegUserId;
     private String Time;
     private String TelNo;
@@ -36,7 +38,6 @@ public class VoPlaceDetail extends VoDetail{
 
     private ArrayList<String> ExtraInfoList = new ArrayList<>();
     private ArrayList<String> PriceList = new ArrayList<>();
-
     private ArrayList<VoComment> CommentList = new ArrayList<VoComment>();
     private ArrayList<VoRelation> RelationList = new ArrayList<VoRelation>();
     private ArrayList<String> ImgList = new ArrayList<String>();
@@ -46,11 +47,11 @@ public class VoPlaceDetail extends VoDetail{
     }
 
     public String getId() {
-        return id;
+        return ID;
     }
 
     public void setId(String id) {
-        this.id = id;
+        this.ID = id;
     }
 
     public String getBoardIdx() {
@@ -93,12 +94,12 @@ public class VoPlaceDetail extends VoDetail{
         Conts = conts;
     }
 
-    public int getBoardType() {
-        return BoardType;
+    public int getPlaceType() {
+        return PlaceType;
     }
 
-    public void setBoardType(int boardType) {
-        BoardType = boardType;
+    public void setPlaceType(int placeType) {
+        PlaceType = placeType;
     }
 
     public boolean isLike() {
@@ -115,6 +116,22 @@ public class VoPlaceDetail extends VoDetail{
 
     public void setBookmark(boolean bookmark) {
         IsBookmark = bookmark;
+    }
+
+    public String getImgPath() {
+        return imgPath;
+    }
+
+    public void setImgPath(String imgPath) {
+        this.imgPath = imgPath;
+    }
+
+    public String getRegThunmbPath() {
+        return RegThunmbPath;
+    }
+
+    public void setRegThunmbPath(String regThunmbPath) {
+        RegThunmbPath = regThunmbPath;
     }
 
     public String getRegUserId() {

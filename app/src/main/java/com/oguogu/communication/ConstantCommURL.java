@@ -18,16 +18,20 @@ public class ConstantCommURL {
         return (ISTEST ? APP_TEST_DOMAIN : APP_DOMAIN) + url + request;
     }
 
-    public final static String REQUEST_GET_PLACE = "Place";
-    public final static String REQUEST_GET_HOME = "HomeList";
-    public final static String REQUEST_GET_FEED = "Feed";
-    public final static String REQUEST_GET_STORY = "Story";
-    public final static String REQUEST_GET_WRITE_PLACE = "WritePlace";
+    public final static String REQUEST_GET_PLACE = "places";
+    public final static String REQUEST_GET_PLACE_DETAIL = "places/detail";
+    public final static String REQUEST_GET_HOME = "homeList";
+    public final static String REQUEST_GET_FEED = "feed";
+    public final static String REQUEST_GET_COMMENT = "places/comments/";
+    public final static String REQUEST_GET_STORY = "story";
+    public final static String REQUEST_GET_WRITE_PLACE = "writePlace";
     public final static String REQUEST_SET_WRITE_PLACE = "postWriting";
 
     public final static String REQUEST_TAG_PLACE = "TagPlace";
+    public final static String REQUEST_TAG_PLACE_DETAIL = "TagPlaceDetail";
     public final static String REQUEST_TAG_HOME = "TagHome";
     public final static String REQUEST_TAG_FEED = "TagFeed";
+    public final static String REQUEST_TAG_COMMENT = "TagComment";
     public final static String REQUEST_TAG_STORY = "TagStory";
     public final static String REQUEST_TAG_WRITE_PLACE = "TagWritePlace";
     public final static String REQUEST_TAG_SET_WRITE_PLACE = "TagWritePlace";

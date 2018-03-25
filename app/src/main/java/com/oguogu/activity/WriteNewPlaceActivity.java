@@ -462,7 +462,7 @@ public class WriteNewPlaceActivity extends BaseActivity {
         public void onClick(View v) {
             VoPlaceCategory category = (VoPlaceCategory) v.getTag();
             placeType = category.getPlaceType();
-            iv_place_type.setImageResource(UIUtil.getBoardTypeDrawable(placeType));
+            iv_place_type.setImageResource(UIUtil.getPlaceTypeDrawable(placeType));
             tv_place_type.setText(category.getPlaceName());
             listDialog.dismiss();
         }

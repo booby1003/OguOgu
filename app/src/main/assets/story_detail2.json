@@ -1,0 +1,39 @@
+{
+  "RESULT_CODE": "777",
+  "RESULT_MSG": null,
+  "boardIdx": "100",
+  "title":"나비와 두부 산책 올림픽 공원 함께 나들이 나들이 나들이",
+  "conts":"나비와 두부와 함께 올림픽 공원 산책왔어요.\n신나 하는 두부와 나비네요~\n둘이 맨날 싸우는데 지금은 사이가 좋아 보이네요~",
+  "regDate": "2016.10.02",
+  "placeName": "어린이대공원",
+  "placeAddr": "서울시 광진구 군자동 664-11",
+  "boardType": 3,
+  "isLike": 1,
+  "regThunmbPath": "http://api.mm.moumou.co.kr/Upload/Picture/whd.png",
+  "regUserID": "gogooma100g",
+  "imgList": [
+    "http://sunghun.smilefinger.com/test/해림동물병원.png",
+    "http://sunghun.smilefinger.com/test/해림동물병원2.png",
+    "http://sunghun.smilefinger.com/test/해림동물병원3.png"
+  ],
+  "totalLikeCnt": "33",
+  "totalCommentCnt": "5",
+  "commentList": [
+    {
+      "commentIdx":"201",
+      "commentUserThumbPath": "http://api.mm.moumou.co.kr/Upload/Picture/whd.png",
+      "commentUserId": "우효동",
+      "comment": "완전 좋아요! 깨끗하고 사장님도 친절해요^^",
+      "commentDate": "2016.11.11",
+      "isMyComment": true
+    },
+    {
+      "commentIdx":"202",
+      "commentUserThumbPath": "http://api.mm.moumou.co.kr/Upload/Picture/sss5257.png",
+      "commentUserId": "강민주",
+      "comment": "의사선생님이 너무 친절하시고 동물을 너무 좋아하시는분 같아 보였어요 최고에요!!",
+      "commentDate": "2016.12.21",
+      "isMyComment": false
+    }
+  ]
+}

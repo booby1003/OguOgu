@@ -1,69 +1,72 @@
 {
-  "RESULT_CODE": "777",
+  "RESULT_CODE": "707",
   "RESULT_MSG": null,
-  "boardIdx": "B0000000001",
-  "placeIdx": "P0000000001",
-  "placeName": "해림동물병원",
-  "placeAddr": "인천 계양구 작전동 664-11",
-  "conts": "천호에 자리잡은 시티독을 아시나요. 저도 이번에 알게되서 다녀왔는데요.강아지카페로 알려진 이곳은 대형견들이 많은 천호애견카페에요. 천호애견카페중에서도 강아지카페로 알려진 이곳엔 커다란 대형견들과 세마리의 시바견, 그리고 귀여운 코기와 푸들, 등등 예쁜 강아지들부터 듬직한 큰개까지 다양하게 살아가고 있는 곳이랍니다.",
-  "boardType": 3,
-  "isLike": 1,
-  "isBookmark": 1,
-  "regUserId": "gogooma",
-  "imgList": [
-    "http://sunghun.smilefinger.com/test/해림동물병원.png",
-    "http://sunghun.smilefinger.com/test/해림동물병원2.png",
-    "http://sunghun.smilefinger.com/test/해림동물병원3.png"
+  "ID": "5a4d512024e37e97ed71d34d",
+  "BoardIdx": "B0000000001",
+  "PlaceIdx": "P0000000001",
+  "PlaceName": "해림동물병원",
+  "PlaceAddr": "인천 계양구 작전동",
+  "PlaceType": 2,
+  "IsLike": true,
+  "IsBookmark": true,
+  "ImgPath": "http://118.107.161.87/data/img/동물병원13.jpg",
+  "RegThunmbPath": "http://118.107.161.87/data/img/동물병원13.jpg",
+  "Conts": "천호에 자리잡은 시티독을 아시나요. 저도 이번에 알게되서 다녀왔는데요.강아지카페로 알려진 이곳은 대형견들이 많은 천호애견카페에요. 천호애견카페중에서도 강아지카페로 알려진 이곳엔 커다란 대형견들과 세마리의 시바견, 그리고 귀여운 코기와 푸들, 등등 예쁜 강아지들부터 듬직한 큰개까지 다양하게 살아가고 있는 곳이랍니다.",
+  "RegUserId": "gogooma",
+  "ImgList": [
+    "http://118.107.161.87/data/img/동물병원13.jpg",
+    "http://118.107.161.87/data/img/동물병원13.jpg",
+    "http://118.107.161.87/data/img/동물병원13.jpg"
   ],
-  "telNo": "032-111-2222",
-  "time": "매일 12:00~22:00 (무휴)",
-  "extraInfoList": [
+  "TelNo": "032-111-2222",
+  "Time": "매일 12:00~22:00 (무휴)",
+  "ExtraInfoList": [
     "대형견 입장 가능",
     "모든 테이블 이용 가능",
     "영업시간 12:00~22:00"
   ],
-  "priceList": [
+  "PriceList": [
     "아메리카노+입장료 7,000원",
     "음료수+입장료 9,000원",
     "식사+입장료 13,000원"
   ],
-  "totalLikeCnt": "23",
-  "totalBookmarkCnt": "10",
-  "totalCommentCnt": "5",
-  "commentList": [
+  "TotalLikeCnt": 23,
+  "TotalBookmarkCnt": 10,
+  "TotalCommentCnt": 5,
+  "RegCode": null,
+  "RegDT": "0001-01-01T00:00:00",
+  "CommentList": [
     {
-      "commentIdx":"201",
-      "commentUserThumbPath": "http://api.mm.moumou.co.kr/Upload/Picture/whd.png",
-      "commentUserId": "우효동",
-      "comment": "완전 좋아요! 깨끗하고 사장님도 친절해요^^",
-      "commentDate": "2016.11.11",
-      "isMyComment": false
+      "CommentIdx": 201,
+      "CommentUserThumbPath": "http://api.mm.moumou.co.kr/Upload/Picture/whd.png",
+      "CommentUserId": "우효동",
+      "Comment": "완전 좋아요! 깨끗하고 사장님도 친절해요^^",
+      "CommentDate": "2018-01-01T14:15:55.171Z",
+      "IsMyComment": false
     },
     {
-      "commentIdx":"202",
-      "commentUserThumbPath": "http://api.mm.moumou.co.kr/Upload/Picture/sss5257.png",
-      "commentUserId": "강민주",
-      "comment": "의사선생님이 너무 친절하시고 동물을 너무 좋아하시는분 같아 보였어요 최고에요!!",
-      "commentDate": "2016.12.21",
-      "isMyComment": true
+      "CommentIdx": 202,
+      "CommentUserThumbPath": "http://api.mm.moumou.co.kr/Upload/Picture/sss5257.png",
+      "CommentUserId": "강민주",
+      "Comment": "의사선생님이 너무 친절하시고 동물을 너무 좋아하시는분 같아 보였어요 최고에요!!",
+      "CommentDate": "2018-01-02T18:15:55.171Z",
+      "IsMyComment": true
     }
   ],
-  "relation_list": [
+  "RelationList": [
     {
-      "relationUserId": "고구마마마",
-      "relationThumbPath": "http://sunghun.smilefinger.com/test/해림동물병원.png"
+      "RelationUserId": "고구마마마",
+      "RelationThumbPath": "http://sunghun.smilefinger.com/test/해림동물병원.png"
     },
     {
-      "relationUserId": "고구마111",
-      "relationThumbPath": "http://sunghun.smilefinger.com/test/해림동물병원2.png"
+      "RelationUserId": "고구마111",
+      "RelationThumbPath": "http://sunghun.smilefinger.com/test/해림동물병원2.png"
     },
     {
-      "relationUserId": "고구마2222",
-      "relationThumbPath": "http://sunghun.smilefinger.com/test/해림동물병원3.png"
-    },
-    {
-      "relationUserId": "고구마333",
-      "relationThumbPath": "http://sunghun.smilefinger.com/test/코코루이.jpg"
+      "RelationUserId": "고구마2222",
+      "RelationThumbPath": "http://sunghun.smilefinger.com/test/해림동물병원3.png"
     }
-  ]
+  ],
+  "UserLikeList": null,
+  "UserSaveInventory": null
 }

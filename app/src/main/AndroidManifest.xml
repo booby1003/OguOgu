@@ -56,10 +56,13 @@
             android:name=".activity.PlaceDetailActivity"
             android:theme="@style/OguOguUI.NoActionBar" />
         <activity
+            android:name=".activity.WritePlaceActivity"
+            android:theme="@style/OguOguUI.NoActionBar" />
+        <activity
             android:name=".activity.StoryDetailActivity"
             android:theme="@style/OguOguUI.NoActionBar" />
         <activity
-            android:name=".activity.WritePlaceActivity"
+            android:name=".activity.CommentActivity"
             android:theme="@style/OguOguUI.NoActionBar" />
         <activity
             android:name=".activity.WritePlaceDetailActivity"

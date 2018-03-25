@@ -221,8 +221,8 @@ public class WritePlaceDetailActivity extends AppCompatActivity {
     }
 
     private void setPlaceInfo() {
-        LogUtil.i("boardType : " + placeInfo.getBoardType());
-        int boardTypeId = UIUtil.getBoardTypeDrawable(placeInfo.getBoardType());
+        LogUtil.i("boardType : " + placeInfo.getPlaceType());
+        int boardTypeId = UIUtil.getPlaceTypeDrawable(placeInfo.getPlaceType());
         Glide.with(this).load(boardTypeId).into(iv_place_type);
 
         tv_place_name.setText(placeInfo.getPlaceName());

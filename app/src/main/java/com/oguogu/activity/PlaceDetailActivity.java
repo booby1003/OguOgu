@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -28,13 +27,15 @@ import com.oguogu.adapter.RelationPhotoListAdapter;
 import com.oguogu.communication.ConstantCommURL;
 import com.oguogu.communication.HttpRequest;
 import com.oguogu.custom.CustomBitmapPool;
-import com.oguogu.custom.CustomViewPager;
+import com.oguogu.util.StringUtil;
 import com.oguogu.util.UIUtil;
-import com.oguogu.vo.VoDetail;
+import com.oguogu.view.ViewPagerIndicator;
+import com.oguogu.vo.VoCommentList;
 import com.oguogu.vo.VoPlaceDetail;
 
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import butterknife.Bind;
@@ -54,7 +55,7 @@ public class PlaceDetailActivity extends BaseActivity {
     @Bind(R.id.toolbar) Toolbar toolbar;
     @Bind(R.id.tv_store_name) TextView tv_store_name;
     @Bind(R.id.btn_back) ImageButton btn_back;
-    @Bind(R.id.view_pager) CustomViewPager viewPager;
+    //@Bind(R.id.viewPager) ViewPager viewPager;
     @Bind(R.id.btn_like) ImageButton btn_like;
     @Bind(R.id.btn_bookmark) ImageButton btn_bookmark;
     @Bind(R.id.btn_comment) ImageButton btn_comment;
@@ -72,6 +73,11 @@ public class PlaceDetailActivity extends BaseActivity {
     @Bind(R.id.layoutComment) LinearLayout layoutComment;
     @Bind(R.id.tv_show_comment_all) TextView tv_show_comment_all;
     @Bind(R.id.recycler_view) RecyclerView recyclerView;
+
+
+    ViewPager viewPager;
+    ViewPagerIndicator indicator;
+
 //    @Bind(R.id.scrollView) ScrollView scrollView;
 
     private VoPlaceDetail placeDetail;
@@ -79,7 +85,7 @@ public class PlaceDetailActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_store_detail);
+        setContentView(R.layout.activity_place_detail);
 
         ButterKnife.bind(this);
 
@@ -87,17 +93,22 @@ public class PlaceDetailActivity extends BaseActivity {
 
         String placeIdx = intent.getStringExtra(PLACE_IDX);
 
+        indicator = (ViewPagerIndicator) findViewById(R.id.indicator);
+
 //        recyclerView.setHasFixedSize(true);
 
         // StaggeredGrid 레이아웃을 사용한다
 //        StaggeredGridLayoutManager layoutManager = new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
 //        layoutManager = new LinearLayoutManager(this);
+
         GridLayoutManager layoutManager = new GridLayoutManager(this,3);
         layoutManager.setAutoMeasureEnabled(true);
         // 지정된 레이아웃매니저를 RecyclerView에 Set 해주어야한다.
         recyclerView.setLayoutManager(layoutManager);
 
-        placeIdx = "P0000000001";
+        viewPager = (ViewPager) findViewById(R.id.viewPager);
+
+        placeIdx = "5a4d512024e37e97ed71d34d";
         getStoreDetail(placeIdx);
 
 
@@ -107,7 +118,11 @@ public class PlaceDetailActivity extends BaseActivity {
 
 //        String msg = null;
 //        try {
-//            msg = StringUtil.getData(this, "store_detail.json");
+//            msg = StringUtil.getData(this, "place_detail.json");
+//
+//            placeDetail = GlobalApplication.getGson().fromJson(msg, VoPlaceDetail.class);
+//            setPlaceDetail();
+//            setCommentList();
 //
 //        } catch (IOException e) {
 //            e.printStackTrace();
@@ -116,8 +131,10 @@ public class PlaceDetailActivity extends BaseActivity {
 
         if(mRequest == null) mRequest = HttpRequest.getInstance(this);
 
-        String url = ConstantCommURL.getURL(ConstantCommURL.URL_API, ConstantCommURL.REQUEST_GET_PLACE);
-        url = url + "/" + placeIdx;
+        String url = ConstantCommURL.getURL(ConstantCommURL.URL_API, ConstantCommURL.REQUEST_GET_PLACE_DETAIL);
+        url = url + "/5a4d512024e37e97ed71d34d/mynaman";
+//        url = url + "/mynaman";
+//        url = url + "/" + placeIdx;
         //builder.appendQueryParameter("", "");
 
         mRequest.StringRequest(ConstantCommURL.REQUEST_TAG_PLACE, Request.Method.GET, url, "", new HttpRequest.ListenerHttpResponse() {
@@ -150,10 +167,22 @@ public class PlaceDetailActivity extends BaseActivity {
 
     private  void setPlaceDetail() {
 
+        ViewPagerImgAdapter viewPagerImgAdapter = new ViewPagerImgAdapter(PlaceDetailActivity.this, placeDetail.getImgList());
+        viewPager.setAdapter(viewPagerImgAdapter);
+        viewPager.addOnPageChangeListener(onPageChangeListener);
+
+        indicator.setItemMargin(20);
+        indicator.createIndicator(placeDetail.getImgList().size());
+
+   //     LogUtil.i("이미지 사이즈 ㅣ " + placeDetail.getImgList().size());
+         //viewImageSlide.setHight(300);
+        //viewImageSlide.createImageSlide(placeDetail.getImgList(), 30);
+
         tv_store_name.setText(placeDetail.getPlaceName());
         tv_register.setText("By " + placeDetail.getRegUserId());
         tv_store_name2.setText(placeDetail.getPlaceName());
-        Glide.with(this).load(UIUtil.getBoardTypeDrawable(placeDetail.getBoardType())).into(iv_store_type);
+        Glide.with(this).load(UIUtil.getPlaceTypeDrawable(placeDetail.getPlaceType())).into(iv_store_type);
+        //Glide.with(this).load(placeDetail.getImgThumbPath()).into(holder.iv_img);
         tv_addr.setText(placeDetail.getPlaceAddr());
         tv_content.setText(placeDetail.getConts());
         tv_tel.setText(placeDetail.getTelNo());
@@ -177,8 +206,7 @@ public class PlaceDetailActivity extends BaseActivity {
 
         //setCommentList();
 
-        ViewPagerImgAdapter viewPagerImgAdapter = new ViewPagerImgAdapter(PlaceDetailActivity.this, placeDetail.getImgList());
-        viewPager.setAdapter(viewPagerImgAdapter);
+
 
         RelationPhotoListAdapter relationPhotoListAdapter = new RelationPhotoListAdapter(placeDetail.getRelationList(), this);
         recyclerView.setAdapter(relationPhotoListAdapter);
@@ -188,9 +216,9 @@ public class PlaceDetailActivity extends BaseActivity {
         layoutComment.removeAllViews();
 
         for (int idx=0; idx<placeDetail.getCommentList().size(); idx++) {
-            VoDetail.VoComment commentInfo = placeDetail.getCommentList().get(idx);
+            VoCommentList.VoComment commentInfo = placeDetail.getCommentList().get(idx);
 
-            View view = LayoutInflater.from(this).inflate(R.layout.detail_comment_item, null);
+            View view = LayoutInflater.from(this).inflate(R.layout.item_comment, null);
             ImageView iv_comment_img = (ImageView)view.findViewById(R.id.iv_comment_img);
             TextView tv_comment_nickname = (TextView)view.findViewById(R.id.tv_comment_nickname);
             TextView tv_comment_date = (TextView)view.findViewById(R.id.tv_comment_date);
@@ -215,7 +243,7 @@ public class PlaceDetailActivity extends BaseActivity {
                 btnDeleteComment.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        VoDetail.VoComment deleteComment = (VoDetail.VoComment)v.getTag();
+                        VoCommentList.VoComment deleteComment = (VoCommentList.VoComment)v.getTag();
                         placeDetail.getCommentList().remove(deleteComment);
                         setCommentList();
 
@@ -228,7 +256,10 @@ public class PlaceDetailActivity extends BaseActivity {
             layoutComment.addView(view);
         }
     }
-    
+
+    /**
+     * Top 이미지 Adapter
+     */
     public class ViewPagerImgAdapter extends PagerAdapter {
 
         private Context context;
@@ -252,7 +283,7 @@ public class PlaceDetailActivity extends BaseActivity {
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
             ImageView imageView = new ImageView(context);
-            imageView.setScaleType(ImageView.ScaleType.FIT_XY);
+            imageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
 
             String imgPath = items.get(position);
 
@@ -273,6 +304,23 @@ public class PlaceDetailActivity extends BaseActivity {
 
     }
 
+    ViewPager.OnPageChangeListener onPageChangeListener = new ViewPager.OnPageChangeListener() {
+        @Override
+        public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+        }
+
+        @Override
+        public void onPageSelected(int position) {
+            indicator.selectedIndicator(position);
+        }
+
+        @Override
+        public void onPageScrollStateChanged(int state) {
+
+        }
+    };
+
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -287,7 +335,7 @@ public class PlaceDetailActivity extends BaseActivity {
                 finishAnimation();
                 break;
             case R.id.tv_show_comment_all:
-                Toast.makeText(this, "전체댓글보기로 이동", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, CommentActivity.class));
                 break;
             case R.id.btn_like:
                 Toast.makeText(this, "좋아요", Toast.LENGTH_SHORT).show();

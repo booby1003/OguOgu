@@ -1,12 +1,24 @@
 package com.oguogu.vo;
 
+import java.util.ArrayList;
+
 /**
  * Created by Administrator on 2016-12-29.
  */
 
-public class VoDetail extends VoBase {
+public class VoCommentList extends VoBase {
 
-    public static class VoComment {
+    ArrayList<VoComment> Data = new ArrayList<>();
+
+    public ArrayList<VoComment> getData() {
+        return Data;
+    }
+
+    public void setData(ArrayList<VoComment> data) {
+        Data = data;
+    }
+
+    public class VoComment {
 
         private String CommentIdx;
         private String CommentUserThumbPath;

@@ -4,7 +4,7 @@ package com.oguogu.vo;
  * Created by Administrator on 2016-05-18.
  */
 public class VoBase {
-    public static final int RESULT_SUCCESS = 777;
+    public static final int RESULT_SUCCESS = 707;
 
     public static final int BOARD_TYPE_PLACE = 1;
     public static final int BOARD_TYPE_STORY = 2;

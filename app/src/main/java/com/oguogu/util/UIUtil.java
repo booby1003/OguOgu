@@ -50,7 +50,7 @@ public class UIUtil {
      * @param storeType
      * @return
      */
-    public static int getBoardTypeDrawable(int storeType) {
+    public static int getPlaceTypeDrawable(int storeType) {
         int boardTypeDrawable = 0;
         if (storeType == VoPlaceDetail.PLACE_TYPE_RESTAURANT)
             boardTypeDrawable = R.drawable.icon_type_cafe;

@@ -5,7 +5,7 @@ import java.util.ArrayList;
 /**
  * Created by Administrator on 2016-07-03.
  */
-public class VoStoryDetail extends VoDetail{
+public class VoStoryDetail extends VoCommentList {
 
     private static VoStoryDetail instance;
 
