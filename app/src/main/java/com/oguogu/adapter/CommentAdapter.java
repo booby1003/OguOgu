@@ -12,6 +12,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.oguogu.R;
 import com.oguogu.custom.CustomBitmapPool;
+import com.oguogu.util.StringUtil;
 import com.oguogu.vo.VoCommentList;
 
 import java.util.ArrayList;
@@ -45,7 +46,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         VoCommentList.VoComment info = mItems.get(position);
 
         holder.tv_comment_nickname.setText(info.getCommentUserId());
-        holder.tv_comment_date.setText(info.getCommentDate());
+        holder.tv_comment_date.setText(StringUtil.getDateStr(info.getCommentDate()));
         holder.tv_comment_content.setText(info.getComment());
 
         Glide.with(context).load(info.getCommentUserThumbPath()).bitmapTransform(new CropCircleTransformation(new CustomBitmapPool())).into(holder.iv_comment_img);

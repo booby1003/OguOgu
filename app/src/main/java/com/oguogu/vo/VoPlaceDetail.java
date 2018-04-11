@@ -231,24 +231,15 @@ public class VoPlaceDetail extends VoCommentList {
     }
 
     public static class VoRelation {
-        private String BoardIdx;
-        private String RelationUserId;
+        private String RelationContentId;
         private String RelationThumbPath;
 
-        public String getBoardIdx() {
-            return BoardIdx;
+        public String getRelationContentId() {
+            return RelationContentId;
         }
 
-        public void setBoardIdx(String boardIdx) {
-            BoardIdx = boardIdx;
-        }
-
-        public String getRelationUserId() {
-            return RelationUserId;
-        }
-
-        public void setRelationUserId(String relationUserId) {
-            RelationUserId = relationUserId;
+        public void setRelationContentId(String relationContentId) {
+            RelationContentId = relationContentId;
         }
 
         public String getRelationThumbPath() {

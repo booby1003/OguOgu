@@ -1,6 +1,7 @@
 package com.oguogu.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.oguogu.R;
+import com.oguogu.activity.StoryDetailActivity;
 import com.oguogu.vo.VoPlaceDetail;
 
 import java.util.ArrayList;
@@ -48,11 +50,12 @@ public class RelationPhotoListAdapter extends RecyclerView.Adapter<RelationPhoto
         VoPlaceDetail.VoRelation info = mItems.get(position);
 
         Glide.with(context).load(info.getRelationThumbPath()).crossFade().into(holder.iv_relation_thumb);
-        holder.tv_relation_title.setText(info.getRelationUserId());
+        //holder.tv_relation_title.setText(info.getRelationUserId());
 
         holder.iv_relation_thumb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                context.startActivity(new Intent(context, StoryDetailActivity.class));
                 Toast.makeText(context, "해당 글로 이동", Toast.LENGTH_SHORT).show();
             }
         });

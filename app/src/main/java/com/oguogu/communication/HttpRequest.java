@@ -71,6 +71,8 @@ public class HttpRequest {
             return;
         }
 
+        LogUtil.d("url : " + url);
+
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(method, url, jsonObject, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {

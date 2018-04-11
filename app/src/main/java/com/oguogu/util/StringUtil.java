@@ -5,6 +5,7 @@ import android.content.res.AssetManager;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -94,6 +95,13 @@ public class StringUtil {
 			EditText et = (EditText) view;
 			et.setText(spannable);
 		}
+	}
+
+	public static String getDateStr(String str) {
+		if(isNull(str)) return "";
+		String date = str.split("T")[0];
+		date = date.replaceAll("-", ".");
+		return date;
 	}
 	
 }

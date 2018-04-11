@@ -132,7 +132,7 @@ public class PlaceDetailActivity extends BaseActivity {
         if(mRequest == null) mRequest = HttpRequest.getInstance(this);
 
         String url = ConstantCommURL.getURL(ConstantCommURL.URL_API, ConstantCommURL.REQUEST_GET_PLACE_DETAIL);
-        url = url + "/5a4d512024e37e97ed71d34d/mynaman";
+        url = url + "/5a4d512024e37e97ed71d351/mynaman";
 //        url = url + "/mynaman";
 //        url = url + "/" + placeIdx;
         //builder.appendQueryParameter("", "");
@@ -174,9 +174,6 @@ public class PlaceDetailActivity extends BaseActivity {
         indicator.setItemMargin(20);
         indicator.createIndicator(placeDetail.getImgList().size());
 
-   //     LogUtil.i("이미지 사이즈 ㅣ " + placeDetail.getImgList().size());
-         //viewImageSlide.setHight(300);
-        //viewImageSlide.createImageSlide(placeDetail.getImgList(), 30);
 
         tv_store_name.setText(placeDetail.getPlaceName());
         tv_register.setText("By " + placeDetail.getRegUserId());

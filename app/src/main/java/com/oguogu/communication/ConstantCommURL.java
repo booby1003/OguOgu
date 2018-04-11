@@ -26,6 +26,7 @@ public class ConstantCommURL {
     public final static String REQUEST_GET_STORY = "story";
     public final static String REQUEST_GET_WRITE_PLACE = "writePlace";
     public final static String REQUEST_SET_WRITE_PLACE = "postWriting";
+    public final static String REQUEST_SET_WRITE_COMMT = "places/comments";
 
     public final static String REQUEST_TAG_PLACE = "TagPlace";
     public final static String REQUEST_TAG_PLACE_DETAIL = "TagPlaceDetail";
@@ -35,5 +36,6 @@ public class ConstantCommURL {
     public final static String REQUEST_TAG_STORY = "TagStory";
     public final static String REQUEST_TAG_WRITE_PLACE = "TagWritePlace";
     public final static String REQUEST_TAG_SET_WRITE_PLACE = "TagWritePlace";
+    public final static String REQUEST_TAG_SET_WRITE_COMMT = "TagWriteCommt";
 
 }
